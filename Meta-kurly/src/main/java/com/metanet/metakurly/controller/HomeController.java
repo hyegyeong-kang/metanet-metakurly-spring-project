@@ -1,4 +1,4 @@
-package com.metanet.metakurly;
+package com.metanet.metakurly.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
