@@ -1,9 +1,10 @@
+
 package com.metanet.metakurly.domain;
 
 import lombok.Data;
 
 @Data
-public class ProductVO {
+public class ProductDTO {
 	
 	private Long p_id;
 	
@@ -20,5 +21,5 @@ public class ProductVO {
 	private Long sales_amount;
 	
 	private String status; // '판매 중지', '판매' 
-
+	
 }
