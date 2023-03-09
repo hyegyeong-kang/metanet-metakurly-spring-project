@@ -1,5 +1,38 @@
 package com.metanet.metakurly.controller;
 
-public class MemberController {
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.metanet.metakurly.domain.MemberDTO;
+import com.metanet.metakurly.service.MemberService;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+@Controller
+@Log4j
+@RequestMapping("/member/*")
+@AllArgsConstructor
+public class MemberController {
+	
+	private MemberService service;
+	
+	@GetMapping("/signup")
+	public void signUp() {}
+	
+//	@PostMapping("/signup")
+//	public String signUp(MemberDTO member, RedirectAttributes rttr) {
+//		
+//		log.info("signup...." + member);
+//		
+//		service.signUp(member);
+//		
+//		rttr.addFlashAttribute("result", member.getM_id());
+//		
+//		return "redirect:/member/login";
+//	}
 }

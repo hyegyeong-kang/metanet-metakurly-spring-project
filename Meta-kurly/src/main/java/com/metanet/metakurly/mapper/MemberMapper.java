@@ -4,12 +4,18 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 
-import com.metanet.metakurly.domain.MemberVO;
+import com.metanet.metakurly.domain.MemberDTO;
 
 public interface MemberMapper {
 	
-	@Select("select * from member")
-	public List<MemberVO> getList();
+	//@Select("select * from member")
+	public List<MemberDTO> getList();
 	
-	public void register(MemberVO member);
+	//회원 등록
+	public void signUp(MemberDTO member);
+	
+	//로그인
+	public MemberDTO login(MemberDTO member);
+	
+	public void signUpSelectKey(MemberDTO member);
 }
