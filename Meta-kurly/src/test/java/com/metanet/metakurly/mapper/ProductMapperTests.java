@@ -59,12 +59,18 @@ public class ProductMapperTests {
 //		mapper.insertSelectKey(product);
 //	}
 	
+//	@Test
+//	public void testRead() {
+//		ProductDTO board = mapper.read(3L);
+//		
+//		log.info(board);
+//	}
+	
 	@Test
-	public void testRead() {
-		ProductDTO board = mapper.read(3L);
-		
-		log.info(board);
+	public void testDelete() {
+		log.info("DELETE COUNT :" + mapper.delete(3L));
 	}
+	
 }
 
 

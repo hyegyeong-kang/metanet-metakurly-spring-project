@@ -16,5 +16,7 @@ public interface ProductMapper {
 	public void insertSelectKey(ProductDTO product);
 	
 	public ProductDTO read(Long p_id);
+	
+	public int delete(Long p_id);
 
 }

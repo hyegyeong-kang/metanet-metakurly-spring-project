@@ -29,4 +29,8 @@
 	select * from product where p_id = #{p_id}
 </select>
 
+<delete id="delete">
+	delete from product where p_id = #{p_id}
+</delete>
+
 </mapper>
