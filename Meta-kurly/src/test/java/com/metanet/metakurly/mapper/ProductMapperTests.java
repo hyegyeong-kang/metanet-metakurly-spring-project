@@ -44,19 +44,26 @@ public class ProductMapperTests {
 //	}
 	
 	// PK값을 미리 지정 
+//	@Test
+//	public void testInsertSelectKey(){
+//		ProductDTO product = new ProductDTO();
+//		product.setP_id(1L);
+//		product.setBrand("마켓컬리");
+//		product.setPrice(10000);
+//		product.setName("닭가슴살");
+//		product.setStock(11);
+//		product.setDelivery_type("깜깜");
+//		product.setSales_amount(1L);
+//		product.setStatus("판매중지");
+//		
+//		mapper.insertSelectKey(product);
+//	}
+	
 	@Test
-	public void testInsertSelectKey(){
-		ProductDTO product = new ProductDTO();
-		product.setP_id(1L);
-		product.setBrand("마켓컬리");
-		product.setPrice(10000);
-		product.setName("닭가슴살");
-		product.setStock(11);
-		product.setDelivery_type("깜깜");
-		product.setSales_amount(1L);
-		product.setStatus("판매중지");
+	public void testRead() {
+		ProductDTO board = mapper.read(3L);
 		
-		mapper.insertSelectKey(product);
+		log.info(board);
 	}
 }
 

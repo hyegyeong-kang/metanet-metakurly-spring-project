@@ -24,4 +24,9 @@
 	insert into product (p_id, brand, price, name, stock, delivery_type, sales_amount, status)
 	values (#{p_id}, #{brand}, #{price}, #{name}, #{stock}, #{delivery_type}, #{sales_amount}, #{status})
 </insert>
+
+<select id="read" resultType="com.metanet.metakurly.domain.ProductDTO">
+	select * from product where p_id = #{p_id}
+</select>
+
 </mapper>
