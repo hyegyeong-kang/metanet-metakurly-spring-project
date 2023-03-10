@@ -11,7 +11,7 @@
 
 <meta name="copyright" content="MACode ID, https://macodeid.com">
 
-<title>MetaKurly | Best Products</title>
+<title>MetaKurly | Products Detail</title>
 
 <link rel="stylesheet" href="/resources/vendor/animate/animate.css">
 
@@ -44,7 +44,7 @@
 
 				<div class="navbar-collapse collapse" id="navbarContent">
 					<ul class="navbar-nav ml-lg-4 pt-3 pt-lg-0">
-						<li class="nav-item"><a href="index.html" class="nav-link">Home</a>
+						<li class="nav-item"><a href="/" class="nav-link">Home</a>
 						</li>
 						<li class="nav-item active"><a href="bestProductList.html"
 							class="nav-link">Best</a></li>

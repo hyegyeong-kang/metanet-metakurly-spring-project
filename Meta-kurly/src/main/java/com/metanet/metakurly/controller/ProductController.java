@@ -3,7 +3,9 @@ package com.metanet.metakurly.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.metanet.metakurly.service.ProductService;
 
@@ -22,5 +24,13 @@ public class ProductController {
 	public void list(Model model) {
 		log.info("list");
 		model.addAttribute("list", service.getList());
+	}
+	
+	@GetMapping("/get")
+	public void get(@RequestParam("p_id") Long p_id, Model model) {
+		
+		log.info("get");
+		model.addAttribute("product", service.get(p_id));
+		
 	}
 }
