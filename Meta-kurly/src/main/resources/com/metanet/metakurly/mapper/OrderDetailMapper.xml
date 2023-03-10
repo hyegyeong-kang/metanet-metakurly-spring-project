@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.metanet.metakurly.mapper.OrderDetailMapper">
+
+	<resultMap type="com.metanet.metakurly.domain.OrderDetailDTO" id="orderDetailMap">
+		<result property="o_id" column="o_id"/>
+		<result property="p_id" column="p_id"/>
+		<result property="quantity" column="quantity"/>
+		<result property="m_id" column="m_id"/>
+		<collection property="productList" resultMap="productMap">
+		</collection>
+	</resultMap>
+	
+	<resultMap type="com.metanet.metakurly.domain.ProductDTO" id="productMap">
+		<result property="p_id" column="p_id"/>
+		<result property="brand" column="brand"/>
+		<result property="name" column="name"/>
+		<result property="price" column="price"/>
+	</resultMap>
+	
+	<select id="getList" resultMap="orderDetailMap">
+		select o_id, quantity, p.p_id, p.brand, p.name, p.price from orders_detail od
+			join product p on od.p_id = p.p_id
+		where od.o_id = #{o_id}
+	</select>
+
+</mapper>
