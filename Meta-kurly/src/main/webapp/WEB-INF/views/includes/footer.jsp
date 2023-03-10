@@ -74,6 +74,7 @@
 	<!-- .container -->
 </footer>
 <!-- .page-footer -->
+<script src="/resources/js/productList/productDetail.js"></script>
 
 
 <script src="/resources/js/jquery-3.5.1.min.js"></script>
