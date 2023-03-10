@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
 <mapper namespace="com.metanet.metakurly.mapper.OrderMapper">
 
-	<select id="getList" resultType="com.metanet.metakurly.domain.OrderDTO">
+	<select id="getListByMid" resultType="com.metanet.metakurly.domain.OrderDTO">
 		<![CDATA[
-			select * from orders where o_id > 0
+			select * from orders where o_id > 0 and m_id = #{m_id}
 		]]>
 	</select>
 	
-	<select id="read" resultType="com.metanet.metakurly.domain.OrderDTO">
+	<select id="readByOid" resultType="com.metanet.metakurly.domain.OrderDTO">
 		select * from orders where o_id = #{o_id}
 	</select>
 	

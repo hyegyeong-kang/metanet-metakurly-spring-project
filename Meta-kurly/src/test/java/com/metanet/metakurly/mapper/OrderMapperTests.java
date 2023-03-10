@@ -17,11 +17,11 @@ public class OrderMapperTests {
 	
 	@Test
 	public void getListTest() {
-		mapper.getList().forEach(order -> log.info(order));
+		mapper.getListByMid(1L).forEach(order -> log.info(order));
 	}
 	
 	@Test
 	public void readTest() {
-		log.info(mapper.read(1L));
+		log.info(mapper.readByOid(1L));
 	}
 }

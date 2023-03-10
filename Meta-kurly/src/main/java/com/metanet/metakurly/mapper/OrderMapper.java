@@ -6,8 +6,8 @@ import com.metanet.metakurly.domain.OrderDTO;
 
 public interface OrderMapper {
 	
-	public List<OrderDTO> getList();
+	public List<OrderDTO> getListByMid(Long m_id);
 	
-	public OrderDTO read(Long o_id);
+	public OrderDTO readByOid(Long o_id);
 	
 }

@@ -18,15 +18,15 @@ public class OrderServiceImpl implements OrderService {
 	private OrderMapper mapper;
 
 	@Override
-	public OrderDTO get(Long o_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public OrderDTO getByOid(Long o_id) {
+		log.info("get Service..." + o_id);
+		return mapper.readByOid(o_id);
 	}
 
 	@Override
-	public List<OrderDTO> getList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<OrderDTO> getListByMid(Long m_id) {
+		log.info("getList Service...");
+		return mapper.getListByMid(m_id);
 	}
 
 }
