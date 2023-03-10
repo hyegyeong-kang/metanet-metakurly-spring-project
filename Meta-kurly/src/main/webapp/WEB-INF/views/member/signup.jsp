@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var ="path" value = "${pageContext.request.contextPath}"  />
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,28 +10,19 @@
 </head>
 <body>
 
-<h2>ȸ������</h2>
+<h2>회원가입</h2>
 	
-	<form action="/member/signup" method="post">
-		���̵�:<input type="text" name="userId"><br/>
-		��й�ȣ:<input type="password" name="password "><br/>
-		�̸�:<input type="text" name="name"><br/>
-		�̸���:<input type="text" name="email"><br/>
-		��ȭ��ȣ:
-		<select name="phone">
-			<option>010</option>
-			<option>02</option>
-			<option>031</option>
-			<option>051</option>
-		</select>
-		- <input type="text" name="phone-m" size="5">
-		- <input type="text" name="phone-l" size="5">
-		
-		<br/>
-		�ּ�:<input type="text" name="address"><br/>
-		<input type="submit" value="����">
+	<form action="${path}/member/signup" id="signupForm" method="post">
+		아이디:<input type="text" name="userId"><br/>
+		비밀번호:<input type="password" name="password"><br/>
+		이름:<input type="text" name="name"><br/>
+		이메일:<input type="text" name="email"><br/>
+		전화번호:<input type="text" name="phone"><br/>
+		주소:<input type="text" name="address"><br/>
+		<button class="btn btn-success" type="submit" id="submit">가입</button>
 		
 	</form>
 
 </body>
+
 </html>
