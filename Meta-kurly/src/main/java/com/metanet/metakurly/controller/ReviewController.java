@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.metanet.metakurly.domain.ReviewDTO;
@@ -24,20 +25,21 @@ public class ReviewController {
 	
 	private final MemberService memberService;
 	private final ReviewService reviewService;
-
-	@GetMapping("/myPage/myReview")
-	public String myOrderList(Model model, HttpSession session, @RequestParam(defaultValue = "1") int page) {
+ // , @RequestParam(defaultValue = "1") int page
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String myOrderList(Model model, HttpSession session) {
 		
 		int sessionId = Integer.parseInt(session.getAttribute("sessionId").toString());
 		
 	//	Member member = memberService.findMember(sessionId); // 세션값을 이용해 회원 찾기
 		
-		List<ReviewDTO> reviewList = reviewService.getList(sessionId);
+		List<ReviewDTO> reviewList = reviewService.getMyReviewList(sessionId);
 		
 		model.addAttribute("reviewList", reviewList);
 		
-		return "/myPage/myReview";
+		return "qnaList";
 	}
+	
 	
 //	@GetMapping("/product/review")
 //	public String review(Model model, HttpSession session, @RequestParam(defaultValue = "1") int page) {

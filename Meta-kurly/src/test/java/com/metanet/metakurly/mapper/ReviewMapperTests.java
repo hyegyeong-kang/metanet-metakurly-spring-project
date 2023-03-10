@@ -16,24 +16,48 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class ReviewMapperTests {
 	
-	@Setter(onMethod_ = @Autowired)
+	@Autowired
 	private ReviewMapper mapper;
-	
-//	@Test
-//	public void testGetList() {
-//		mapper.getList().forEach(review -> log.info(review));
+		 
+//	@Test	//성공 -> m_id 가 1인 사람의 리뷰만 가져오기
+//	public void testGetMyReviewList() {
+//		mapper.getMyReviewList(1).forEach(review -> log.info(review));
 //	}
 	
-	@Test
-	public void testInsert() {
-		ReviewDTO review = new ReviewDTO();
-		
-		review.setM_id(2L);
-		review.setP_id(5L);
-		review.setContents("존맛탱입니다.!");
-		
-		mapper.insert(review);
-		
-		log.info(review);
+	@Test // 성공 -> p_id 가 1 인 상품의 리뷰 가져오기
+	public void testGetProductReviewList() {
+		mapper.getProductReviewList(5L).forEach(review -> log.info(review));
 	}
+	
+	// 성공
+//	@Test
+//	public void testInsert() {
+//		ReviewDTO review = new ReviewDTO();
+//		
+//		review.setM_id(2L);
+//		review.setP_id(5L);
+//		review.setContents("존맛탱입니다.!");
+//		
+//		mapper.insert(review);
+//		
+//		log.info(review);
+//	}
+	
+//	@Test
+//	public void testUpdate() {
+//		ReviewDTO review = new ReviewDTO();
+//		review.setContents("업데이트 내용");
+//		review.setM_id(1L);
+//		review.setP_id(1L);
+//
+//		
+//		int cnt = mapper.updateReview(review);
+//		log.info("UPDATE COUNT: " + cnt);
+//	}
+	
+//	@Test
+//	public void testDelete() {
+//		mapper.deleteReview(1L);
+//		
+//	}
 }
