@@ -38,7 +38,7 @@ ul,li,body,h1,h2,h3,h4,h5,h6{margin: 0; padding: 0;}
 	.shCMSshop .shopView .viewHeader .productInfo .btn{text-align: right;margin-top: 40px;}
 	.shCMSshop .shopView .viewHeader .productInfo .btn a{padding: 15px 56px;font-size: 22px; display: inline-block;}
 	.shCMSshop .shopView .viewHeader .productInfo .btn a:first-child{color: black; border: 1px solid black; box-sizing: border-box;}
-	.shCMSshop .shopView .viewHeader .productInfo .btn a:last-child{background: #e63740; color: white; font-size: 22px;margin-left: 26px; border:1px solid #e63740;}
+	.shCMSshop .shopView .viewHeader .productInfo .btn a:last-child{background: rgb(95, 0, 128); color: white; font-size: 22px;margin-left: 26px; border:1px solid;}
 
 	.shCMSshop .shopView .viewBody{margin-top: 100px;}
 	.shCMSshop .shopView .viewBody .contentNav:after{display: block;content:'';clear: both;}
