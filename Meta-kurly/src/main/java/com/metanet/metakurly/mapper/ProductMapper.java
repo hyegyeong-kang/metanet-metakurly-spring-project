@@ -18,5 +18,7 @@ public interface ProductMapper {
 	public ProductDTO read(Long p_id);
 	
 	public int delete(Long p_id);
+	
+	public int update(ProductDTO product);
 
 }

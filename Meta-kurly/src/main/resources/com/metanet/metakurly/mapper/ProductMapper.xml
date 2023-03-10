@@ -33,4 +33,17 @@
 	delete from product where p_id = #{p_id}
 </delete>
 
+<update id="update">
+	update product
+	set p_id = #{p_id},
+	brand = #{brand},
+	price = #{price},
+	name = #{name},
+	stock = #{stock},
+	delivery_type = #{delivery_type},
+	sales_amount = #{sales_amount},
+	status = #{status}
+	where p_id = #{p_id}
+</update>
+
 </mapper>

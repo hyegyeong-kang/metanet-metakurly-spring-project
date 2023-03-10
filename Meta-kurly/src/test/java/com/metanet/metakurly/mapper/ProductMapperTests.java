@@ -66,9 +66,27 @@ public class ProductMapperTests {
 //		log.info(board);
 //	}
 	
+//	@Test
+//	public void testDelete() {
+//		log.info("DELETE COUNT :" + mapper.delete(3L));
+//	}
+	
 	@Test
-	public void testDelete() {
-		log.info("DELETE COUNT :" + mapper.delete(3L));
+	public void testUpdate() {
+		ProductDTO product = new ProductDTO();
+		
+		product.setP_id(31L);
+		product.setBrand("오리온");
+		product.setPrice(3500);
+		product.setName("후레쉬베리");
+		product.setStock(20);
+		product.setDelivery_type("깜깜");
+		product.setSales_amount(20L);
+		product.setStatus("판매중");
+		
+		int count =mapper.update(product);
+		
+		log.info("UPDATE COUNT" + count);
 	}
 	
 }
