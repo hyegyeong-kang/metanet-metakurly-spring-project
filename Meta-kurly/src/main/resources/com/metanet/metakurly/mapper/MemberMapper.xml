@@ -9,13 +9,37 @@
  		insert into member (m_id, userid, password, name, email, phone, address)
 		values (member_seq.nextval, #{userId}, #{password}, #{name}, #{email}, #{phone}, #{address})
 	</insert>
+	
+	<select id="idChk" resultType="int">
+		select count(*)
+		from member
+		where userid = #{userId}
+	</select>
  
- 	<select id="login" resultType="com.metanet.metakurly.domain.MemberDTO">
+ 	<!-- <select id="login" resultType="com.metanet.metakurly.domain.MemberDTO">
  		select userid, password from member
  		where userid = #{userID}
  		and password = #{password}
- 	</select>
+ 	</select> -->
 
+	<resultMap type="com.metanet.metakurly.MemberVO" id="memberMap">
+		<id property="userId" column="userid" />
+		<result property="userId" column="userid" />
+		<result property="password" column="password" />
+		<result property="authority" column="authority" />
+	</resultMap>
+
+	<resultMap type="com.metanet.metakurly.domain.AuthVO" id="authMap">
+		<result property="userId" column="userid" />
+		<result property="authority" column="authority" />
+	</resultMap>
+
+	<select id="login" resultMap="memberMap">
+		SELECT
+		userid, password, authority
+		FROM member
+		WHERE userid = #{userId}
+	</select>
 
 	<update id="modify">
 		update member
