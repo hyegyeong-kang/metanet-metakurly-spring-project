@@ -52,8 +52,8 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	// 내가 구매해서 작성한 리뷰 삭제하기
 	@Override
-	public boolean deleteReview(Long r_id) {
-		return mapper.deleteReview(r_id);
+	public boolean deleteReview(ReviewDTO review) {
+		return mapper.deleteReview(review);
 	}
 
 }
