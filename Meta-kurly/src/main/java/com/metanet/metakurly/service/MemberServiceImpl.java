@@ -18,9 +18,10 @@ public class MemberServiceImpl implements MemberService{
 	private MemberMapper mapper;
 	
 	@Override
-	public void signUp(MemberDTO member) {
+	public int signUp(MemberDTO member) {
 		log.info("signUp......." + member);
-		mapper.signUpSelectKey(member);
+		
+		return mapper.signUp(member);
 	}
 	
 }

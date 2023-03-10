@@ -12,7 +12,7 @@ public interface MemberMapper {
 	public List<MemberDTO> getList();
 	
 	//회원 등록
-	public void signUp(MemberDTO member);
+	public int signUp(MemberDTO member);
 	
 	//로그인
 	public MemberDTO login(MemberDTO member);

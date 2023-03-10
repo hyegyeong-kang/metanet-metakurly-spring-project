@@ -1,8 +1,10 @@
 package com.metanet.metakurly.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -24,15 +26,20 @@ public class MemberController {
 	@GetMapping("/signup")
 	public void signUp() {}
 	
-//	@PostMapping("/signup")
-//	public String signUp(MemberDTO member, RedirectAttributes rttr) {
-//		
-//		log.info("signup...." + member);
-//		
-//		service.signUp(member);
-//		
-//		rttr.addFlashAttribute("result", member.getM_id());
-//		
-//		return "redirect:/member/login";
-//	}
+	@PostMapping("/signup")
+	public String signUp(MemberDTO member) throws Exception {
+		
+		log.info("MemberDTO...." + member);
+		
+		int result = service.signUp(member);
+		
+		if(result==1) System.out.println("가입 완료");
+		else System.out.println("가입실패");
+		
+		return "redirect:/member/login";
+	}
+	
+	@GetMapping("/login")
+	public void login() {}
+	
 }
