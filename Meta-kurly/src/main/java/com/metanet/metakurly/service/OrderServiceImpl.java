@@ -18,15 +18,15 @@ public class OrderServiceImpl implements OrderService {
 	private OrderMapper mapper;
 
 	@Override
-	public OrderDTO getByOid(Long o_id) {
+	public OrderDTO getOrderDetailList(Long o_id) {
 		log.info("get Service..." + o_id);
-		return mapper.readByOid(o_id);
+		return mapper.getOrderDetail(o_id);
 	}
 
 	@Override
-	public List<OrderDTO> getListByMid(Long m_id) {
+	public List<OrderDTO> getOrderList(Long m_id) {
 		log.info("getList Service...");
-		return mapper.getListByMid(m_id);
+		return mapper.getOrderList(m_id);
 	}
 
 }

@@ -16,12 +16,13 @@ public class OrderMapperTests {
 	private OrderMapper mapper;
 	
 	@Test
-	public void getListTest() {
-		mapper.getListByMid(1L).forEach(order -> log.info(order));
+	public void getDetailTest() {
+//		mapper.getOrderDetail(3L).forEach(detail -> log.info(detail));
+		log.info(mapper.getOrderDetail(3L));
 	}
 	
-	@Test
-	public void readTest() {
-		log.info(mapper.readByOid(1L));
-	}
+//	@Test
+//	public void readTest() {
+//		mapper.getOrderList(1L).forEach(order -> log.info(order));
+//	}
 }
