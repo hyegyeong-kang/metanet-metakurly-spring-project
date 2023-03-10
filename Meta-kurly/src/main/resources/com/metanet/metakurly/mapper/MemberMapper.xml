@@ -6,24 +6,24 @@
 
 
 	<insert id="signUp">
-		insert into member (m_id, userid, password, name, email, phone, address)
+ 		insert into member (m_id, userid, password, name, email, phone, address)
 		values (member_seq.nextval, #{userId}, #{password}, #{name}, #{email}, #{phone}, #{address})
 	</insert>
- 
- <!-- <insert id="signUp">
-		insert into member (m_id, userid, password, name, email, phone, address, point, grade, status)
-		values (member_seq.nextval, #{userId}, #{password}, #{name}, #{email}, #{phone}, #{address},
-		#{point, jdbcType=INTEGER}, #{grade, jdbcType=VARCHAR}, #{status, jdbcType=VARCHAR},)
-	</insert> -->
  
  	<select id="login" resultType="com.metanet.metakurly.domain.MemberDTO">
  		select userid, password from member
  		where userid = #{userID}
- 		AND password = #{password}
+ 		and password = #{password}
  	</select>
- 
- 
- 
+
+
+	<update id="modify">
+		update member
+		set email= #{email},
+		phone= #{phone},
+		address = #{address},
+		where m_id = #{m_id}
+	</update>
  
  
  	<insert id="signUpSelectKey">
