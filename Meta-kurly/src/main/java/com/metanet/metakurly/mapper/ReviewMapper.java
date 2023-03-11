@@ -19,5 +19,5 @@ public interface ReviewMapper {
 	public int updateReview(ReviewDTO review);
 	
 	// 내가 구매해서 작성한 리뷰 삭제하기
-	public boolean deleteReview(Long r_id);
+	public boolean deleteReview(ReviewDTO review);
 }
