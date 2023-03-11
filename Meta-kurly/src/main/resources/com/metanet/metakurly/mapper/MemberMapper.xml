@@ -22,15 +22,10 @@
  		and password = #{password}
  	</select> -->
 
-	<resultMap type="com.metanet.metakurly.MemberVO" id="memberMap">
+<!-- 	<resultMap type="com.metanet.metakurly.MemberDTO">
 		<id property="userId" column="userid" />
 		<result property="userId" column="userid" />
 		<result property="password" column="password" />
-		<result property="authority" column="authority" />
-	</resultMap>
-
-	<resultMap type="com.metanet.metakurly.domain.AuthVO" id="authMap">
-		<result property="userId" column="userid" />
 		<result property="authority" column="authority" />
 	</resultMap>
 
@@ -39,7 +34,7 @@
 		userid, password, authority
 		FROM member
 		WHERE userid = #{userId}
-	</select>
+	</select> -->
 
 	<update id="modify">
 		update member
