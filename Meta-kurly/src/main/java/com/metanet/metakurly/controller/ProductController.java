@@ -35,9 +35,10 @@ public class ProductController {
 	}
 
 	@GetMapping("/bestProduct")
-	public void getBestProductList(Model model) {
+	public String getBestProductList(Model model) {
 		log.info("bestProductList");
 		model.addAttribute("bestProductList", service.getBestProductList());
+		return "bestProductList";
 
 	}
 }
