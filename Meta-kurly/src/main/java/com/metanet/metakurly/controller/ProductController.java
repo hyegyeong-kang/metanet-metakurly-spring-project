@@ -20,6 +20,7 @@ public class ProductController {
 	
 	private ProductService service;
 	
+	
 	@GetMapping("/list")
 	public void list(Model model) {
 		log.info("list");

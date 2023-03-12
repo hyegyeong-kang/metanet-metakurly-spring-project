@@ -32,21 +32,21 @@ public class ProductControllerTests {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 	
-//	@Test
-//	public void testList() throws Exception {
-//		log.info(
-//				mockMvc.perform(MockMvcRequestBuilders.get("/product/list"))
-//				.andReturn()
-//				.getModelAndView()
-//				.getModelMap());
-//	}
-	
 	@Test
-	public void testGet() throws Exception {
-		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/product/get")
-				.param("p_id", "31"))
+	public void testList() throws Exception {
+		log.info(
+				mockMvc.perform(MockMvcRequestBuilders.get("/product/list"))
 				.andReturn()
-				.getModelAndView().getModelMap());
+				.getModelAndView()
+				.getModelMap());
 	}
+	
+//	@Test
+//	public void testGet() throws Exception {
+//		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/product/get")
+//				.param("p_id", "31"))
+//				.andReturn()
+//				.getModelAndView().getModelMap());
+//	}
 	
 } 
