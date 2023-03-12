@@ -34,4 +34,11 @@ public class ProductController {
 		model.addAttribute("product", service.get(p_id));
 		
 	}
+	
+	@GetMapping("/bestProduct")
+	public void getBestProductList(Model model) {
+		log.info("bestProductList");
+		model.addAttribute("bestProductList", service.getBestProductList());
+		
+	}
 }
