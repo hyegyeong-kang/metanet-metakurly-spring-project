@@ -14,5 +14,7 @@ public interface ProductService {
 	public boolean remove(Long p_id);
 	
 	public List<ProductDTO> getList();
+	
+	public List<ProductDTO> getBestProductList();
 
 }
