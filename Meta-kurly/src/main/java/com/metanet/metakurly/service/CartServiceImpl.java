@@ -31,4 +31,36 @@ public class CartServiceImpl implements CartService {
 		return mapper.checkCart(p_id, m_id);
 	}
 
+	// 중복된 상품이 있다면 넣지말고 수량 더해주기
+	@Override
+	public void updateCount(CartDTO cart) {
+		mapper.updateCount(cart);
+	}
+
+	// 장바구니 물건 삭제
+	@Override
+	public void deleteCart(Long p_id, Long m_id) {
+		mapper.deleteCart(p_id, m_id);
+		
+	}
+
+	
+	// 장바구니 전체 비우기
+	@Override
+	public void deleteAllCart(Long m_id) {
+		mapper.deleteAllCart(m_id);
+	}
+	
+	// 장바구니 물건 업데이트 (장바구니에서 수량변경하는 것)
+	@Override
+	public void updateCart(Long p_id, Long m_id, Long quantity) {
+		mapper.updateCart(p_id, m_id, quantity);
+	}
+
+	// 해당 회원의 장바구니 전체 금액 출력
+	@Override
+	public Long getTotalPrice(Long m_id) {
+		return mapper.getTotalPrice(m_id);
+	}
+
 }

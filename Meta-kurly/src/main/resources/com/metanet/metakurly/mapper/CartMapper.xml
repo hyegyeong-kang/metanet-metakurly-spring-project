@@ -40,5 +40,44 @@
 		where p_id = #{p_id}
 		and m_id = #{m_id}
 	</select>
+	
+	<!-- 중복된 상품이 있다면 넣지말고 수량 더해주기 -->
+	<update id="updateCount">
+	 update cart c
+	 set c.quantity = c.quantity + #{quantity},
+	 c.total_price = (select p.price from product p where c.p_id = p.p_id and p.p_id = #{p_id})
+	 where c.m_id = #{m_id}
+	 and c.p_id = #{p_id}
+	</update>
+	
+	<!-- 장바구니 물건 삭제 -->
+	<delete id="deleteCart">
+	 delete from cart 
+	 where p_id = #{p_id}
+	 and m_id = #{m_id}
+	</delete>
+	
+	<!-- 장바구니 전체 비우기 -->
+	<delete id="deleteAllCart">
+	delete from cart
+	where m_id = #{m_id}
+	</delete>
+	
+	<!-- 장바구니 물건 업데이트 (장바구니에서 수량변경하는 것) -->
+	<update id="updateCart" parameterType="com.metanet.metakurly.domain.CartDTO">
+		update cart
+		set quantity = #{quantity}
+		where m_id = #{m_id}
+		and p_id = #{p_id}
+	</update>
+	
+	<!-- 해당 회원의 장바구니 전체 금액 출력 -->
+	<select id="getTotalPrice" resultType="com.metanet.metakurly.domain.CartDTO">
+		select nvl(sum(p.price * quantity), 0) as TOTAL_PRICE
+		from cart c, product p
+		where c.p_id = p.p_id
+		and m_id = #{m_id}
+	</select>
+
 
 </mapper>
