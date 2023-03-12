@@ -11,4 +11,9 @@ public class MemberDTO {
 	private String email;
 	private String phone;
 	private String address;
+	private int point;
+	private String grade;
+	private String status;
+	private int enabled;
+	private String authority;
 }

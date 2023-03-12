@@ -9,6 +9,9 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/productList/product.css">
 <link rel="stylesheet" href="/resources/css/login/login.css">
+<script type="text/javascript">
+
+</script>
 </head>
 <body>
 <div class="page-section">
@@ -29,7 +32,7 @@
         <div>아이디<span class="orange">&nbsp;*</span></div>
         <div>
           <input name="userId" type="text" placeholder="ex) marketkurly12">
-          <input type="button" value="중복확인" required>
+          <input type="button" value="중복확인" id="idCheck" required>
         </div>
       </div>
 
@@ -68,7 +71,7 @@
         </p>
       </div>
      
-     <button class="btn btn-dark" type="submit" id="submit">가입하기</button>
+     <button type="submit" id="submit">가입하기</button>
 
     </form>
 

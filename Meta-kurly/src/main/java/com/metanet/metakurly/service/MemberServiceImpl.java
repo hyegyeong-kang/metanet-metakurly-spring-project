@@ -1,5 +1,7 @@
 package com.metanet.metakurly.service;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +25,28 @@ public class MemberServiceImpl implements MemberService{
 		
 		return mapper.signUp(member);
 	}
+
+	@Override
+	public boolean login(MemberDTO member, HttpSession session) {
+		boolean result = mapper.login(member, session);
+		if(result) {
+			MemberDTO dto = infoMember(member);
+			
+			session.setAttribute("userId", dto.getUserId());
+			session.setAttribute("name", dto.getName());
+		}
+		return result;
+		
+	}
 	
+	@Override
+	public MemberDTO infoMember(MemberDTO member) {
+		return mapper.infoMember(member);
+	}
+
+	@Override
+	public MemberDTO modify(MemberDTO member) {
+		return mapper.modify(member);
+	}
+		
 }

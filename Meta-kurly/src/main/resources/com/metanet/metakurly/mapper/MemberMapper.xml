@@ -10,38 +10,42 @@
 		values (member_seq.nextval, #{userId}, #{password}, #{name}, #{email}, #{phone}, #{address})
 	</insert>
 	
-	<select id="idChk" resultType="int">
+	<select id="idCheck" resultType="int">
 		select count(*)
 		from member
 		where userid = #{userId}
 	</select>
  
- 	<!-- <select id="login" resultType="com.metanet.metakurly.domain.MemberDTO">
- 		select userid, password from member
+ 	<select id="login" resultType="com.metanet.metakurly.domain.MemberDTO">
+ 		select *
+ 		from member
  		where userid = #{userID}
  		and password = #{password}
- 	</select> -->
+ 	</select>
+ 	
+ 	<select id="infoMember" resultType="com.metanet.metakurly.domain.MemberDTO">
+ 		select *
+ 		from member
+ 		where userid = #{userID}
+ 		and password = #{password}
+ 	</select>
 
-<!-- 	<resultMap type="com.metanet.metakurly.MemberDTO">
-		<id property="userId" column="userid" />
-		<result property="userId" column="userid" />
-		<result property="password" column="password" />
-		<result property="authority" column="authority" />
-	</resultMap>
-
-	<select id="login" resultMap="memberMap">
-		SELECT
-		userid, password, authority
-		FROM member
-		WHERE userid = #{userId}
-	</select> -->
-
-	<update id="modify">
+	<update id="modify" parameterType="com.metanet.metakurly.domain.MemberDTO">
 		update member
-		set email= #{email},
+		set userid = #{userId},
+		password = #{password},
+		name = #{name},
+		email= #{email},
 		phone= #{phone},
 		address = #{address},
 		where m_id = #{m_id}
+	</update>
+	
+	<update id="delete" parameterType="com.metanet.metakurly.domain.MemberDTO">
+		update member
+		set status = #{status}
+		where userid = #{userId}
+		and password = #{password}
 	</update>
  
  

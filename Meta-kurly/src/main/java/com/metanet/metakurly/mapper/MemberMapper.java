@@ -2,6 +2,8 @@ package com.metanet.metakurly.mapper;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.annotations.Select;
 
 import com.metanet.metakurly.domain.MemberDTO;
@@ -15,7 +17,12 @@ public interface MemberMapper {
 	public int signUp(MemberDTO member);
 	
 	//로그인
-	public MemberDTO login(MemberDTO member);
+	public boolean login(MemberDTO member, HttpSession session);
+	
+	//로그인 정보
+	public MemberDTO infoMember(MemberDTO member);
+	
+	public MemberDTO modify(MemberDTO member);
 	
 	public void signUpSelectKey(MemberDTO member);
 }
