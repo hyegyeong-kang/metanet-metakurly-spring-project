@@ -44,13 +44,25 @@ public class OrderControllerTests {
 //					);
 //		}
 		
+//		@Test
+//		public void testGetOrderDetail() throws Exception{
+//			log.info(
+//					mockMvc.perform(MockMvcRequestBuilders.get("/orders/detail/3"))
+//					.andReturn()
+//					.getModelAndView()
+//					.getModelMap()
+//					);
+//		}
+		
 		@Test
-		public void testGetOrderDetail() throws Exception{
+		public void testCreateOrder() throws Exception{
 			log.info(
-					mockMvc.perform(MockMvcRequestBuilders.get("/orders/detail/3"))
+					mockMvc.perform(MockMvcRequestBuilders.post("/orders/2")
+							.param("p_id", "2")
+							.param("quantity", "2"))
 					.andReturn()
 					.getModelAndView()
-					.getModelMap()
+					.getModel()
 					);
 		}
 }

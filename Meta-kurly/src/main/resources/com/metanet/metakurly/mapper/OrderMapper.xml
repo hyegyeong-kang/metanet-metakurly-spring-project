@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
 <mapper namespace="com.metanet.metakurly.mapper.OrderMapper">
-
+	
+	<!-- 특정 회원의 주문 목록 보기 -->
 	<select id="getOrderList" resultType="com.metanet.metakurly.domain.OrderDTO">
 		<![CDATA[
 			select * from orders where o_id > 0 and m_id = #{m_id}
 		]]>
 	</select>
 	
+	<!-- 특정 주문의 상세 보기 -->
 	<resultMap type="com.metanet.metakurly.domain.OrderDTO" id="orderMap">
 		<result property="o_id" column="o_id"/>
 		<result property="orders_date" column="orders_date"/>
@@ -34,11 +36,62 @@
 	</resultMap>
 	
 	<select id="getOrderDetail" resultMap="orderMap">
-		select o.o_id, o.orders_date, o.status, o.total_amount, o.price as orderprice, o.m_id, od.quantity, p.p_id, p.brand, p.name, p.price as productprice
+		select o.o_id, o.orders_date, o.status, o.total_amount, o.price as orderprice, o.m_id, od.quantity, p.p_id, p.brand, p.name, (p.price * od.quantity) as productprice
     	from orders o
 			join orders_detail od on o.o_id = od.o_id
 			join product p on od.p_id = p.p_id
 		where o.o_id = #{o_id}
 	</select>
+	
+	<!-- 특정 회원의 주문하기 -->
+	<!-- 주문 생성 -->
+	<insert id="createOrder">
+		insert into orders(o_id, orders_date, m_id) values(#{o_id}, sysdate, #{m_id})
+		<selectKey keyProperty="o_id" order="BEFORE" resultType="long">
+			select orders_seq.nextval from dual
+		</selectKey>
+	</insert>
+	<!-- 주문 상세(리스트) 추가 -->
+	<insert id="createOrderDetail">
+			<foreach collection="orderDetailList" item="detail" separator=" " open="insert all " close="select * from dual">
+				into orders_detail values (#{o_id}, #{detail.p_id}, #{detail.quantity}, (
+					select m_id from orders where o_id = #{o_id}
+				))
+			</foreach>
+		<!-- <selectKey keyProperty="o_id" order="BEFORE" resultType="long">
+			select orders_seq.currval from dual
+		</selectKey> -->
+	</insert>
+	<!-- 주문 수정(총수량, 총가격) -->
+	<update id="modifyOrder">
+		update orders
+		set
+			status = '결제완료',
+			total_amount = ( 
+				select sum(quantity) from orders_detail where o_id = #{o_id}
+ 			),
+ 			price = ( 
+ 				select sum(p.price * od.quantity) from product p join orders_detail od on p.p_id = od.p_id where o_id = #{o_id}
+ 			)
+ 		where
+ 			o_id = #{o_id}
+ 		<!-- <selectKey keyProperty="o_id" order="BEFORE" resultType="long">
+			select orders_seq.currval from dual
+		</selectKey> -->
+	</update>
+	
+	<!-- 주문 상품 정보 -->
+	<select id="getProductInfo" resultType="com.metanet.metakurly.domain.OrderProductDTO">
+		select p_id, brand, name, price from product where p_id = #{p_id}
+	</select>
+	
+	<!-- 주문 취소(주문 내역은 남아있어야 함!) -->
+	<update id="cancelOrder">
+		update orders
+		set
+			status = '주문취소'
+		where
+			o_id = #{o_id} and status = '결제완료'
+	</update>
 	
 </mapper>
