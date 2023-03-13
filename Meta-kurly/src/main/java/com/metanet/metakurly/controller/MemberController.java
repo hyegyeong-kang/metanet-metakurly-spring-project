@@ -49,17 +49,21 @@ public class MemberController {
 	public void login() {}
 	
 	@PostMapping("/login")
-	public ModelAndView login(@ModelAttribute MemberDTO member, HttpSession session) {
-		Long m_id = service.login(member, session);
+	public String login(HttpServletRequest request, MemberDTO member, RedirectAttributes rttr) throws Exception {
+		//System.out.println("login 메서드 진입");
+        //System.out.println("전달된 데이터 : " + member);
+        
+		HttpSession session = request.getSession();
+		MemberDTO dto = service.login(member);
 		
-		ModelAndView mav = new ModelAndView();
-		if(m_id != null) {
-			mav.setViewName("../index");
-		} else {
-			mav.setViewName("/login");
-			mav.addObject("msg", "error");
+		if(dto == null) {
+			int result = 0;
+			rttr.addFlashAttribute("result", result);
+			return "redirect:/member/login";
 		}
-		return mav;
+		
+		session.setAttribute("member", dto);
+        return "redirect:/";
 	}
 	
 	@RequestMapping("/logout")
