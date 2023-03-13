@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@include file="includes/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/productList/product.css">
+<link rel="stylesheet" href="/resources/css/productList/bestProductList.css">
 
     <div class="container mt-5">
       <div class="page-banner">
@@ -24,194 +27,153 @@
   <main>
     <div class="page-section">
       <div class="container">
+      
       	<!--중단 상품리스트 -->
 
-<div class="item-list">
-    <div class="list">
-        <div class="row">
-            <div class="cell item-1">
-                <div class="img-box">
-                    <a href="#"
-                        ><img
-                            src="https://i.ibb.co/HHS1RZ5/1000000105-main-048.png"
-                            alt=""
-                    /></a>
-                    <div class="con-txt">
-                        <div class="name">
-                            [르네셀] 매너스 클랜저 100ml (남성용)
-                        </div>
-                        <div class="info-1">건강한 시크릿 존 케어</div>
-                        <div class="info-2">남성 청결제</div>
-                    </div>
-                </div>
-            </div>
-            <div class="cell item-1">
-                <div class="img-box">
-                    <a href="#"
-                        ><img
-                            src="https://i.ibb.co/KXcydfQ/1000000090-main-060.jpg"
-                            alt=""
-                    /></a>
-                    <div class="con-txt">
-                        <div class="name">
-                            [오가믹스] 프리미엄 아로마 스노이 스킨케어 세트 5종
-                        </div>
-                        <div class="info-1">
-                            업그레이드 된 프리미어 기초케어
-                        </div>
-                        <div class="info-2">프리미엄 기초케어</div>
-                    </div>
-                </div>
-            </div>
-            <div class="cell item-1">
-                <div class="img-box">
-                    <a href="#"
-                        ><img
-                            src="https://i.ibb.co/BnGvhW7/1000000026-main-020.png"
-                            alt=""
-                    /></a>
-                    <div class="con-txt">
-                        <div class="name">
-                            [르네셀] 앱솔루트 슈프림 선블럭 50ml
-                        </div>
-                        <div class="info-1">8시간 이상 UVA, UVB 이중 차단</div>
-                        <div class="info-2">SPF 50+ 선블럭</div>
-                    </div>
-                </div>
-            </div>
-            <div class="cell item-1">
-                <div class="img-box">
-                    <a href="#"
-                        ><img
-                            src="https://i.ibb.co/gZvd22L/1000000022-main-082.jpg"
-                            alt=""
-                    /></a>
-                    <div class="con-txt">
-                        <div class="name">
-                            [셀린저] 멀티 퍼퓸 4종 200ml (다목적 향수)
-                        </div>
-                        <div class="info-1">바디 겸용 멀티 퍼퓸</div>
-                        <div class="info-2">홈쇼핑 진행 멀티 퍼퓸</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <ul class="list-box-data display-none">
-            <li>
-                <div class="cell item-1">
-                    <div class="img-box">
-                        <a href="#"
-                            ><img
-                                src="https://i.ibb.co/ZL7jZ5d/1000000021-main-042.jpg"
-                                alt=""
-                        /></a>
-                        <div class="con-txt">
-                            <div class="name">
-                                [큐좀] 쓰리데이즈 솔루션 스킨 코디네이터 앰플
-                                세트
-                            </div>
-                            <div class="info-1">
-                                에스테틱 전문가용 프리미엄 앰플
-                            </div>
-                            <div class="info-2">에스테틱 전용</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cell item-1">
-                    <div class="img-box">
-                        <a href="#"
-                            ><img
-                                src="https://i.ibb.co/QJ80m6W/1000000020-main-073.jpg"
-                                alt=""
-                        /></a>
-                        <div class="con-txt">
-                            <div class="name">
-                                [셀린저] 라바 핑크 퓨어 메이크업 세트
-                            </div>
-                            <div class="info-1">
-                                유해 성분 없는 안전한 화장품
-                            </div>
-                            <div class="info-2">
-                                아이에게 안전한 메이크업 세트
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cell item-1">
-                    <div class="img-box">
-                        <a href="#"
-                            ><img
-                                src="https://i.ibb.co/BgSYrGH/1000000019-main-015.jpg"
-                                alt=""
-                        /></a>
-                        <div class="con-txt">
-                            <div class="name">
-                                [센테카솔] S.O.S 응급 세트 (5종)
-                            </div>
-                            <div class="info-1">
-                                여드름 밎 트러블성피부를 위한 의약외품라인
-                                <br />
-                                <p>150,000원</p>
-                            </div>
-                            <div class="info-2">150,000원</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cell item-1">
-                    <div class="img-box">
-                        <a href="#"
-                            ><img
-                                src="https://i.ibb.co/h1N0FZN/1000000000-main-062.jpg"
-                                alt=""
-                        /></a>
-                        <div class="con-txt">
-                            <div class="name">
-                                [오가믹스] 아로마 스노이 세트 5종
-                            </div>
-                            <div class="info-1">
-                                자연주의 아로마 테라피 케어 <br />
-                                <p>180,000원</p>
-                            </div>
-                            <div class="info-2">180,000원</div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="cell item-1">
-                    <div class="img-box">
-                        <a href="#"
-                            ><img
-                                src="https://i.ibb.co/KXcydfQ/1000000090-main-060.jpg"
-                                alt=""
-                        /></a>
-                        <div class="con-txt">
-                            <div class="name">
-                                [르네셀] 플라센 엔자임 서브-애씨드 위시 파우더
-                                80g
-                            </div>
-                            <div class="info-1">
-                                맑은 피부의 기본은 깨끗한 클랜징
-                            </div>
-                            <div class="info-2">효소 클랜저</div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <nav class="down-btn">
-            <div class="btn-text">더보기</div>
-            <p><i class="fas fa-chevron-down"></i></p>
-        </nav>
-    </div>
-</div>
-        <div class="row align-items-center">
-          <div class="col-lg-6 py-3">
-            <div class="img-fluid text-center">
-              
-            </div>
-          </div>
-        </div>
+		<!--상품리스트1-->
+		<section class="product-section-1">
+  <h1>이 상품 어때요?</h1>
+
+  <ul class="pro-list-box-1" >
+	<li	class="list-1">
+      <c:forEach items='${bestProductList}' var="product">
+      		<tr >
+	      	   <a href="/product/detail?p_id=${product.p_id}" style="float:left;" ><td><img src="<c:out value="${product.img_url}" />" /></td>
+	      		<div><td><c:out value="${product.delivery_type}배송" /></td></div>
+	      		<td><c:out value="[${product.brand}]"></c:out></td>
+	          	<td><c:out value="${product.name}" /></td>
+	           	<div><td><c:out value="${product.price}원" /></td></div>  </a>
+      		</tr>
+      </c:forEach>
+	</li>
+  </ul>
+</section>
+
+<section class="product-section-1">
+  <h1>이 상품 어때요?</h1>
+
+  <ul class="pro-list-box-1">
+    <li class="list-1">
+      <a href="#">
+        <img src="https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=400/shop/data/goods/1648707073838l0.jpg" alt="">
+        <p class="text-p-1">[멘야하나비] 마제소바 2인분</p>
+        <p class="text-p-2"><span class="sale">10%</span><span class="price">13,410원</span></p>
+        <p class="text-p-3">14,900원</p>
+        <p class="comment"><i class="fa-regular fa-comment-dots"></i> 후기 999+</p>
+      </a>
+    </li>
+
+    <li class="list-2">
+      <a href="#">
+        <img src="https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=400/shop/data/goods/1655473008977l0.jpg" alt="">
+        <p class="text-p-1">[스킨푸드] 블랙슈가 퍼펙트 에센셜 스크럽2X 210g</p>
+        <p class="text-p-2"><span class="sale">30%</span><span class="price">13,300원</span></p>
+        <p class="text-p-3">19,000원</p>
+        <p class="comment"><i class="fa-regular fa-comment-dots"></i> 후기 434</p>
+      </a>
+    </li>
+
+    <li class="list-3">
+      <a href="#">
+        <img src="https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=400/shop/data/goods/1650529892895l0.jpg" alt="">
+        <p class="text-p-1">[제니튼] 닥터제니 무불소 키즈치약 베이비용 60g</p>
+        <p class="text-p-2"><span class="price">7,000원</span></p>
+        <p class="comment"><i class="fa-regular fa-comment-dots"></i> 후기 115</p>
+      </a>
+    </li>
+
+    <li class="list-4">
+      <a href="#">
+        <img src="https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=400/shop/data/goods/1651572461324l0.jpg" alt="">
+        <p class="text-p-1">[프로틴기프트] 아미노양갱</p>
+        <p class="text-p-2"><span class="price">6,480원</span></p>
+        <p class="comment"><i class="fa-regular fa-comment-dots"></i> 후기 153</p>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<section class="banner-2">
+  <a href="#"><img src="https://product-image.kurly.com/banner/random-band/pc/img/e4d03436-77aa-4875-86bf-f9655f4c1069.jpg" alt=""></a>
+</section>
+
+<!--한정특가-->
+<section class="special-price">
+  <div class="special-text">
+    <p class="text-p-1">한우 반값 한정특가</p>
+    <p class="text-p-2">오전 11시 한정 수량 오픈!</p>
+    <p class="text-p-3">망설이면 늦어요!</p>
+  </div>
+
+  <div class="special-img">
+    <img src="https://product-image.kurly.com/product/image/6690502e-cad2-4802-89b3-504687d01bb7.jpg" alt="">
+    <p class="text-p-1">100g당 가격: 6,557원 (쿠폰적용가)</p>
+    <p class="text-p-2">1+ 한우 등심 300g(냉장)</p>
+    <p class="text-p-3">
+      <span class="sale">42%</span>
+      <span class="sale-price">23,142원</span>
+      <span class="price">39,900원</span>
+    </p>
+    <p class="comment"><i class="fa-regular fa-comment-dots"></i> 후기 705</p>
+  </div>
+</section>
+
+<!--상품리스트2-->
+<section class="product-section-2">
+  <h1>밀키트 인기리스트!
+    <a href="#">
+      <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" fill-rule="evenodd">
+          <path d="M0 0h32v32H0z" />
+          <path d="m10.952 23.384 2.096 2.146 10.055-9.825-9.701-10.278-2.182 2.06 7.677 8.133z" fill="#333" fill-rule="nonzero" />
+        </g>
+      </svg>
+    </a>
+  </h1>
+  <p>그냥 따라 만들면 내가 바로 쉐프👩‍🍳</p>
+
+  <ul class="pro-list-box-2">
+    <li class="list-1">
+      <a href="#">
+        <img src="https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=400/shop/data/goods/1621838625107l0.jpg" alt="">
+        <p class="text-p-1">[마이하노이] 고기폭탄 쌀국수</p>
+        <p class="text-p-2">6,900원</p>
+        <p class="comment"><i class="fa-regular fa-comment-dots"></i> 후기 9,999+</p>
+      </a>
+    </li>
+
+    <li class="list-2">
+      <a href="#">
+        <img src="https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=400/shop/data/goods/1634633589756l0.jpg" alt="">
+        <p class="text-p-1">[시골보쌈과 감자옹심이] 감자 옹심이 칼국수 (2인분)</p>
+        <p class="text-p-2">10,500원</p>
+        <p class="comment"><i class="fa-regular fa-comment-dots"></i> 후기 9,999+</p>
+      </a>
+    </li>
+
+    <li class="list-3">
+      <a href="#">
+        <img src="https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=400/shop/data/goods/1653037586448l0.jpeg" alt="">
+        <p class="text-p-1">[한팟] 치즈 부대찌개 1858g (냉장)</p>
+        <p class="text-p-2">13,500원</p>
+        <p class="comment"><i class="fa-regular fa-comment-dots"></i> 후기 9,999+</p>
+      </a>
+    </li>
+
+    <li class="list-4">
+      <a href="#">
+        <img src="https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=400/shop/data/goods/1652768054422l0.jpg" alt="">
+        <p class="text-p-1">[방방곡곡] 망향식 비빔국수 키트 (2인분)</p>
+        <p class="text-p-2">9,900원</p>
+        <p class="comment"><i class="fa-regular fa-comment-dots"></i> 후기 999+</p>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<section class="banner-3">
+  <a href="#"><img src="https://product-image.kurly.com/banner/random-band/pc/img/16d8e884-ffe7-4089-ae7d-8d2e9197af63.jpg" alt=""></a>
+</section>
       </div> <!-- .container -->
     </div> <!-- .page-section -->
 
