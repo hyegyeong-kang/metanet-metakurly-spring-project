@@ -10,7 +10,7 @@ public interface MemberService {
 	public int signUp(MemberDTO member);
 	
 	//로그인
-	public Long login(MemberDTO member, HttpSession session);
+	public MemberDTO login(MemberDTO member) throws Exception;
 	
 	public void logout(HttpSession session);
 	

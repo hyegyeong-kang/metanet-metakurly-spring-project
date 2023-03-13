@@ -40,11 +40,12 @@
         <input type="password" name="password" placeholder="비밀번호를 입력해주세요" required>
       </div>
 
+	  <label><input name="remember-me" type="checkbox">&nbsp;&nbsp;Remember Me</label>
+
   	  <button type="submit" id="submit">로그인</button>
 
     </form>
     
-	<label><input name="remember-me" type="checkbox">&nbsp;&nbsp;Remember Me</label>
   
   </div>
 

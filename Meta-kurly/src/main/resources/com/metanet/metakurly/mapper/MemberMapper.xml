@@ -16,8 +16,8 @@
 		where userid = #{userId}
 	</select>
  
- 	<select id="login" resultType="String">
- 		select m_id
+ 	<select id="login" resultType="com.metanet.metakurly.domain.MemberDTO">
+ 		select *
  		from member
  		where userid = #{userId}
  		and password = #{password}

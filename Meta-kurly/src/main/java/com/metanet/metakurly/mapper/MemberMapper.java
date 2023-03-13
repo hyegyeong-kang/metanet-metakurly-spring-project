@@ -17,9 +17,7 @@ public interface MemberMapper {
 	public int signUp(MemberDTO member);
 	
 	//로그인
-	public Long login(MemberDTO member);
-	
-	//public MemberDTO login(MemberDTO member);
+	public MemberDTO login(MemberDTO member) throws Exception;
 	
 	//로그인 정보
 	public MemberDTO infoMember(MemberDTO member);
