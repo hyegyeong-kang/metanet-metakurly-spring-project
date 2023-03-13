@@ -12,6 +12,8 @@ public interface OrderService {
 	
 	public List<OrderDTO> getOrderList(Long m_id);
 	
+	public PaymentDTO getPayment(Long o_id);
+	
 	public List<OrderProductDTO> getProductInfo(List<OrderProductDTO> orderProducts);
 	
 	public void addOrder(OrderDTO order, PaymentDTO payment);

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.metanet.metakurly.domain.OrderDTO;
+import com.metanet.metakurly.domain.OrderDetailDTO;
 import com.metanet.metakurly.domain.OrderProductDTO;
 import com.metanet.metakurly.domain.PaymentDTO;
 import com.metanet.metakurly.mapper.OrderMapper;
@@ -65,6 +66,11 @@ public class OrderServiceImpl implements OrderService {
 		}
 		
 		return order;
+	}
+
+	@Override
+	public PaymentDTO getPayment(Long o_id) {
+		return paymentMapper.getPayment(o_id);
 	}
 
 }

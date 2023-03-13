@@ -3,6 +3,7 @@ package com.metanet.metakurly.mapper;
 import java.util.List;
 
 import com.metanet.metakurly.domain.OrderDTO;
+import com.metanet.metakurly.domain.OrderDetailDTO;
 import com.metanet.metakurly.domain.OrderProductDTO;
 
 public interface OrderMapper {

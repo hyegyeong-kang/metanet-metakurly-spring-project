@@ -1,5 +1,8 @@
 package com.metanet.metakurly.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.metanet.metakurly.domain.OrderDTO;
+import com.metanet.metakurly.domain.OrderDetailDTO;
 import com.metanet.metakurly.domain.OrderProductDTO;
 import com.metanet.metakurly.domain.OrderProductListDTO;
 import com.metanet.metakurly.service.OrderService;
@@ -32,7 +37,15 @@ public class OrderController {
 	/* 주문내역 */
 	@GetMapping("/list/{m_id}")
 	public String getOrderList(@PathVariable("m_id") Long m_id, Model model) {
-		model.addAttribute("list", service.getOrderList(m_id));
+		List<OrderDTO> orderList = service.getOrderList(m_id);
+		List<OrderDTO> list = new ArrayList<>();
+		for(OrderDTO order : orderList) {
+			//order.setOrderDetailList(service.getOrderDetailList(order.getO_id()));
+			list.add(service.getOrderDetailList(order.getO_id()));
+		}
+		log.info("### " + list);
+		model.addAttribute("list", list);
+		//model.addAttribute("list", detailList);
 		
 		return "/orders/list";
 	}
@@ -46,8 +59,10 @@ public class OrderController {
 	@GetMapping("/detail/{o_id}")
 	public String getOrderDetail(@PathVariable("o_id") Long o_id, Model model) {
 		model.addAttribute("order", service.getOrderDetailList(o_id));
+		model.addAttribute("payment", service.getPayment(o_id));
 		
 		log.info("!!" + service.getOrderDetailList(o_id));
+		log.info("## " + service.getPayment(o_id));
 		
 		return "/orders/detail";
 	}
