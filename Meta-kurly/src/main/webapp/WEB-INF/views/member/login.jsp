@@ -25,7 +25,7 @@
 		<div class="membership">
   	<div style="text-align:center"><h1>로그인</h1></div>
 		
-    <form role="form" action="${path}/member/login" id="loginForm" method="post">
+    <form role="form" action="${path}/member/login" id="loginForm" name="loginForm" method="post">
 
       <div>
       	
@@ -38,6 +38,9 @@
       <div>
         <div>비밀번호<span class="orange">&nbsp;*</span></div>
         <input type="password" name="password" placeholder="비밀번호를 입력해주세요" required>
+        <c:if test="${result == 0}">
+      		<p style="color:#f00;">잘못된 아이디 또는 잘못된 비밀번호입니다.</p>
+      	</c:if>
       </div>
 
 	  <label><input name="remember-me" type="checkbox">&nbsp;&nbsp;Remember Me</label>

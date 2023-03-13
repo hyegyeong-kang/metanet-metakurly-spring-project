@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +57,14 @@
 					</ul>
 
 					<div class="ml-auto">
-						<a href="#" class="btn btn-outline rounded-pill">Sign in</a>
+					<c:if test="${member == null}">
+						<a href="../member/signup" class="btn btn-outline rounded-pill">Sign up</a>
+						<a href="../member/login" class="btn btn-outline rounded-pill">Sign in</a>
+					</c:if>
+					<c:if test="${member != null}">
+						<p>환영합니다! ${member.userId} 님</p>
+						<a href="../member/logout">로그아웃</a>
+					</c:if>
 					</div>
 				</div>
 			</div>

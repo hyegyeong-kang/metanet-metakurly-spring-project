@@ -11,9 +11,11 @@ public class MemberDAOImpl implements MemberDAO {
 	@Inject
 	SqlSession sqlSession;
 	
+	private static String namespace = "com.metanet.metakurly.mapper.MemberMapper.login";
+	
 	@Override
-	public Long login(MemberDTO member) {
-		return sqlSession.selectOne("com.metanet.metakurly.mapper.MemberMapper.login", member);
+	public MemberDTO login(MemberDTO member) throws Exception {
+		return sqlSession.selectOne(namespace, member);
 	}
 
 }

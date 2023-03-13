@@ -25,6 +25,7 @@
   </div>
 
   <div class="membership">
+  <div style="text-align:center"><h1>회원가입</h1></div>
 
     <form action="${path}/member/signup" id="signupForm" method="post">
 
