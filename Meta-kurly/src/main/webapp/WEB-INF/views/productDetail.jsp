@@ -68,15 +68,15 @@
 				<table class="tproduct-info active">
 					<tr>
 						<td>제품명</td>
-						<td>장수애 열무김치</td>
+						<td><c:out value="${product.name}"></c:out></td>
 						<td>식품의 유형</td>
-						<td>기타김치/비살균제품</td>
+						<td>기타</td>
 					</tr>
 					<tr>
-						<td>용량</td>
-						<td>1kg ,3kg, 5kg</td>
 						<td>제조사</td>
-						<td>농업회사법인 움채주식회사</td>
+						<td><c:out value="${product.brand}"></c:out></td>
+						<td>배송타입</td>
+						<td><c:out value="${product.delivery_type}배송"></c:out></td>
 					</tr>
 					<tr>
 						<td>제조년월일</td>
@@ -86,14 +86,14 @@
 					</tr>
 					<tr>
 						<td>보관방법</td>
-						<td colspan="3">김치는 숨을 쉬는 발효식품입니다. 받으시면 꼭 김치통에 옮겨서 보관해주세요. 익혀서 드실 경우 포기에 기포가 살짝 생길 때까지 기다리신 후 김치 냉장고에 넣어 드시면 됩니다.</td>
-					</tr>
-					<tr>
-						<td>원재료명 및 함량</td>
-						<td colspan="3">“열무 80.04%[국산], 고춧가루 3.04$[국산]. 열무 80.04%[국산], 고춧가루 3.04$[국산]. 열무 80.04%[국산], 고춧가루 3.04$[국산]. 열무 80.04%[국산], 고춧가루
-3.04$[국산]. 열무 80.04% [국산], 고춧가루 3.04$[국산].  열무 80.04%[국산]</td>
+						<td colspan="3">냉장보관 하거나 서늘한 곳에 보관해주세요.</td>
 					</tr>
 				</table>
+				
+				<script>
+					
+				</script>
+				
 				<!-- 상품 후기 -->
 				<table class="tproduct-review">
 					<thead>
@@ -172,7 +172,6 @@
 </div>
 
   </main>
-
 
 
 <%@include file="includes/footer.jsp"%>
