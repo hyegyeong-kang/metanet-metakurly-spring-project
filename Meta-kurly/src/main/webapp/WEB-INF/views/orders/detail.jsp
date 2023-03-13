@@ -1,81 +1,72 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-</head>
-<body>
-	<table>
-		<tr>
-			<th>È¸¿ø¹øÈ£</th>
-			<th>ÁÖ¹®¹øÈ£</th>
-			<th>ÁÖ¹®ÀÏ</th>
-			<th>»óÅÂ</th>
-			<th>ÃÑ ÁÖ¹®¼ö·®</th>
-			<th>ÃÑ °¡°İ</th>
+<%@include file="../includes/header.jsp"%>
+<link rel="stylesheet" href="/resources/css/productList/product.css">
+<link rel="stylesheet" href="/resources/css/login/login.css">
 
-		</tr>
-		<tr>
+  </header>
 
-			<td><c:out value="${order.m_id}" /></td>
-			<td><c:out value="${order.o_id}" /></td>
-			<td><fmt:formatDate pattern="yyyy-MM-dd"
-					value="${order.orders_date}" /></td>
-			<td id="statusTd"><c:out value="${order.status}" /></td>
-			<td><c:out value="${order.total_amount}" /></td>
-			<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${order.price}" /></td>
-		</tr>
-	</table>
-	<br>
-	<table>
-		<tr>
-			<th>»óÇ°¹øÈ£</th>
-			<th>ºê·£µå</th>
-			<th>»óÇ°¸í</th>
-			<th>°¡°İ</th>
-			<th>ÁÖ¹®¼ö·®</th>
-		</tr>
+  <main>
+    <div class="page-section">
+      <div class="container">
+      	<!--ì¤‘ë‹¨ ìƒí’ˆë¦¬ìŠ¤íŠ¸ -->
 
+	<div class="widget-box">
+		<h4 class="widget-title">ì£¼ë¬¸ìƒì„¸</h4>
+		<h6 class="post-title">ì£¼ë¬¸ë²ˆí˜¸ <c:out value="${order.o_id}"/></h6>
+		ê²°ì œë‚ ì§œ <fmt:formatDate pattern="yyyy-MM-dd" value="${order.orders_date}" />  <c:out value="${order.status}"/>
+		<div class="divider"></div>
+		
 		<c:forEach items="${order.orderDetailList}" var="detail">
-			<tr>
-				<td><c:out value="${detail.productDTO.p_id}" /></td>
-				<td><c:out value="${detail.productDTO.brand}" /></td>
-				<td><c:out value="${detail.productDTO.name}" /></td>
-				<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${detail.productDTO.price}" /></td>
-				<td><c:out value="${detail.quantity}" /></td>
-			</tr>
-		</c:forEach>
-	</table>
-	<form id="postForm" action="" method="post">
-		<button id="cancelBtn" type="submit">ÁÖ¹® Ãë¼Ò</button>
+			<div class="blog-item">
+					<a class="post-thumb" href="">
+						<img src="/resources/img/blog/blog-1.jpg" alt="">
+					</a>
+					<div class="content">
+						<%-- <h6 class="post-title">ì£¼ë¬¸ë²ˆí˜¸ <c:out value="${order.o_id}"/></h6> --%>
+						<div class="meta">
+							<c:out value="${detail.productDTO.brand}"/> <c:out value="${detail.productDTO.name}"/>
+							<strong><fmt:formatNumber type="number" maxFractionDigits="3" value="${detail.productDTO.price}" /></strong> <c:out value="${detail.quantity}"/>ê°œ</a>
+							<div><button type="submit" id="reviewWriteBtn" style="width:30%">ë¦¬ë·° ì‘ì„±</button>
+							<button type="submit" id="reviewReadBtn" style="width:30%">ì‘ì„±ë¦¬ë·° ë³´ê¸°</button></div>
+							<!-- <a href="#"><span class="mai-person"></span> Admin</a> -->
+							<%-- ê²°ì œë‚ ì§œ <fmt:formatDate pattern="yyyy-MM-dd" value="${order.orders_date}" /> --%>
+							<!-- <span class="mai-calendar"></span> -->
+							<!-- <a href="#"><span class="mai-chatbubbles"></span> 19</a> -->
+			            </div>
+					</div>
+				</div>
+		</c:forEach> 
+		<div class="divider"></div>
+		
+		<h4 class="widget-title">ì£¼ë¬¸ìì •ë³´</h4>
+		<h6 class="post-title"><c:out value="${member.name}"/> | <c:out value="${member.phone}"/></h6>
+		<h6 class="post-title">ë°°ì†¡ì§€ <c:out value="${member.address}"/></h6>
+		<div class="divider"></div>
+		
+		<h4 class="widget-title">ê²°ì œì •ë³´</h4>
+		<h6 class="post-title"><fmt:formatNumber type="number" maxFractionDigits="3" value="${payment.payment_amount}" />ì›</h6>
+		<c:out value="${payment.method}"/>
+
+    </div>
+    <form id="postForm" action="" method="post">
+		<button id="cancelBtn" type="submit">ì£¼ë¬¸ì·¨ì†Œ</button>
+    	<button id="listBtn" type="submit">ì£¼ë¬¸ëª©ë¡</button>
 	</form>
-	
-	
-	<script type="text/javascript">
-		$(function(){
-			var status = "${order.status}";
-			$("#cancelBtn").hide();
-			if(status === "°áÁ¦¿Ï·á"){
-				$("#cancelBtn").show();
-				$("#postForm").attr("action", "/orders/cancel/<c:out value='${order.o_id}'/>");
-			}
-		});
-		/* $("#cancelBtn").click(function(){
-			$("#postForm").submit();
-			 $.ajax({
-				type: 'patch',
-				url: '/orders/cancel/${order.o_id}',
-				success: function(){
-					alert("success");
-				}
-			}); 
-		}); */
-	</script>
-</body>
-</html>
+
+<script>
+$(function(){
+	var status = "${order.status}";
+	$("#cancelBtn").hide();
+	alert(status);
+	if(status === "ê²°ì œì™„ë£Œ"){
+		$("#cancelBtn").show();
+		$("#postForm").attr("action", "/orders/cancel/<c:out value='${order.o_id}'/>");
+	}
+});
+</script>
+
+<%@include file="../includes/footer.jsp"%>
