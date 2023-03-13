@@ -33,20 +33,18 @@
 		<section class="product-section-1">
   <h1>이 상품 어때요?</h1>
 
-  <ul class="pro-list-box-1">
-    <li class="list-1">
-      <a href="#">
+  <ul class="pro-list-box-1" >
+	<li	class="list-1">
       <c:forEach items='${bestProductList}' var="product">
-      	<tr>
-      		<td><c:out value="${product.brand}"></c:out></td>
-          	<td><c:out value="${product.name}" /></td>
-           	<td><c:out value="${product.price}" /></td>  
-          	<td><c:out value="${product.delivery_type}" /></td>
-          	<td><c:out value="${product.img_url}" /></td>
-        </tr>
+      		<tr >
+	      	   <a href="/product/detail?p_id=${product.p_id}" style="float:left;" ><td><img src="<c:out value="${product.img_url}" />" /></td>
+	      		<div><td><c:out value="${product.delivery_type}배송" /></td></div>
+	      		<td><c:out value="[${product.brand}]"></c:out></td>
+	          	<td><c:out value="${product.name}" /></td>
+	           	<div><td><c:out value="${product.price}원" /></td></div>  </a>
+      		</tr>
       </c:forEach>
-      </a>
-    </li>
+	</li>
   </ul>
 </section>
 
