@@ -37,7 +37,7 @@ public class CartController {
 
 		log.info("KANG: " + cartList);
 		model.addAttribute("list", cartList);
-		return "/cart/cartList";
+		return "/cart";
 	}
 	
 	@GetMapping("/cartAdd")
