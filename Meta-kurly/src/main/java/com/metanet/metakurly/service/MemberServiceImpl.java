@@ -32,13 +32,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public Long login(MemberDTO member, HttpSession session) {
-		Long m_id = dao.login(member);
-		if(m_id != null) {
-			session.setAttribute("userId", member.getUserId());
-			session.setAttribute("m_id", m_id);
-		}
-		return m_id;
+	public MemberDTO login(MemberDTO member) throws Exception {
+		return mapper.login(member);
 	}
 	
 	@Override
