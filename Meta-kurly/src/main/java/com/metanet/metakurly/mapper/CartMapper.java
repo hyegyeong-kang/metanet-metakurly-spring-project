@@ -28,7 +28,7 @@ public interface CartMapper {
 	public void deleteAllCart(Long m_id);
 	
 	// 장바구니 물건 업데이트 (장바구니에서 수량변경하는 것)
-	public void updateCart(@Param("p_id")Long p_id, @Param("m_id")Long m_id, @Param("quantity")Long quantity);
+	public void updateCart(@Param("p_id")Long p_id, @Param("m_id")Long m_id, @Param("quantity")int quantity);
 	
 	// 해당 회원의 장바구니 전체 금액 출력
 	public Long getTotalPrice(Long m_id);

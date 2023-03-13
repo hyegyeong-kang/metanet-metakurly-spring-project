@@ -20,7 +20,7 @@ public interface CartService {
 	public void updateCount(CartDTO cart);
 	
 	// 장바구니 물건 삭제
-	public int deleteCart(Long p_id, Long m_id);
+	public void deleteCart(Long p_id, Long m_id);
 	
 	// 장바구니 전체 비우기
 	public void deleteAllCart(Long m_id);
