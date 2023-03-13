@@ -41,7 +41,7 @@ public class ProductServiceTests {
 	
 //	@Test
 //	public void testModify() {
-//		ProductDTO product = service.get(31L);
+//		ProductDTO product = service.get(3L);
 //		
 //		if(product == null) {
 //			return;
@@ -63,9 +63,9 @@ public class ProductServiceTests {
 //		service.getList().forEach(product -> log.info(product));
 //	}	
 	
-	@Test
-	public void testGetBestProductList() {
-		service.getBestProductList().forEach(product -> log.info(product));
-	}
+//	@Test
+//	public void testGetBestProductList() {
+//		service.getBestProductList().forEach(product -> log.info(product));
+//	}
 
 }
