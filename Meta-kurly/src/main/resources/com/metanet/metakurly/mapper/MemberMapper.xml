@@ -16,17 +16,17 @@
 		where userid = #{userId}
 	</select>
  
- 	<select id="login" resultType="com.metanet.metakurly.domain.MemberDTO">
- 		select *
+ 	<select id="login" resultType="String">
+ 		select m_id
  		from member
- 		where userid = #{userID}
+ 		where userid = #{userId}
  		and password = #{password}
  	</select>
  	
  	<select id="infoMember" resultType="com.metanet.metakurly.domain.MemberDTO">
  		select *
  		from member
- 		where userid = #{userID}
+ 		where userid = #{userId}
  		and password = #{password}
  	</select>
 

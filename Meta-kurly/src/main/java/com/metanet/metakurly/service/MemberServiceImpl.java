@@ -1,10 +1,12 @@
 package com.metanet.metakurly.service;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.metanet.metakurly.domain.MemberDAO;
 import com.metanet.metakurly.domain.MemberDTO;
 import com.metanet.metakurly.mapper.MemberMapper;
 
@@ -12,10 +14,13 @@ import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
-@Log4j
 @Service
+@Log4j
 public class MemberServiceImpl implements MemberService{
-
+	
+	@Autowired(required = false)
+	private MemberDAO dao;
+	
 	@Setter(onMethod_ = @Autowired)
 	private MemberMapper mapper;
 	
@@ -27,21 +32,18 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public boolean login(MemberDTO member, HttpSession session) {
-		boolean result = mapper.login(member, session);
-		if(result) {
-			MemberDTO dto = infoMember(member);
-			
-			session.setAttribute("userId", dto.getUserId());
-			session.setAttribute("name", dto.getName());
+	public Long login(MemberDTO member, HttpSession session) {
+		Long m_id = dao.login(member);
+		if(m_id != null) {
+			session.setAttribute("userId", member.getUserId());
+			session.setAttribute("m_id", m_id);
 		}
-		return result;
-		
+		return m_id;
 	}
 	
 	@Override
-	public MemberDTO infoMember(MemberDTO member) {
-		return mapper.infoMember(member);
+	public void logout(HttpSession session) {
+		session.invalidate();
 	}
 
 	@Override

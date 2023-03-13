@@ -10,10 +10,12 @@ public interface MemberService {
 	public int signUp(MemberDTO member);
 	
 	//로그인
-	public boolean login(MemberDTO member, HttpSession session);
+	public Long login(MemberDTO member, HttpSession session);
 	
-	//로그인 정보
-	public MemberDTO infoMember(MemberDTO member);
+	public void logout(HttpSession session);
+	
+//	//로그인 정보
+//	public MemberDTO infoMember(MemberDTO member);
 	
 	public MemberDTO modify(MemberDTO member);
 

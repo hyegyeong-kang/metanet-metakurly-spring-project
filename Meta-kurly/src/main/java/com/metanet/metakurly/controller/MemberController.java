@@ -45,24 +45,28 @@ public class MemberController {
 		return "redirect:/member/login";
 	}
 	
-//	@GetMapping("/login")
-//	public void login() {}
-	
 	@GetMapping("/login")
 	public void login() {}
 	
 	@PostMapping("/login")
 	public ModelAndView login(@ModelAttribute MemberDTO member, HttpSession session) {
-		boolean result = service.login(member, session);
-		ModelAndView mav = new ModelAndView();
+		Long m_id = service.login(member, session);
 		
-		if(result == true) {
-			mav.setViewName("/");
-			mav.addObject("msg", "suceess");
+		ModelAndView mav = new ModelAndView();
+		if(m_id != null) {
+			mav.setViewName("../index");
 		} else {
 			mav.setViewName("/login");
-			mav.addObject("msg", "failure");
+			mav.addObject("msg", "error");
 		}
+		return mav;
+	}
+	
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpSession session, ModelAndView mav) {
+		service.logout(session);
+		mav.setViewName("/login");
+		mav.addObject("msg", "logout");
 		return mav;
 	}
 	

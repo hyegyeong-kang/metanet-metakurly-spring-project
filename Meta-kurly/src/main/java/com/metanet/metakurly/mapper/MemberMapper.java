@@ -17,7 +17,9 @@ public interface MemberMapper {
 	public int signUp(MemberDTO member);
 	
 	//로그인
-	public boolean login(MemberDTO member, HttpSession session);
+	public Long login(MemberDTO member);
+	
+	//public MemberDTO login(MemberDTO member);
 	
 	//로그인 정보
 	public MemberDTO infoMember(MemberDTO member);

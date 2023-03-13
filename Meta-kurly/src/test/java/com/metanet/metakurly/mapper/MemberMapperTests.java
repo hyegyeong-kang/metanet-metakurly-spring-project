@@ -21,10 +21,13 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class MemberMapperTests {
 	
-	@Setter(onMethod_ = @Autowired)
-	WebApplicationContext ctx;
+//	@Setter(onMethod_ = @Autowired)
+//	WebApplicationContext ctx;
 	
-	private MockMvc mock;
+	@Autowired
+	private MemberMapper mapper;
+	
+	//private MockMvc mock;
 	
 	
 //	@Test
@@ -42,16 +45,26 @@ public class MemberMapperTests {
 //		log.info(member);
 //	}
 	
-	@Test
-	public void testModify() throws Exception {
-		String resultPage = mock
-				.perform(MockMvcRequestBuilders.post("/member/delete")
-				.param("m_id", "23")
-				.param("status", "delete"))
-				.andReturn().getModelAndView().getViewName();
-				
-		log.info(resultPage);
-	}
+//	@Test
+//	public void testModify() throws Exception {
+//		String resultPage = mock
+//				.perform(MockMvcRequestBuilders.post("/member/delete")
+//				.param("m_id", "23")
+//				.param("status", "delete"))
+//				.andReturn().getModelAndView().getViewName();
+//				
+//		log.info(resultPage);
+//	}
 	
+	@Test
+	public void test() throws Exception {
+		MemberDTO member = new MemberDTO();
+		
+		member.setUserId("user02");
+		member.setPassword("1234");
+		
+		mapper.login(member);
+		System.out.println(mapper.login(member));
+	}
 }
 
