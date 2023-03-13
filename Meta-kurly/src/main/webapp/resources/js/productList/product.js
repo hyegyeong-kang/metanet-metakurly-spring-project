@@ -1,4 +1,3 @@
-console.clear();
 //탑 메뉴바 fixed 스크롤이벤트
 $(window).scroll(function() {
     var scrollTop = $(window).scrollTop();
@@ -100,4 +99,3 @@ $('.slider-2 > .owl-carousel').owlCarousel({
         }
     }
 });
-
