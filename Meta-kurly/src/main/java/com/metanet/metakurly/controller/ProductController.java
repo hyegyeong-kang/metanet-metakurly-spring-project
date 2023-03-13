@@ -17,20 +17,28 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/product/*")
 @AllArgsConstructor
 public class ProductController {
-	
+
 	private ProductService service;
-	
+
 	@GetMapping("/list")
 	public void list(Model model) {
 		log.info("list");
 		model.addAttribute("list", service.getList());
 	}
-	
-	@GetMapping("/get")
+
+	@GetMapping("/detail")
 	public void get(@RequestParam("p_id") Long p_id, Model model) {
-		
-		log.info("get");
+
+		log.info("detail");
 		model.addAttribute("product", service.get(p_id));
-		
+
+	}
+
+	@GetMapping("/bestProduct")
+	public String getBestProductList(Model model) {
+		log.info("bestProductList");
+		model.addAttribute("bestProductList", service.getBestProductList());
+		return "bestProductList";
+
 	}
 }

@@ -62,5 +62,10 @@ public class ProductServiceTests {
 //	public void testGetList() {
 //		service.getList().forEach(product -> log.info(product));
 //	}	
+	
+	@Test
+	public void testGetBestProductList() {
+		service.getBestProductList().forEach(product -> log.info(product));
+	}
 
 }

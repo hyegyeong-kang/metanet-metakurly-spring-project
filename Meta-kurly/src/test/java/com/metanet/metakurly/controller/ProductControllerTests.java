@@ -43,10 +43,20 @@ public class ProductControllerTests {
 	
 	@Test
 	public void testGet() throws Exception {
-		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/product/get")
-				.param("p_id", "31"))
+		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/product/detail")
+				.param("p_id", "1"))
 				.andReturn()
 				.getModelAndView().getModelMap());
 	}
+	
+//	@Test
+//	public void testGetBestProductList() throws Exception {
+//		log.info(
+//					mockMvc.perform(MockMvcRequestBuilders.get("/product/bestProduct"))
+//					.andReturn()
+//					.getModelAndView()
+//					.getModelMap()
+//				);
+//	}
 	
 } 

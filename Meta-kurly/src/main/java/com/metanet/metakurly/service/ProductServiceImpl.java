@@ -48,4 +48,10 @@ public class ProductServiceImpl implements ProductService {
 
 	}
 
+	@Override
+	public List<ProductDTO> getBestProductList() {
+		log.info("getBestProductList....");
+		return mapper.getBestProductList();
+	}
+
 }
