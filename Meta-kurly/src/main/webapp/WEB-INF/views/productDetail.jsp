@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@include file="includes/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/productList/product.css">
@@ -9,7 +12,7 @@
 
   <main>
     <div class="page-section">
-      <div class="container">
+      <div class="container"></div>
       	<!--중단 상품리스트 -->
 
 <div class="shCMSshop">
@@ -18,55 +21,34 @@
 				<!-- 상품이미지 -->
 				<div class="productImg">
 					<div class="mainImg">
-						<img src="main.jpg" alt="">
+						<img src="<c:out value="${product.img_url}" />" />
 					</div>
-					<ul class="subImg">
-						<li><img src="sub01.jpg" alt="서브 이미지1"></li>
-						<li><img src="sub02.jpg" alt="서브 이미지2"></li>
-						<li><img src="sub01.jpg" alt="서브 이미지3"></li>
-						<li><img src="sub01.jpg" alt="서브 이미지4"></li>
-					</ul>
 				</div>
 				<!-- 상품 설명 -->
 				<div class="productInfo">
-					<h3>장수애 백김치<span>1kg/3kg/5kg</span></h3>
+					<h1><c:out value="${product.name}"><span ></span></c:out></h1>
 					<div class="price">
 						<span class="sale">20<span>%</span></span>
-						<span class="cost-price">9,000원</span>
-						<span class="sale-price">7,200원~</span>
+						<span class="cost-price"><c:out value="${product.price / 0.8}원"></c:out></span>
+						<span class="sale-price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${product.price}" />원</span>
 					</div>
-					<div class="manufact">제조사       <span>농업회사법인 움채주식회사</span></div>
-					<div class="categori">분류           <span>기타김치</span></div>
+					<div class="manufact">제조사       <span><c:out value="${product.brand}"></c:out></span></div>
+					<div class="categori">분류           <span>기타</span></div>
 					<div class="origin">원산지       <span>각 재료 별 원산지는 상세설명 참조</span></div>
 					<div class="items">
-						<select class="" name="" id="option">
-							<option value="" selected>선택하세요</option>
-							<option value="">장수애 백김치 1kg -  <span>7200원</span></option>
-							<option value="">장수애 백김치 3kg - <span>19800원</span></option>
-							<option value="">장수애 백김치 5kg - <span>33000원</span></option>
-						</select>
-						<!-- <div class="item">
-							<span class="item-name">장수애 백김치 1kg</span>
-							<span class="item-count">
-								<a href="" class="minur">-</a>
-								<input type="number" value="1" class="number" disabled>
-								<a href="" class="plus">+</a>
-							</span>
-							<span class="item-price">14,400원</span>
-							<a href="" class="item-close">x</a>
-						</div>
-						<div class="item">
-							<span class="item-name">장수애 백김치 1kg</span>
-							<span class="item-count">
-								<a href="" class="minur">-</a>
-								<input type="number" value="1" class="number" disabled>
-								<a href="" class="plus">+</a>
-							</span>
-							<span class="item-price">14,400원</span>
-							<a href="" class="item-close">x</a>
-						</div> -->
 					</div>
-					<div class="all-price">총 상품금액        <span>0</span>원</div>
+					<h3>
+						<div class="num">
+							<span>수량</span>
+							<span class="count">
+								<a href="#" class="minus">-</a>
+								<span id="result">1</span>
+								<a href="#" class="plus">+</a>
+							</span>
+						</div>
+					</h3>
+					<div id="productPrice" style="display:none"><c:out value="${product.price}"></c:out></div>
+					<div class="all-price">총 상품금액        <span id='totalCost'><fmt:formatNumber type="number" maxFractionDigits="3" value="${product.price}" /></span>원</div>
 					<div class="btn">
 						<a href="">장바구니</a>
 						<a href="">구매하기</a>
@@ -192,5 +174,7 @@
   </main>
 
 
+
 <%@include file="includes/footer.jsp"%>
+
 
