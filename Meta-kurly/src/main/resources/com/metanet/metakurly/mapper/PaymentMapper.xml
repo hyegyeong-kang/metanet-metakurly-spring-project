@@ -10,5 +10,9 @@
 			select orders_seq.currval from dual
 		</selectKey>
 	</insert>
+	
+	<select id="getPayment" resultType="com.metanet.metakurly.domain.PaymentDTO">
+		select * from payment where o_id = #{o_id}
+	</select>
 
 </mapper>
