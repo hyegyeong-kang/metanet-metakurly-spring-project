@@ -31,7 +31,7 @@ public class ReviewController {
 		
 		int sessionId = Integer.parseInt(session.getAttribute("sessionId").toString());
 		
-	//	Member member = memberService.findMember(sessionId); // ¼¼¼Ç°ªÀ» ÀÌ¿ëÇØ È¸¿ø Ã£±â
+	//	Member member = memberService.findMember(sessionId); // ì„¸ì…˜ê°’ì„ ì´ìš©í•´ íšŒì› ì°¾ê¸°
 		
 		List<ReviewDTO> reviewList = reviewService.getMyReviewList(sessionId);
 		
