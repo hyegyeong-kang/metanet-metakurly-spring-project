@@ -1,7 +1,6 @@
 package com.metanet.metakurly.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,11 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.metanet.metakurly.domain.MemberDTO;
 import com.metanet.metakurly.domain.OrderDTO;
-import com.metanet.metakurly.domain.OrderDetailDTO;
 import com.metanet.metakurly.domain.OrderProductDTO;
 import com.metanet.metakurly.domain.OrderProductListDTO;
+import com.metanet.metakurly.domain.PaymentDTO;
 import com.metanet.metakurly.service.OrderService;
+import com.metanet.metakurly.service.ProductService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -29,22 +30,29 @@ public class OrderController {
 	
 	private OrderService service;
 	
+	private ProductService pService;
+	
 //	@GetMapping("/list")
 //	public void getOrderList(@RequestParam Long m_id, Model model) {
 //		model.addAttribute("list", service.getOrderList(m_id));
 //	}
 	
 	/* 주문내역 */
-	@GetMapping("/list/{m_id}")
-	public String getOrderList(@PathVariable("m_id") Long m_id, Model model) {
-		List<OrderDTO> orderList = service.getOrderList(m_id);
-		List<OrderDTO> list = new ArrayList<>();
-		for(OrderDTO order : orderList) {
-			//order.setOrderDetailList(service.getOrderDetailList(order.getO_id()));
-			list.add(service.getOrderDetailList(order.getO_id()));
-		}
-		log.info("### " + list);
-		model.addAttribute("list", list);
+	@GetMapping("/list")
+	public String getOrderList(HttpSession session, Model model) {
+		MemberDTO member = (MemberDTO) session.getAttribute("member");
+		Long m_id = member.getM_id();
+		
+		
+//		List<OrderDTO> orderList = service.getOrderList(m_id);
+//		List<OrderDTO> list = new ArrayList<>();
+//		for(OrderDTO order : orderList) {
+//			//order.setOrderDetailList(service.getOrderDetailList(order.getO_id()));
+//			list.add(service.getOrderDetailList(order.getO_id()));
+//		}
+
+		log.info("### " + service.getOrderList(m_id));
+		model.addAttribute("list", service.getOrderList(m_id));
 		//model.addAttribute("list", detailList);
 		
 		return "/orders/list";
@@ -68,24 +76,58 @@ public class OrderController {
 	}
 	
 	/* 상품 상세 페이지에서 주문하기 */
-	@GetMapping("/")
-	public void order(OrderProductDTO item, Model model) {
-		log.info(item);
+//	@GetMapping("/")
+//	public void order(OrderProductDTO item, Model model) {
+//		log.info(item);
+//	}
+	
+	@PostMapping("/order")
+	public void orderProduct(OrderProductDTO orderProduct, Model model) {
+		
+//		MemberDTO member = (MemberDTO) session.getAttribute("member"); Long m_id =
+//		member.getM_id();
+		/*
+		 * ProductDTO product = pService.get(orderProduct.getP_id());
+		 * orderProduct.setBrand(product.getBrand());
+		 * orderProduct.setName(product.getName());
+		 * orderProduct.setPrice(product.getPrice());
+		 */
+
+		model.addAttribute("product", service.getProductInfo(orderProduct));
+		//model.addAttribute("products", service.getProductInfo(orderProduct.get));
+		
+		//model.addAttribute("products", service.getProductsInfo(orderProducts));
+		log.info("######products " + service.getProductInfo(orderProduct));
 	}
 	
-	@PostMapping("/{m_id}")
-	public String order(@PathVariable("m_id") Long m_id, @RequestParam Long p_id, @RequestParam int quantity, Model model) {
-		model.addAttribute("memberId", m_id);
-		model.addAttribute("productId", p_id);
-		model.addAttribute("quantity", quantity);
+	@PostMapping("/payment")
+//	public String payment(OrderDTO order) {
+	public String payment(@RequestParam int quantity, @RequestParam int price, @RequestParam Long m_id) {
+		//service.addOrder(order, payment);
+		log.info("order!!! " + quantity);
+		log.info("order!!! " + price);
+		log.info("order!!! " + m_id);
+		//log.info("payment!!! " + payment);
 		
-		return "/orders/orderForm";
+		return "/orders/success";
 	}
+	
+//	@PostMapping("/order")
+//	public void order(HttpSession session, OrderProductListDTO productList, Model model) {
+//		/*
+//		 * MemberDTO member = (MemberDTO) session.getAttribute("member"); Long m_id =
+//		 * member.getM_id();
+//		 */
+//		model.addAttribute("products", service.getProductInfo(productList.getProducts()));
+//		log.info("######products" + service.getProductInfo(productList.getProducts()));
+//
+//		//return "/orders/order";
+//	}
 	
 	/* 주문하기 */
 	@GetMapping("/{m_id}")
 	public String order(@PathVariable("m_id") Long m_id, OrderProductListDTO productList, Model model) {
-		model.addAttribute("products", service.getProductInfo(productList.getProducts()));
+		model.addAttribute("products", service.getProductsInfo(productList.getProducts()));
 		//model.addAttribute("member", mService.getMember(m_id));
 		
 		return "/orders/order";

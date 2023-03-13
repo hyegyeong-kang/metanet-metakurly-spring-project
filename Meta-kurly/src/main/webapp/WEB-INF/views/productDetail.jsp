@@ -69,7 +69,11 @@
 					<div class="all-price">총 상품금액        <span>0</span>원</div>
 					<div class="btn">
 						<a href="">장바구니</a>
-						<a href="">구매하기</a>
+						<form id="postForm" action="/orders/order" method="post">
+							<input type="hidden" name="p_id" value="3"/>
+							<input type="hidden" name="quantity" value="1"/>
+							<button id="cancelBtn">구매하기</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -192,5 +196,13 @@
   </main>
 
 
+
 <%@include file="includes/footer.jsp"%>
 
+<script>
+$("#buyBtn").click(function(){
+	$("#postForm").submit();
+	console.log(this);
+	this.preventDefault();
+});
+</script>

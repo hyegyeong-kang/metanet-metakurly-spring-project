@@ -46,7 +46,7 @@
 	<!-- 특정 회원의 주문하기 -->
 	<!-- 주문 생성 -->
 	<insert id="createOrder">
-		insert into orders(o_id, orders_date, m_id) values(#{o_id}, sysdate, #{m_id})
+		insert into orders(o_id, orders_date, total_amount, price, m_id) values(#{o_id}, sysdate, #{total_amount}, #{price}, #{m_id})
 		<selectKey keyProperty="o_id" order="BEFORE" resultType="long">
 			select orders_seq.nextval from dual
 		</selectKey>
@@ -58,12 +58,12 @@
 					select m_id from orders where o_id = #{o_id}
 				))
 			</foreach>
-		<!-- <selectKey keyProperty="o_id" order="BEFORE" resultType="long">
+		<selectKey keyProperty="o_id" order="BEFORE" resultType="long">
 			select orders_seq.currval from dual
-		</selectKey> -->
-	</insert>
+		</selectKey>
+	</insert> 
 	<!-- 주문 수정(총수량, 총가격) -->
-	<update id="modifyOrder">
+	<!-- <update id="modifyOrder">
 		update orders
 		set
 			status = '결제완료',
@@ -74,15 +74,15 @@
  				select sum(p.price * od.quantity) from product p join orders_detail od on p.p_id = od.p_id where o_id = #{o_id}
  			)
  		where
- 			o_id = #{o_id}
+ 			o_id = #{o_id} -->
  		<!-- <selectKey keyProperty="o_id" order="BEFORE" resultType="long">
 			select orders_seq.currval from dual
 		</selectKey> -->
-	</update>
+	<!-- </update> -->
 	
 	<!-- 주문 상품 정보 -->
 	<select id="getProductInfo" resultType="com.metanet.metakurly.domain.OrderProductDTO">
-		select p_id, brand, name, price from product where p_id = #{p_id}
+		select p_id, brand, name, price, img_url from product where p_id = #{p_id}
 	</select>
 	
 	<!-- 주문 취소(주문 내역은 남아있어야 함!) -->

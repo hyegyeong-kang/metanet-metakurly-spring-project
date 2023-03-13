@@ -27,11 +27,11 @@
 					</a>
 					<div class="content">
 						<%-- <h6 class="post-title">주문번호 <c:out value="${order.o_id}"/></h6> --%>
-						<div class="meta">
+						<div class="meta" style="width:300px">
 							<c:out value="${detail.productDTO.brand}"/> <c:out value="${detail.productDTO.name}"/>
 							<strong><fmt:formatNumber type="number" maxFractionDigits="3" value="${detail.productDTO.price}" /></strong> <c:out value="${detail.quantity}"/>개</a>
-							<div><button type="submit" id="reviewWriteBtn" style="width:30%">리뷰 작성</button>
-							<button type="submit" id="reviewReadBtn" style="width:30%">작성리뷰 보기</button></div>
+							<div><button type="submit" id="reviewWriteBtn">리뷰 작성</button>
+							<button type="submit" id="reviewReadBtn">작성리뷰 보기</button></div>
 							<!-- <a href="#"><span class="mai-person"></span> Admin</a> -->
 							<%-- 결제날짜 <fmt:formatDate pattern="yyyy-MM-dd" value="${order.orders_date}" /> --%>
 							<!-- <span class="mai-calendar"></span> -->
@@ -50,12 +50,12 @@
 		<h4 class="widget-title">결제정보</h4>
 		<h6 class="post-title"><fmt:formatNumber type="number" maxFractionDigits="3" value="${payment.payment_amount}" />원</h6>
 		<c:out value="${payment.method}"/>
-
-    </div>
-    <form id="postForm" action="" method="post">
-		<button id="cancelBtn" type="submit">주문취소</button>
-    	<button id="listBtn" type="submit">주문목록</button>
+ <form id="postForm" action="" method="post">
+		<span><button id="cancelBtn" type="submit">주문취소</button></span>
+    	<span><button id="listBtn" type="submit">주문목록</button></span>
 	</form>
+    </div>
+   
 
 <script>
 $(function(){
