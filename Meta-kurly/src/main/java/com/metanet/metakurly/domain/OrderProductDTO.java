@@ -12,6 +12,7 @@ public class OrderProductDTO {
 	private String brand;
 	private String name;
 	private int price;
+	private String img_url;
 	
 	/* 계산이 필요한 값 */
 	private int totalPrice;

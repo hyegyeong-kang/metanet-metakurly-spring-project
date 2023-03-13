@@ -16,6 +16,7 @@ public interface OrderMapper {
 	public void createOrderDetail(OrderDTO order);
 	public void createOrder(OrderDTO order);
 	public void modifyOrder(OrderDTO order);
+	//public void createOrder(OrderProductDTO orderProduct);
 	
 	public int cancelOrder(Long o_id);
 }
