@@ -20,7 +20,6 @@
  		select *
  		from member
  		where userid = #{userId}
- 		and password = #{password}
  	</select>
  	
  	<select id="infoMember" resultType="com.metanet.metakurly.domain.MemberDTO">
