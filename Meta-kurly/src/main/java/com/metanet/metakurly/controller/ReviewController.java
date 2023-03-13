@@ -25,6 +25,11 @@ public class ReviewController {
 	
 	@GetMapping("/product/reviews")
 	public String showReview() {
-		return "productReview";
+		return "review";
+	}
+	
+	@GetMapping("/product/reviewDetail")
+	public String showReviewDetail() {
+		return "reviewDetail";
 	}
 }

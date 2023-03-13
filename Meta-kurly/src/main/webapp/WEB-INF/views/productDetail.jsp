@@ -59,7 +59,7 @@
 			<div class="viewBody">
 				<ul class="contentNav">
 					<li class="active"><a href="">상품 정보</a></li>
-					<li><a href="">상품 후기<span>(<span class="count">20</span>)</span></a></li>
+					<li><a href="/product/reviews">상품 후기<span>(<span class="count">20</span>)</span></a></li>
 					<li><a href="">Q & A <span></span></a></li>
 					<li><a href="">반품 / 교환</a></li>
 				</ul>
