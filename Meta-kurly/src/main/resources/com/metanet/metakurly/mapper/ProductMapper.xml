@@ -7,9 +7,16 @@
 	
 <select id="getList" resultType="com.metanet.metakurly.domain.ProductDTO">
 	<![CDATA[
-	select * from product where p_id > 0
+	select p_id, brand, price, name, delivery_type, img_url from product where p_id > 0
 	]]>
 </select>
+
+<select id="getBestProductList" resultType="com.metanet.metakurly.domain.ProductDTO">
+	<![CDATA[
+		select p_id, brand, price, name, delivery_type, img_url from (select p_id, brand, price, name, delivery_type,
+		img_url from product where p_id > 0 order by sales_amount desc) where rownum <= 100
+	]]>
+</select>  
 
 <insert id="insert">
 	insert into product (p_id, brand, price, name, stock, delivery_type, sales_amount, status)

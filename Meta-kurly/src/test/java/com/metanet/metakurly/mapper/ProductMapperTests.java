@@ -26,6 +26,12 @@ public class ProductMapperTests {
 //		
 //	}
 	
+	// 베스트 상품 100개 조회
+	@Test
+	public void testGetBestProductList() {
+		mapper.getBestProductList().forEach(product -> log.info(product));
+	}
+	
 	// 상품 생성 
 //	@Test
 //	public void testInsert() {
@@ -72,23 +78,23 @@ public class ProductMapperTests {
 //		log.info("DELETE COUNT :" + mapper.delete(3L));
 //	}
 	
-	@Test
-	public void testUpdate() {
-		ProductDTO product = new ProductDTO();
-		
-		product.setP_id(31L);
-		product.setBrand("오리온");
-		product.setPrice(3500);
-		product.setName("후레쉬베리");
-		product.setStock(20);
-		product.setDelivery_type("깜깜");
-		product.setSales_amount(20L);
-		product.setStatus("판매중");
-		
-		int count =mapper.update(product);
-		
-		log.info("UPDATE COUNT" + count);
-	}
+//	@Test
+//	public void testUpdate() {
+//		ProductDTO product = new ProductDTO();
+//		
+//		product.setP_id(31L);
+//		product.setBrand("오리온");
+//		product.setPrice(3500);
+//		product.setName("후레쉬베리");
+//		product.setStock(20);
+//		product.setDelivery_type("깜깜");
+//		product.setSales_amount(20L);
+//		product.setStatus("판매중");
+//		
+//		int count =mapper.update(product);
+//		
+//		log.info("UPDATE COUNT" + count);
+//	}
 	
 }
 

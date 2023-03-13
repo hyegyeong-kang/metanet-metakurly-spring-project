@@ -20,6 +20,8 @@ public class ProductDTO {
 	
 	private Long sales_amount;
 	
+	private String img_url;
+	
 	private String status; // '판매 중지', '판매' 
 	
 }

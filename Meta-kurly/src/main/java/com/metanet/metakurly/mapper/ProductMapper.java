@@ -11,6 +11,8 @@ public interface ProductMapper {
 //	@Select("select * from proudct")
 	public List<ProductDTO> getList();
 	
+	public List<ProductDTO> getBestProductList();
+	
 	public void insert(ProductDTO product);
 	
 	public void insertSelectKey(ProductDTO product);
