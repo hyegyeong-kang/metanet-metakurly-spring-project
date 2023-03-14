@@ -30,11 +30,10 @@ public class CartController {
 	
 	private CartService service;
 
-	// �� ��ٱ��� �ҷ�����
 	@GetMapping("/cartList/{m_id}")
-	public String getCartList(@PathVariable("m_id") Long m_id, Model model, HttpServletRequest request) throws Exception {
+	public String getCartList(@PathVariable("m_id") Long m_id, Model model, HttpSession session) throws Exception {
 		log.info("!!cartList!!" + m_id);
-		//HttpSession session = request.getSession();
+		MemberDTO member = (MemberDTO) session.getAttribute("member");
 		
 		List<CartDTO> cartList = service.getMyCartList(m_id);
 
@@ -44,12 +43,11 @@ public class CartController {
 	}
 	
 	@GetMapping("/cartAdd")
-	public String addCart(@PathVariable("m_id")Long m_id, HttpServletRequest request, Model model, @RequestParam Long p_id, @RequestParam int quantity) throws Exception {
-		//Long userId = (Long) session.getAttribute("member");
-		HttpSession session = request.getSession();
-		MemberDTO mvo = (MemberDTO)session.getAttribute("member");
+	public String addCart(@PathVariable("m_id")Long m_id, HttpSession session, Model model, @RequestParam Long p_id, @RequestParam int quantity) throws Exception {
+		MemberDTO member = (MemberDTO) session.getAttribute("member");
 
-		if(mvo == null) {
+
+		if(member == null) {
 			return "5";
 		}
 		
@@ -83,10 +81,11 @@ public class CartController {
 		return "redirect: /cart/cartList" + m_id;
 	}
 	
-//	@PostMapping("/cartUpdate")
-//	public String updateCart(HttpSession session, Model model,  ) {
-//		service.updateCart(null, null, 0)
-//	}
+	@PostMapping("/cartUpdate")
+	public String updateCart(HttpSession session, Model model ) {
+		service.updateCart(null, null, 0);
+		return "redirect: /cart/cartUpdate";
+	}
 	
 	
 

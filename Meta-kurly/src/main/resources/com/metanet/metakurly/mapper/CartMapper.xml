@@ -7,7 +7,7 @@
 	<select id="getMyCartList"
 		resultType="com.metanet.metakurly.domain.CartDTO"
 		resultMap="cartDTO">
-		select c.cartNum, c.m_id, c.p_id, c.quantity, p.name, p.price
+		select c.cartNum, c.m_id, c.p_id, c.quantity, p.name, p.price, p.img_url
 		from cart c, product p
 		where c.p_id = p.p_id
 		and c.m_id = #{m_id}
@@ -26,6 +26,7 @@
 		<result property="p_id" column="p_id"/>
 	 	<result property="name" column="name"/>
 	 	<result property="price" column="price"/>
+	 	<result property="img_url" column="img_url"/>
 	</resultMap>
 	
 	

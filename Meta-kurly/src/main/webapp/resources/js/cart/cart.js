@@ -29,6 +29,7 @@ $(document).ready(function(){
 
     });
 
+// 상품 수량 + / - 버튼 눌렀을 때 호출
    $('.price_btn input[type="button"]').on('click', function(){
        var $ths = $(this);
        var $par = $ths.parent().parent();
@@ -53,10 +54,15 @@ $(document).ready(function(){
      pay_total_func();
    });
   
+  
   function pay_unit_func($par,unit_amount,quantity){
     //1번 단
     var unit_total_amount=$par.find('.price_amount').text((unit_amount*quantity).toLocaleString());
+ 	console.log("unit!!!: " + unit_total_amount);
+ 
   } 
+  
+  
   
   function pay_total_func(){
     //2번 단 
@@ -97,7 +103,9 @@ $(document).ready(function(){
      //console.log($(this).offsetParent().parents().find('input[type="checkbox"]').is(':checked'));
      pay_total_func();
    });
-   //삭제 버튼을 누르면 지정된 상품 삭제
+   
+   
+   //삭제 버튼을 누르면 지정된 상품 삭제 (m_id, p_id 받아야 함)
    $('.del_btn').on('click', function(){
      var recent_delete_cnt=$('.del_btn .num').text();
      $("input:checkbox[name=item_chk]").each(function() {
@@ -111,4 +119,11 @@ $(document).ready(function(){
       });
       pay_total_func();
    }); 
+   
+   
+   
+   
+   
+   
+   
 });
