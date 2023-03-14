@@ -19,52 +19,52 @@ public class ReviewMapperTests {
 	@Autowired
 	private ReviewMapper mapper;
 		 
-	@Test	//¼º°ø -> m_id °¡ 1ÀÎ »ç¶÷ÀÇ ¸®ºä¸¸ °¡Á®¿À±â
-	public void testGetMyReviewList() {
-		mapper.getMyReviewList(1).forEach(review -> log.info(review));
-	}
+//	@Test	//ï¿½ï¿½ï¿½ï¿½ -> m_id ï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ä¸¸ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//	public void testGetMyReviewList() {
+//		mapper.getMyReviewList(1).forEach(review -> log.info(review));
+//	}
 	
 	
-	@Test // ¼º°ø -> p_id °¡ 1 ÀÎ »óÇ°ÀÇ ¸®ºä °¡Á®¿À±â
-	public void testGetProductReviewList() {
-		mapper.getProductReviewList(5L).forEach(review -> log.info(review));
-	}
+//	@Test // ï¿½ï¿½ï¿½ï¿½ -> p_id ï¿½ï¿½ 1 ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//	public void testGetProductReviewList() {
+//		mapper.getProductReviewList(3L).forEach(review -> log.info(review));
+//	}
 	
 	
-	@Test // ¼º°ø
-	public void testRegisterReview() {
-		ReviewDTO review = new ReviewDTO();
-		
-		review.setM_id(2L);
-		review.setP_id(5L);
-		review.setContents("¸®ºäµî·Ï ¸ÅÆÛ Å×½ºÆ®ÀÔ´Ï´Ù");
-		
-		mapper.registerReview(review);
-		
-		log.info(review);
-	}
-	
-	@Test // ¼º°ø
-	public void testUpdateReview() {
-		ReviewDTO review = new ReviewDTO();
-		review.setContents("¾÷µ¥ÀÌÆ® ¸ÅÆÛ Å×½ºÆ®ÀÔ´Ï´Ù.");
-		review.setR_id(10L);
-		review.setM_id(2L);
-		review.setP_id(3L);
-
-		
-		int cnt = mapper.updateReview(review);
-		log.info("UPDATE COUNT: " + cnt);
-	}
-	
-	@Test // ¼º°ø -> r_id °¡ 4¹øÀÎ ¸®ºä »èÁ¦ 
-	public void testDelete() {
-		ReviewDTO review = new ReviewDTO();
-		review.setR_id(4L);
-		review.setM_id(2L);
-		review.setP_id(5L);
-		
-		mapper.deleteReview(review);
-		
-	}
+//	@Test // ï¿½ï¿½ï¿½ï¿½
+//	public void testRegisterReview() {
+//		ReviewDTO review = new ReviewDTO();
+//		
+//		review.setM_id(1L);
+//		review.setP_id(2L);
+//		review.setContents("ìƒˆë¡œ ë“±ë¡í•œ ë¦¬ë·°ìž…ë‹ˆë‹¤.");
+//		
+//		mapper.registerReview(review);
+//		
+//		log.info(review);
+//	}
+//	
+//	@Test // ï¿½ï¿½ï¿½ï¿½
+//	public void testUpdateReview() {
+//		ReviewDTO review = new ReviewDTO();
+//		review.setContents("ìˆ˜ì •í•œ ë¦¬ë·°ìž…ë‹ˆ.");
+//		review.setR_id(62L);
+//		review.setM_id(1L);
+//		review.setP_id(2L);
+//
+//		
+//		int cnt = mapper.updateReview(review);
+//		log.info("UPDATE COUNT: " + cnt);
+//	}
+//	
+//	@Test // ï¿½ï¿½ï¿½ï¿½ -> r_id ï¿½ï¿½ 4ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+//	public void testDelete() {
+//		ReviewDTO review = new ReviewDTO();
+//		review.setR_id(62L);
+//		review.setM_id(1L);
+//		review.setP_id(2L);
+//		
+//		mapper.deleteReview(review);
+//		
+//	}
 }
