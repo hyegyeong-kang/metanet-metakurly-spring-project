@@ -21,13 +21,17 @@
 		<c:forEach items="${list}" var="order">
 			<div class="blog-item">
 					<a class="post-thumb" href="">
-						<img src="/resources/img/blog/blog-1.jpg" alt="">
+						<img src="${order.orderDetailList[0].productDTO.img_url}" alt="">
 					</a>
 					<div class="content">
 						<div class="meta">
 							<a href='#'><c:out value="${order.status}"/></a>
 			            </div>
-						<h6 class="post-title"><a href='/orders/detail/<c:out value="${order.o_id}"/>'><c:out value="${order.orderDetailList[0].productDTO.brand}"/> <c:out value="${order.orderDetailList[0].productDTO.name}"/> 외 <c:out value="${order.total_amount}"/>개</a></h6>
+						<h6 class="post-title"><a href='/orders/detail/<c:out value="${order.o_id}"/>'><c:out value="${order.orderDetailList[0].productDTO.brand}"/> <c:out value="${order.orderDetailList[0].productDTO.name}"/> 
+						<c:if test="${order.total_amount > 1}">
+						외 <c:out value="${order.total_amount - 1}"/>개</a>
+						</c:if>
+						</h6>
 						<div class="meta">
 							<!-- <a href="#"><span class="mai-person"></span> Admin</a> -->
 							<a href='#'>주문번호 <c:out value="${order.o_id}"/></a>
