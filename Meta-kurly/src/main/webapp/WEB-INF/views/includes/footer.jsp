@@ -131,5 +131,7 @@ minus.addEventListener("click", () => {
 
 <script src="/resources/js/productList/product.js"></script>
 
+<script src="/resources/js/cart/cart.js"></script>
+
 </body>
 </html>

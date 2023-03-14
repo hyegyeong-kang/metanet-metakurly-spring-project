@@ -6,6 +6,13 @@
 
 <%@include file="includes/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/review/review.css">
+<link rel="stylesheet" href="/resources/vendor/animate/animate.css">
+
+<link rel="stylesheet" href="/resources/css/bootstrap.css">
+
+
+
+<link rel="stylesheet" href="/resources/css/theme.css">
     
   </header>
 

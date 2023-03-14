@@ -20,15 +20,16 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/review")
 @Log4j
 public class ReviewController {
 	
-	@GetMapping("/product/reviews")
+	@GetMapping("")
 	public String showReview() {
 		return "review";
 	}
 	
-	@GetMapping("/product/reviewDetail")
+	@GetMapping("/{reviewIdx}")
 	public String showReviewDetail() {
 		return "reviewDetail";
 	}
