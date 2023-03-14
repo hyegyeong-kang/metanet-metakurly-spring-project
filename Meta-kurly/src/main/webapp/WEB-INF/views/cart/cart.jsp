@@ -76,7 +76,7 @@
             </div> -->
 
             <div class="btn_box">
-                <button type="button" onclick="goBack()" class="btn wh-btn" style="border-color:#7B68EE">계속 쇼핑하기</button>
+                <button type="button" onclick="history.go(-1);return false;" class="btn wh-btn" style="border-color:#7B68EE">계속 쇼핑하기</button>
                 <button type="button" onclick="order()" class="btn black-btn" style="background-color:#7B68EE">구매하기</button>
             </div>
 
