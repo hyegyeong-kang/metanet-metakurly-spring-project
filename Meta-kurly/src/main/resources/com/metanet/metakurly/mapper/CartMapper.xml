@@ -33,7 +33,7 @@
 	<!--  장바구니에 물건 추가 -->
 	<insert id="addCart">
 		insert into cart 
-		values (#{m_id}, #{p_id}, #{quantity})
+		values (cart_seq.nextval, #{m_id}, #{p_id}, #{quantity})
 	</insert>
 	
 	<!-- 장바구니 중복 상품 확인 -->

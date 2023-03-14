@@ -51,7 +51,7 @@
 							<div class="all-price">총 상품금액        <span id='totalCost'><fmt:formatNumber type="number" maxFractionDigits="3" value="${product.price}" /></span>원</div>
 							<div class="btn">
 								<a id="addCart" href="/cart/cartAdd">장바구니</a>
-								<a href="">구매하기</a>
+								<a id="buyBtn" href="/orders/order">구매하기</a>
 							</div>
 						</div>
 					</div>
@@ -170,6 +170,11 @@
 					</div>
 				</div>
 		</div>
+		<form id="postForm" action="/orders/order" method="post">
+			<input type="hidden" name="p_id" value="${product.p_id}"/>
+			<input type="hidden" id="quantityInput" name="quantity" value=""/>
+			<button id="cancelBtn">구매하기</button>
+		</form>
 
   </main>
 
@@ -193,22 +198,32 @@ $("#addCart").click(function(){
       p_id: product,
       quantity: qt
    };
-   var productArr = [];
-   productArr.push(productInfo);
+
 
 /*    console.log("!!!!!!!!!!!!" + JSON.stringify(productArr));
  */   //data: JSON.stringify(productArr),
    $.ajax({
       url: '/cart/cartAdd',
       type: 'post',
-      data: JSON.stringify(productArr),
+      data: JSON.stringify(productInfo),
       dataType: 'json',
       contentType: 'application/json',
       success: function(data){
          alert("SUCCESS!");
          console.log('success' + data);
+
+         location.replace("/cart/cartList");
       }
    });
+});
+
+$("#buyBtn").click(function(){
+	var quantityVal = $("#result").text();
+	$("#quantityInput").val(quantityVal);
+	
+	console.log("DDDddd  " + quantityVal);
+	$("#postForm").submit();
+	return false;
 });
 </script>
 

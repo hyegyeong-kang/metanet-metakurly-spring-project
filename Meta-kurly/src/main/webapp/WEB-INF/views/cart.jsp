@@ -19,6 +19,7 @@
 
 <div class="cart_table">
             <p><strong>장바구니</strong></p>
+            
 
             <ul class="cart_list">
                 <li>
@@ -64,14 +65,14 @@
                 </c:forEach>
             </ul>
 
-            <div class="cart_total_area">
+<!--             <div class="cart_total_area">
                 <p>결제 정보</p>
 
                 <div class="cart_total_price">
                 	<p>총 상품금액 <strong class="item_price">60,000</strong>원 <span class="plus_ic"></span></p>
                     <p>총 결제금액 <strong class="total_price color-red">52,500</strong>원</p>
                 </div>
-            </div>
+            </div> -->
 
             <div class="btn_box">
                 <button type="button" onclick="goBack()" class="btn wh-btn" style="border-color:#7B68EE">계속 쇼핑하기</button>
