@@ -33,33 +33,26 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <div class="carousel">
     
-
 <div class="review-slider">
      <div class="slides con relative">
      <div class="pg 01 item inline-block active">
          <ul class="list row">
-             <a href="#" class="cell items block">
+         
+           <c:forEach items='${review}' var="product" varStatus="status">
+             	<a href="#" class="cell items block">
                  <img src="https://assets3.cre.ma/p/merongshop-com/reviews/00/00/46/57/63/image1/portrait_9fab9ffc184abcf8.jpg" alt="">
                    <div class="first-row">
-                     <div class="title">162인데 사이즈 딱좋아요ㅎㅎ 넘나</div>
+                     <div class="title"></div>
                      <div class="row">
-                         <div class="author cell">이진*</div>
+                         <div class="author cell"><c:out value="${product.name}"></c:out><</div>
                          <div class="date cell-right">2018. 11. 12</div>
                          </div>
                      </div>
-                 <div class="second-row row">
-                     <img src="https://assets3.cre.ma/p/merongshop-com/products/00/00/02/32/96/image/extra_small_bf31b7f7d83a2243.jpg" alt=""
-                          class="cell">
-                     <div class="cell">
-                         <div class = "title">미친데님스키니!!_[5칼라/6사</div>
-                         <div>
-                             <span class="count cell">리뷰</span>
-                             <span class="score cell">평점</span>
-                             </div>
-                         </div>
-                     </div>
-             </a>
-             <a href="#" class="cell items block">
+               
+             		</a>
+             </c:forEach>
+             
+             <!-- <a href="#" class="cell items block">
                  <img src="https://assets3.cre.ma/p/merongshop-com/reviews/00/00/46/57/48/image1/portrait_d9ab5ae0fb334dba.jpg" alt="">
                    <div class="first-row">
                      <div class="title">옷은 정말 이쁜데</div>
@@ -142,9 +135,11 @@
                              </div>
                          </div>
                      </div>
-             </a>
+             </a> -->
          </ul>
+         
      </div>
+     
      
       <div class="pg 02 item inline-block">
          <ul class="list row">
@@ -1036,11 +1031,10 @@
         <a href="#" class="pg-btn">8</a>
         <a href="#" class="pg-btn">9</a>
         <a href="#" class="pg-btn-next"><i class="fas fa-chevron-right"></i></a>
+        <a style="margin-left:150px;" href="/review/reviewAdd" class="btn btn-primary">리뷰 작성</a>
         
     </div>
-     
     </div>
-    
 </div>
 	</div>
 
