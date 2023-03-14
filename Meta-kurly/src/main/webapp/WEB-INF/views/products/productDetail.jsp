@@ -205,11 +205,11 @@ $("#addCart").click(function(){
       url: '/cart/cartAdd',
       type: 'post',
       data: JSON.stringify(productInfo),
-      dataType: 'json',
+      dataType: 'text',
       contentType: 'application/json',
       success: function(data){
-         alert("SUCCESS!");
-         console.log('success' + data);
+         /* alert("SUCCESS!");
+         console.log('success' + data); */
 
          location.replace("/cart/cartList");
       }
