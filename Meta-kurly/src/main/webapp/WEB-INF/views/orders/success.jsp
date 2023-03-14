@@ -53,7 +53,7 @@
 							style="width: 120px; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; padding: 14px 0 16px 16px; line-height: 20px; text-align: left; font-weight: normal; vertical-align: top; background: #f6f6f6; border-bottom: 1px solid #e6e6e6;">주문일자</th>
 						<td
 							style="width: 558px; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; padding: 14px 0 16px 16px; line-height: 20px; color: #333; border-bottom: 1px solid #e6e6e6;"><strong
-							style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; color: #666;"><c:out value="${order.order_date}"/></strong></td>
+							style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; color: #666;"><c:out value="${order.orders_date}"/></strong></td>
 					</tr>
 					<tr>
 						<th colspan="1" rowspan="1" scope="row"
@@ -76,33 +76,33 @@
 			배송상품 정보</div>
 
 
-		<c:forEach items="${products}" var="product">
+		<c:forEach items="${order.orderDetailList}" var="detail">
 		
 			<div style="overflow: hidden; margin: 0 20px;">
 				<a target="_blank"
 					style="float: left; :70 px; :70 px; margin: 20px 0;"
 					href="https://m.oliveyoung.co.kr/m/goods/getGoodsDetail.do?goodsNo=A000000007088"><img
 					style="border: 0; width: 70px; height: 70px;"
-					src="<c:out value='${product.img_url}'/>"
+					src="<c:out value='${detail.productDTO.img_url}'/>"
 					alt=""></a>
 				<div
 					style="float: left; width: 68%; margin: 0 0 0 15px; padding: 17px 0 15px;">
 					<a target="_blank"
 						style="color: #333; font-size: 15px; line-: 18px; display: block; text-decoration: none; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; :36 px; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-family: '맑은고딕', 'malgun gothic', 'dotum', sans-serif;"
 						href="https://m.oliveyoung.co.kr/m/goods/getGoodsDetail.do?goodsNo=A000000007088">
-						<c:out value="${product.brand}"/><br><c:out value="${product.name}"/>
+						<c:out value="${detail.productDTO.brand}"/><br><c:out value="${detail.productDTO.name}"/>
 					</a>
 					<div
 						style="color: #999; font-size: 12px; line-height: 16px; font-weight: bold;">
 					</div>
 					<div
 						style="color: #999; font-size: 12px; line-height: 16px; font-weight: bold;">구매수량
-						: ${product.quantity} 개</div>
+						: ${detail.quantity} 개</div>
 					<div style="padding: 4px 0 0;">
 	
 						<span
 							style="color: #333; font-size: 20px; font-weight: bold; padding: 0 0 0 7px;">
-							<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.price}" /><em
+							<fmt:formatNumber type="number" maxFractionDigits="3" value="${detail.productDTO.price * detail.quantity}" /><em
 							style="display: inline-block; color: #b0b0b0; font-style: normal; font-size: 12px; vertical-align: 1px; color: #333 !important; padding: 0 0 0 2px; vertical-align: 2px !important;">원</em>
 						</span>
 						
@@ -175,7 +175,7 @@
 						style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; float: left; font-weight: normal;">
 						총 상품금액 </strong> <span
 						style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; float: right; color: #f47330; font-weight: bold; font-size: 16px; letter-spacing: 0;">
-						<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.totalPrice}" /><em
+						<fmt:formatNumber type="number" maxFractionDigits="3" value="${order.price}" /><em
 						style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; display: inline-block; margin-left: 3px; font-style: normal; font-weight: bold; font-size: 12px; vertical-align: 2px; letter-spacing: -1px;">원</em>
 					</span>
 				</div>
@@ -245,8 +245,13 @@
 						<c:out value="${payment.method}"/> <em
 						style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; display: block; font-style: normal; letter-spacing: -0.5px;">
 
-
-							일시불(<fmt:formatDate pattern="yyyy-MM-dd" value="${order.orders_date}" />) </em>
+						<c:if test="${payment.method eq '카드'}">
+							일시불(<fmt:formatDate pattern="yyyy-MM-dd" value="${order.orders_date}" />)
+						</c:if>
+						<c:if test="${payment.method eq '계좌이체'}">
+							입금 완료(<fmt:formatDate pattern="yyyy-MM-dd" value="${order.orders_date}" />)
+						</c:if>
+							 </em>
 
 					</span>
 				</div>

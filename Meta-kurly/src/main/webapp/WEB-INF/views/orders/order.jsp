@@ -78,7 +78,7 @@
 			style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; word-spacing: -2px; margin: 0 20px; padding: 25px 0 9px; border-bottom: 2px solid #666; color: #333; font-size: 16px; font-weight: bold;">
 			주문상품</div>
 
-	<%-- 	<c:forEach items="${products}" var="product"> --%>
+	 	<c:forEach items="${products}" var="product">
 			<div style="overflow: hidden; margin: 0 20px;">
 				<a target="_blank"
 					style="float: left; :70 px; :70 px; margin: 20px 0;"
@@ -110,8 +110,8 @@
 					</div>
 				</div>
 			</div>
-		
-		<%-- </c:forEach> --%>
+
+	 </c:forEach> 
 		
 
 
@@ -170,7 +170,7 @@
 						<span id="errorMsg" style="visibility: hidden">입력한 포인트를 사용할 수 없습니다</span>
 						<span
 						style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; float: right; color: #f47330; font-weight: bold; font-size: 16px; letter-spacing: 0;">
-						<input type="text" name="usePoint" id="usePointNum" style="width: 93%"><em
+						<input type="text" name="usePoint" id="usePointNum" style="width: 93%" value="0"><em
 						style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; display: inline-block; margin-left: 3px; font-style: normal; font-weight: bold; font-size: 12px; vertical-align: 2px; letter-spacing: -1px;">원</em>
 					</span>
 				</div>

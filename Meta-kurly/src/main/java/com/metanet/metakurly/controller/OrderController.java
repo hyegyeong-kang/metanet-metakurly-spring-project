@@ -2,6 +2,7 @@ package com.metanet.metakurly.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,8 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.metanet.metakurly.domain.MemberDTO;
@@ -31,6 +35,7 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/orders")
 @AllArgsConstructor
 public class OrderController {
+	
 	
 	private OrderService service;
 	
@@ -86,8 +91,9 @@ public class OrderController {
 //	}
 	
 	@PostMapping("/order")
-	public void orderProduct(OrderProductDTO orderProduct, Model model) {
-		
+	@ResponseBody
+	public String orderProduct(@RequestBody List<Map<String, Integer>> productList, Model model) {
+
 //		MemberDTO member = (MemberDTO) session.getAttribute("member"); Long m_id =
 //		member.getM_id();
 		/*
@@ -96,12 +102,23 @@ public class OrderController {
 		 * orderProduct.setName(product.getName());
 		 * orderProduct.setPrice(product.getPrice());
 		 */
-
-		model.addAttribute("product", service.getProductInfo(orderProduct));
+		List<OrderProductDTO> orderProducts = new ArrayList<>();
+		for(Map<String, Integer> product : productList) {
+			OrderProductDTO dto = new OrderProductDTO();
+			dto.setP_id(Long.valueOf(product.get("p_id")));
+			dto.setQuantity(product.get("quantity"));
+			log.info(dto);
+			orderProducts.add(dto);
+		}
+		List<OrderProductDTO> products = service.getProductInfo(orderProducts);
+		//model.addAttribute("products", service.getProductInfo(orderProducts));
 		//model.addAttribute("products", service.getProductInfo(orderProduct.get));
 		
 		//model.addAttribute("products", service.getProductsInfo(orderProducts));
-		log.info("######products " + service.getProductInfo(orderProduct));
+		log.info("######products " + service.getProductInfo(orderProducts));
+//		
+		log.info(productList);
+		return "orders/order";
 	}
 	
 	@PostMapping("/payment")
@@ -115,17 +132,30 @@ public class OrderController {
 		 * deliveryMsg);
 		 */
 		MemberDTO member = (MemberDTO)session.getAttribute("member");
-		OrderDTO dto = service.getOrder(member.getM_id(), p_id);
+		order.setM_id(member.getM_id());
 		
-		//List<OrderDetailDTO> list = new ArrayList<>();
-		dto.setOrderDetailList(service.getOrderDetailList(dto.getO_id()).getOrderDetailList());
-		//list.get(0).setP_id(p_id);
-		//order.setOrderDetailList(list);
-		service.addOrder(dto, payment);
+		List<OrderDetailDTO> list = new ArrayList<>();
+		OrderDetailDTO detailDto = new OrderDetailDTO();
+		detailDto.setP_id(p_id);
+		detailDto.setProductDTO(pService.get(p_id));
+		detailDto.setQuantity(order.getTotal_amount());
+		list.add(detailDto);
+		log.info(list);
+		log.info(detailDto);
+		order.setOrderDetailList(list);
+		
+		payment.setM_id(member.getM_id());
+		service.addOrder(order, payment);
+		order = service.getOrderDetailList(order.getO_id());
+		log.info(order.getOrderDetailList());
+		//order.getOrderDetailList().get(0).setO_id(order.getO_id());
+		//dto.setOrderDetailList(service.getOrderDetailList(dto.getO_id()).getOrderDetailList());
+		//service.addOrder(dto, payment);
 		//model.addAttribute(", model)
-		log.info("dto!! " + dto);
+		log.info("order!! " + order);
 		log.info("payment@@ " + payment);
-		model.addAttribute("order", dto);
+		
+		model.addAttribute("order", order);
 		model.addAttribute("payment", payment);
 		model.addAttribute("msg", deliveryMsg);
 		model.addAttribute("usePoint", usePoint);
@@ -133,26 +163,26 @@ public class OrderController {
 		return "/orders/success";
 	}
 	
-//	@PostMapping("/order")
-//	public void order(HttpSession session, OrderProductListDTO productList, Model model) {
-//		/*
-//		 * MemberDTO member = (MemberDTO) session.getAttribute("member"); Long m_id =
-//		 * member.getM_id();
-//		 */
-//		model.addAttribute("products", service.getProductInfo(productList.getProducts()));
-//		log.info("######products" + service.getProductInfo(productList.getProducts()));
-//
-//		//return "/orders/order";
-//	}
+	//@PostMapping("/order")
+	public void order(HttpSession session, OrderProductListDTO productList, Model model) {
+		/*
+		 * MemberDTO member = (MemberDTO) session.getAttribute("member"); Long m_id =
+		 * member.getM_id();
+		 */
+		model.addAttribute("products", service.getProductInfo(productList.getProducts()));
+		log.info("######products" + service.getProductInfo(productList.getProducts()));
+
+		//return "/orders/order";
+	}
 	
 	/* 주문하기 */
-	@GetMapping("/{m_id}")
-	public String order(@PathVariable("m_id") Long m_id, OrderProductListDTO productList, Model model) {
-		model.addAttribute("products", service.getProductsInfo(productList.getProducts()));
-		//model.addAttribute("member", mService.getMember(m_id));
-		
-		return "/orders/order";
-	}
+//	@GetMapping("/{m_id}")
+//	public String order(@PathVariable("m_id") Long m_id, OrderProductListDTO productList, Model model) {
+//		model.addAttribute("products", service.getProductsInfo(productList.getProducts()));
+//		//model.addAttribute("member", mService.getMember(m_id));
+//		
+//		return "/orders/order";
+//	}
 	
 	/* 주문 취소하기 */
 	@PostMapping("/cancel/{o_id}")

@@ -64,18 +64,9 @@ public class OrderServiceImpl implements OrderService {
 		log.info(mapper.getOrderDetail(o_id));
 		return mapper.cancelOrder(o_id);
 	}
-	
-	@Override
-	public OrderProductDTO getProductInfo(OrderProductDTO orderProduct) {
-		OrderProductDTO dto = mapper.getProductInfo(orderProduct.getP_id());
-		dto.setQuantity(orderProduct.getQuantity());
-		dto.init();
-
-		return dto;
-	}
 
 	@Override
-	public List<OrderProductDTO> getProductsInfo(List<OrderProductDTO> orderProducts) {
+	public List<OrderProductDTO> getProductInfo(List<OrderProductDTO> orderProducts) {
 		List<OrderProductDTO> order = new ArrayList<>();
 		
 		log.info("$$$$$$$ " + orderProducts);
@@ -95,8 +86,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public OrderDTO getOrder(Long m_id, Long o_id) {
-		return mapper.getOrder(m_id, o_id);
+	public OrderDTO getOrder(Long o_id) {
+		return mapper.getOrder(o_id);
 	}
 
 }
