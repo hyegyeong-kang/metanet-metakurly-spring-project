@@ -1,10 +1,11 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%@include file="includes/header.jsp"%>
+<%@include file="../includes/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/review/review.css">
 <link rel="stylesheet" href="/resources/vendor/animate/animate.css">
 
@@ -38,8 +39,34 @@
      <div class="pg 01 item inline-block active">
          <ul class="list row">
          
-           <c:forEach items='${review}' var="product" varStatus="status">
-             	<a href="#" class="cell items block">
+          <table class="table">
+         	<thead>
+         		<tr>
+         			<th>번호</th>
+         			<th>브랜드</th>	
+ 	         		<th>상품이름</th>	         		
+	         		<th>내용</th>
+	         		<th>작성일</th>
+         		</tr>
+         	</thead>
+			<tbody>
+			<c:forEach items='${review}' var="product" varStatus="status">
+   	         <tr>
+	         	
+          	 <td><c:out value="${status.count}" /></td>
+           	 <td><c:out value="${product.brand}" />   
+           	 <td><c:out value="${product.name}" /></td>
+           	 <td><a href="/products/detail/${product.p_id }/reviews"><c:out value="${product.reviewList[0].contents}" /> </a> </td>
+      	     <td><c:out value="${product.reviewList[0].review_date}" />
+         	</tr> 
+			</tbody>
+         </table>
+         
+         </c:forEach>
+         
+         
+           <%-- <c:forEach items='${review}' var="product" varStatus="status">
+             	<a href="/products/detail/<c:out value="${product.reviewList[0].p_id}"></c:out>/reviews" class="cell items block">
                  <img src="https://assets3.cre.ma/p/merongshop-com/reviews/00/00/46/57/63/image1/portrait_9fab9ffc184abcf8.jpg" alt="">
                    <div class="first-row">
                      <div class="title"></div>
@@ -50,7 +77,9 @@
                      </div>
                
              		</a>
-             </c:forEach>
+             </c:forEach> --%>
+             
+             
              
              <!-- <a href="#" class="cell items block">
                  <img src="https://assets3.cre.ma/p/merongshop-com/reviews/00/00/46/57/48/image1/portrait_d9ab5ae0fb334dba.jpg" alt="">
@@ -1031,7 +1060,7 @@
         <a href="#" class="pg-btn">8</a>
         <a href="#" class="pg-btn">9</a>
         <a href="#" class="pg-btn-next"><i class="fas fa-chevron-right"></i></a>
-        <a style="margin-left:150px;" href="/review/reviewAdd" class="btn btn-primary">리뷰 작성</a>
+        <a style="margin-left:150px;" href="/products/reviews" class="btn btn-primary">리뷰 작성</a>
         
     </div>
     </div>
@@ -1041,6 +1070,6 @@
   </main>
 
 
-<%@include file="includes/footer.jsp"%>
+<%@include file="../includes/footer.jsp"%>
 
 

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +61,7 @@
           </ul>
 
           <div class="ml-auto">
-            <a href="#" class="btn btn-outline rounded-pill">Sign in</a>
+            <a href="#" class="btn btn-outline rounded-pill">로그인</a>
           </div>
         </div>
       </div>
@@ -76,12 +80,39 @@
         </nav>
         
         <div class="row">
-          <div class="col-lg-8">  
+          <div class="col-lg-8">
+            <div class="blog-single-wrap">
+				<c:forEach items='${review}' var="product" varStatus="status">
+	
+		              <div class="post-content">
+		                <blockquote class="quote">
+			           	 <ul>
+			           	 	 <li><c:out value="브랜드 : ${product.brand}" />   
+				           	 <li><c:out value="상품명 : ${product.name}" /></td>
+				           	 <li><c:out value="배송타입 : ${product.delivery_type}배송" /></td>
+				      	     <li><c:out value="작성일 : ${product.reviewList[0].review_date}" />
+			           	 </ul>
+		                <span class="author"></span>
+		                </blockquote>
+		                <img alt="" style="margin:20px" src="<c:out value="${product.img_url}" />">
+		                <p><c:out value="${product.reviewList[0].contents} 또 먹고싶은 맛이에요. 해장으로 딱이고, 매운거 좋아하는 사람한테 딱입니다.
+		                	원래 댓글같은거 잘 안남기는데 이번에는 가격도 착하고, 맛도 너무 있어서 처음으로 리뷰 남겨요^^" /></p>
+		              </div>
+	              </c:forEach>
+            </div>
+  
             <div class="comment-form-wrap pt-5">
-              <h2 class="mb-5">리뷰 작성</h2>
+              <h2 class="mb-5">댓글 남기기</h2>
               <form action="#" class="">
                 <div class="form-row form-group">
-                  
+                  <div class="col-md-6">
+                    <label for="name">아이디 *</label>
+                    <input type="text" class="form-control" id="name">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="email">Email *</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
                 </div>
    
                 <div class="form-group">
@@ -89,7 +120,7 @@
                   <textarea name="msg" id="message" cols="30" rows="8" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                  <input type="submit" value="리뷰 등록" class="btn btn-primary">
+                  <input type="submit" value="댓글 등록" class="btn btn-primary">
                 </div>
     
               </form>
