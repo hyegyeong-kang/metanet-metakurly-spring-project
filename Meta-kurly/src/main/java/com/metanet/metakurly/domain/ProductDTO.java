@@ -1,6 +1,8 @@
 
 package com.metanet.metakurly.domain;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -23,5 +25,7 @@ public class ProductDTO {
 	private String img_url;
 	
 	private String status; // '판매 중지', '판매' 
+	
+	private List<ReviewDTO> reviewList;
 	
 }
