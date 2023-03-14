@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.metanet.metakurly.domain.ProductDTO;
 import com.metanet.metakurly.domain.ReviewDTO;
 
 import lombok.extern.log4j.Log4j;
@@ -17,37 +18,41 @@ public class ReviewServiceTests {
 	
 	@Autowired
 	ReviewService service;
-	
-	@Test
-	public void testGetMyReview() {
-		
-		service.getMyReviewList(1).forEach(review -> log.info(review));
-	}
+//	
+//	@Test
+//	public void testGetMyReview() {
+//		
+//		service.getMyReviewList(1).forEach(review -> log.info(review));
+//	}
  
 	
-//	// ½ÇÆÐ
+//	// ï¿½ï¿½ï¿½ï¿½
 //	@Test
 //	public void testRegister() {
 //		ReviewDTO review = new ReviewDTO();
-//		review.setContents("¸ÀÀÖ¾î¿ä..");
+//		review.setContents("ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½..");
 //		review.setM_id(2L);
 //		review.setP_id(1L);
 //		
 //		service.register(review);
 //		
-//		//log.info("»ý¼ºµÈ °Ô½Ã¹°ÀÇ ¹øÈ£:" + review.getR_id());
+//		//log.info("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½È£:" + review.getR_id());
 //	}
 	
 	
-//	@Test  // ¼º°ø
+//	@Test  // ï¿½ï¿½ï¿½ï¿½
 //	public void testUpdateReview() {
 //		ReviewDTO review = new ReviewDTO();
-//		review.setContents("¼­ºñ½º ¾÷µ¥ÀÌÆ® Å×½ºÆ®");
+//		review.setContents("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½×½ï¿½Æ®");
 //		review.setM_id(1L);
 //		review.setP_id(1L);
-//		
 //		service.updateReview(review);
 //	}
+	
+	@Test
+	public void testGetProductReviewList() {
+		log.info("ê²°ê³¼ : " + service.getProductReviewList(3L));
+	}
 
 	
 }

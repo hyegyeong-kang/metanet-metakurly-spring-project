@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.metanet.metakurly.domain.ProductDTO;
 import com.metanet.metakurly.domain.ReviewDTO;
 import com.metanet.metakurly.mapper.ReviewMapper;
 
@@ -15,27 +16,26 @@ public class ReviewServiceImpl implements ReviewService {
 	@Autowired
 	private ReviewMapper mapper;
 
-	// ³»°¡ ÀÛ¼ºÇÑ ¸®ºä ¸®½ºÆ® °¡Á®¿À±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public List<ReviewDTO> getMyReviewList(int u_id) {
 		return mapper.getMyReviewList(u_id);
 	}
 	
-	// Æ¯Á¤ »óÇ°¿¡ ÇØ´çÇÏ´Â ¸®ºä ¸®½ºÆ® °¡Á®¿À±â
+	// Æ¯ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@Override
-	public List<ReviewDTO> getProductReviewList(Long p_id) {
+	public List<ProductDTO> getProductReviewList(Long p_id) {
 		return mapper.getProductReviewList(p_id);
-	}
+	}	
 		
-		
-	// ³»°¡ ±¸¸ÅÇÑ »óÇ° ¸®ºä ÀÛ¼ºÇÏ±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ï±ï¿½
 	@Override
 	public void registerReview(ReviewDTO review) {
 		mapper.registerReview(review);
 	}
 	
 	
-	// ³»°¡ ¾´ ¸®ºä °¹¼ö °¡Á®¿À±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public int totalMyReviewList(int memberUid) {
 		// TODO Auto-generated method stub
@@ -43,14 +43,14 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	
-	// ³»°¡ ±¸¸ÅÇÑ »óÇ° ¸®ºä ¼öÁ¤ÇÏ±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 	@Override
 	public boolean updateReview(ReviewDTO review) {
 		return mapper.updateReview(review) == 1;
 	}
 
 	
-	// ³»°¡ ±¸¸ÅÇØ¼­ ÀÛ¼ºÇÑ ¸®ºä »èÁ¦ÇÏ±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 	@Override
 	public boolean deleteReview(ReviewDTO review) {
 		return mapper.deleteReview(review);
