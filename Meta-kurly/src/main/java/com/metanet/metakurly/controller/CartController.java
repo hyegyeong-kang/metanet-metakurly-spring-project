@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.metanet.metakurly.domain.CartDTO;
 import com.metanet.metakurly.domain.MemberDAO;
@@ -23,18 +25,21 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Controller
-@RequestMapping("/cart")
+@RequestMapping("/cart/*")
 @AllArgsConstructor
 @Log4j
 public class CartController {
 	
 	private CartService service;
 
-	// ï¿½ï¿½ ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
-	@GetMapping("/cartList/{m_id}")
-	public String getCartList(@PathVariable("m_id") Long m_id, Model model, HttpServletRequest request) throws Exception {
-		log.info("!!cartList!!" + m_id);
-		//HttpSession session = request.getSession();
+	//@GetMapping("/cartList")
+	//@RequestMapping("/cartList/{m_id}")
+	@RequestMapping(value="/cartList", method = {RequestMethod.GET, RequestMethod.POST})
+	public String getCartList(Model model, HttpSession session) throws Exception {
+		//log.info("!!cartList!!" + m_id);
+		MemberDTO member = (MemberDTO) session.getAttribute("member");
+		Long m_id = member.getM_id();
+		
 		
 		List<CartDTO> cartList = service.getMyCartList(m_id);
 
@@ -43,29 +48,36 @@ public class CartController {
 		return "/cart";
 	}
 	
-	@GetMapping("/cartAdd")
-	public String addCart(@PathVariable("m_id")Long m_id, HttpServletRequest request, Model model, @RequestParam Long p_id, @RequestParam int quantity) throws Exception {
-		//Long userId = (Long) session.getAttribute("member");
-		HttpSession session = request.getSession();
-		MemberDTO mvo = (MemberDTO)session.getAttribute("member");
-
-		if(mvo == null) {
-			return "5";
-		}
+	
+	@PostMapping("/cartAdd")
+	//@RequestMapping(value="/cartAdd", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public String addCart(HttpSession session, Model model, @RequestParam("p_id") Long p_id, @RequestParam("quantity") int quantity) throws Exception {
+		MemberDTO member = (MemberDTO) session.getAttribute("member");
+		Long m_id = member.getM_id();
+		
+		log.info("add!!!!!!!!!!");
+		CartDTO cart = new CartDTO();
 		
 		if (service.checkCart(p_id, m_id) > 0) { 
-			CartDTO cart = new CartDTO();
+			
 			cart.setM_id(m_id);
 			cart.setP_id(p_id);
 			cart.setQuantity(quantity);
 			
 			service.updateCount(cart);
 		} else {
-			model.addAttribute("memberId", m_id);
-			model.addAttribute("productId", p_id);
-			model.addAttribute("quantity", quantity);
+//			model.addAttribute("memberId", m_id);
+//			model.addAttribute("productId", p_id);
+//			model.addAttribute("quantity", quantity);
+			
+			cart.setM_id(m_id);
+			cart.setP_id(p_id);
+			cart.setQuantity(quantity);
+
+			service.addCart(cart);
 		}
-		return "/cart/cartList" + m_id;
+		return "redirect:/cart/cartList";
 	}
 	
 	@GetMapping("/cartDelete")
@@ -83,10 +95,13 @@ public class CartController {
 		return "redirect: /cart/cartList" + m_id;
 	}
 	
-//	@PostMapping("/cartUpdate")
-//	public String updateCart(HttpSession session, Model model,  ) {
-//		service.updateCart(null, null, 0)
-//	}
+	// ¹°°Ç ¼ö·® º¯°æÇØÁÖ´Â °Í 
+	@PostMapping("/cartUpdate")
+	public String updateCart(HttpSession session, Model model, Long p_id, int quantity) {
+		Long m_id = (Long) session.getAttribute("member");
+		service.updateCart(p_id, m_id, quantity);
+		return "redirect: /cart/cartUpdate";
+	}
 	
 	
 
