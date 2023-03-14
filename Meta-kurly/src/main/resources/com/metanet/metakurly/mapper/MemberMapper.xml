@@ -21,34 +21,25 @@
  		from member
  		where userid = #{userId}
  	</select>
- 	
- 	<select id="infoMember" resultType="com.metanet.metakurly.domain.MemberDTO">
- 		select *
- 		from member
- 		where userid = #{userId}
- 		and password = #{password}
- 	</select>
 
-	<update id="modify" parameterType="com.metanet.metakurly.domain.MemberDTO">
+	<update id="modify">
 		update member
-		set userid = #{userId},
-		password = #{password},
+		set password = #{password},
 		name = #{name},
 		email= #{email},
 		phone= #{phone},
-		address = #{address},
-		where m_id = #{m_id}
+		address = #{address}
+		where m_id = #{m_id, jdbcType=VARCHAR}
 	</update>
 	
-	<update id="delete" parameterType="com.metanet.metakurly.domain.MemberDTO">
+	<update id="delete">
 		update member
 		set status = #{status}
-		where userid = #{userId}
-		and password = #{password}
+		where m_id = #{m_id}
 	</update>
  
  
- 	<insert id="signUpSelectKey">
+<!--  	<insert id="signUpSelectKey">
 
 		<selectKey keyProperty="m_id" order="BEFORE"
 			resultType="long">
@@ -57,7 +48,7 @@
 
 		insert into member (m_id, userid, password, name, email, phone, address)
 		values (#{m_id}, #{userId}, #{password}, #{name}, #{email}, #{phone}, #{address})
-	</insert>
+	</insert> -->
  
  
  

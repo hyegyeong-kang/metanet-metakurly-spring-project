@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,7 +62,7 @@ public class MemberController {
 		HttpSession session = request.getSession();
 		String rawPw = "";
 		String encodePw = "";
-		
+	
 		MemberDTO dto = service.login(member);
 		
 		if(dto != null) {
@@ -93,13 +94,59 @@ public class MemberController {
 	}
 	
 	@GetMapping("/modify")
+	@PreAuthorize("isAuthenticated()")
 	public void modify() {}
 	
 	@PostMapping("/modify")
+	@PreAuthorize("isAuthenticated()")
 	public String modify(MemberDTO member) throws Exception {
+		
+		String rawPw = "";
+		String encodePw = "";
+		
+		rawPw = member.getPassword();
+		encodePw = pwEncoder.encode(rawPw);
+		member.setPassword(encodePw);
+		
 		service.modify(member);
-		return "redirect:/member/login";
+		
+		return "redirect:/member/modify";
 	}
 	
+	@GetMapping("/delete")
+	@PreAuthorize("isAuthenticated()")
+	public void delete() {}
+	
+	@PostMapping("/delete")
+	@PreAuthorize("isAuthenticated()")
+	public String delete(HttpServletRequest request, MemberDTO member, RedirectAttributes rttr) throws Exception {
+		
+		HttpSession session = request.getSession();
+		String rawPw = "";
+		String encodePw = "";
+		
+		service.delete(member);
+		
+		if(member != null) {
+			
+			rawPw = member.getPassword();
+			//encodePw = dto.getPassword();
+			
+			if(true == pwEncoder.matches(rawPw, encodePw)) {
+				member.setStatus("deleted");
+				session.setAttribute("member", member);
+				session.invalidate();
+				return "redirect:/member/";
+			} else {
+				rttr.addFlashAttribute("result", 0);
+				return "redirect:/member/delete";
+			}
+			
+		} else {
+			rttr.addFlashAttribute("result", 0);
+			return "redirect:/member/delete";
+		}
+	
+	}
 	
 }

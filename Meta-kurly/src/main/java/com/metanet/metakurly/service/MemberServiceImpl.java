@@ -42,8 +42,14 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public MemberDTO modify(MemberDTO member) {
+	public int modify(MemberDTO member) throws Exception {
 		return mapper.modify(member);
 	}
+	
+	//회원 탈퇴
+	public void delete(MemberDTO member) throws Exception {
+		mapper.delete(member);
+	}
+
 		
 }

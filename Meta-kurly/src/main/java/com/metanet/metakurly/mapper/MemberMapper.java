@@ -10,19 +10,18 @@ import com.metanet.metakurly.domain.MemberDTO;
 
 public interface MemberMapper {
 	
-	//@Select("select * from member")
-	public List<MemberDTO> getList();
-	
 	//회원 등록
 	public int signUp(MemberDTO member);
 	
 	//로그인
 	public MemberDTO login(MemberDTO member) throws Exception;
 	
-	//로그인 정보
-	public MemberDTO infoMember(MemberDTO member);
+	//로그아웃
+	public void logout(HttpSession session);
 	
-	public MemberDTO modify(MemberDTO member);
+	//회원정보 수정
+	public int modify(MemberDTO member) throws Exception;
 	
-	public void signUpSelectKey(MemberDTO member);
+	//회원 탈퇴
+	public void delete(MemberDTO member) throws Exception;
 }
