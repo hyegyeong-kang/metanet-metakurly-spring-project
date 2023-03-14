@@ -106,7 +106,7 @@ public class OrderController {
 	
 	@PostMapping("/payment")
 //	public String payment(OrderDTO order) {
-	public String payment(HttpSession session, @RequestParam String deliveryMsg, @RequestParam Long p_id, OrderDTO order, PaymentDTO payment, Model model) {
+	public String payment(HttpSession session, @RequestParam String deliveryMsg, @RequestParam Long p_id, @RequestParam int usePoint, OrderDTO order, PaymentDTO payment, Model model) {
 		//service.addOrder(order, payment);
 		/*
 		 * log.info("order!!! " + order.getTotal_amount()); log.info("order!!! " +
@@ -115,17 +115,20 @@ public class OrderController {
 		 * deliveryMsg);
 		 */
 		MemberDTO member = (MemberDTO)session.getAttribute("member");
-		order.setM_id(member.getM_id());
+		OrderDTO dto = service.getOrder(member.getM_id(), p_id);
 		
-		List<OrderDetailDTO> list = new ArrayList<>();
-		list.add(new OrderDetailDTO());
-		list.get(0).setP_id(p_id);
-		order.setOrderDetailList(list);
-		service.addOrder(order, payment);
+		//List<OrderDetailDTO> list = new ArrayList<>();
+		dto.setOrderDetailList(service.getOrderDetailList(dto.getO_id()).getOrderDetailList());
+		//list.get(0).setP_id(p_id);
+		//order.setOrderDetailList(list);
+		service.addOrder(dto, payment);
 		//model.addAttribute(", model)
-		log.info(order);
-		model.addAttribute("order", order);
+		log.info("dto!! " + dto);
+		log.info("payment@@ " + payment);
+		model.addAttribute("order", dto);
 		model.addAttribute("payment", payment);
+		model.addAttribute("msg", deliveryMsg);
+		model.addAttribute("usePoint", usePoint);
 		
 		return "/orders/success";
 	}

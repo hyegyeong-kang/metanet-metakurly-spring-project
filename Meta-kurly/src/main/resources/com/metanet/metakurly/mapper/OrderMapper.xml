@@ -9,6 +9,11 @@
 		]]>
 	</select>
 	
+	<!-- 특정 회원의 특정 주문 보기 -->
+	<select id="getOrder" resultType="com.metanet.metakurly.domain.OrderDTO">
+		select * from orders where m_id = #{m_id} and o_id = #{o_id}
+	</select>
+	
 	<!-- 특정 주문의 상세 보기 -->
 	<resultMap type="com.metanet.metakurly.domain.OrderDTO" id="orderMap">
 		<result property="o_id" column="o_id"/>

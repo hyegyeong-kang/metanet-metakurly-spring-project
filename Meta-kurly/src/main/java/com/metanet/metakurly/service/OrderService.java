@@ -8,6 +8,8 @@ import com.metanet.metakurly.domain.PaymentDTO;
 
 public interface OrderService {
 	
+	public OrderDTO getOrder(Long m_id, Long o_id);
+	
 	public OrderDTO getOrderDetailList(Long o_id);
 	
 	public List<OrderDTO> getOrderList(Long m_id);

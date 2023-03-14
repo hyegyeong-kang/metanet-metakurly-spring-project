@@ -6,7 +6,9 @@ import com.metanet.metakurly.domain.OrderDTO;
 import com.metanet.metakurly.domain.OrderProductDTO;
 
 public interface OrderMapper {
-
+	
+	public OrderDTO getOrder(Long m_id, Long o_id);
+	
 	public List<OrderDTO> getOrderList(Long m_id);
 
 	public OrderDTO getOrderDetail(Long o_id);

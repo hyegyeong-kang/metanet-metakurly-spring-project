@@ -94,4 +94,9 @@ public class OrderServiceImpl implements OrderService {
 		return paymentMapper.getPayment(o_id);
 	}
 
+	@Override
+	public OrderDTO getOrder(Long m_id, Long o_id) {
+		return mapper.getOrder(m_id, o_id);
+	}
+
 }
