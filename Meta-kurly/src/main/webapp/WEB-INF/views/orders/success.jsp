@@ -21,7 +21,7 @@
 				</div>
 				<a target="_blank"
 					style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-: 22px; font-family: '맑은고딕', 'malgun gothic', 'dotum', sans-serif; letter-spacing: -1px; display: inline-block; min-: 135px; :40 px; margin: 19px 0 0; padding: 8px 15px 0; border-radius: 5px; border: 0; background: #babc00; color: #fff; font-size: 16px; line-: 22px; letter-spacing: -1px; font-family: 'nanumbarungothicbold'; font-weight: bold; cursor: pointer; text-decoration: none; text-align: center;"
-					href="https://m.oliveyoung.co.kr/m/mypage/getOrderDetail.do?ordNo=Y1706060474490">주문내역조회</a>
+					href="/orders/detail/${order.o_id}">주문내역조회</a>
 			</div>
 		</div>
 
@@ -81,10 +81,13 @@
 			<div style="overflow: hidden; margin: 0 20px;">
 				<a target="_blank"
 					style="float: left; :70 px; :70 px; margin: 20px 0;"
-					href="https://m.oliveyoung.co.kr/m/goods/getGoodsDetail.do?goodsNo=A000000007088"><img
+					href="" id="productImg"><img
 					style="border: 0; width: 70px; height: 70px;"
 					src="<c:out value='${detail.productDTO.img_url}'/>"
 					alt=""></a>
+					<form action="/product/detail" method="get" id="getForm">
+						<input type="hidden" name="p_id" value="${detail.p_id}"/>
+					</form>
 				<div
 					style="float: left; width: 68%; margin: 0 0 0 15px; padding: 17px 0 15px;">
 					<a target="_blank"
@@ -265,3 +268,10 @@
 
 <%@include file="../includes/footer.jsp"%>
 
+<script>
+$("#productImg").click(function(){
+	$("#getForm").submit();
+	
+	return false;
+});
+</script>

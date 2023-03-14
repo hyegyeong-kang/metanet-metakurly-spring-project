@@ -173,7 +173,6 @@
 		<form id="postForm" action="/orders/order" method="post">
 			<input type="hidden" name="p_id" value="${product.p_id}"/>
 			<input type="hidden" id="quantityInput" name="quantity" value=""/>
-			<button id="cancelBtn">구매하기</button>
 		</form>
 
   </main>
