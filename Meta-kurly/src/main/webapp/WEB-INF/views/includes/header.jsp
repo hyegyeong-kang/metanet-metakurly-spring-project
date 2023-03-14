@@ -46,13 +46,13 @@
 					<ul class="navbar-nav ml-lg-4 pt-3 pt-lg-0">
 						<li class="nav-item"><a href="/" class="nav-link">Home</a>
 						</li>
-						<li class="nav-item active"><a href="bestProductList.html"
+						<li class="nav-item active"><a href="/product/bestProduct"
 							class="nav-link">Best</a></li>
-						<li class="nav-item"><a href="productList.html"
+						<li class="nav-item"><a href="/product/list"
 							class="nav-link">Products</a></li>
 						<li class="nav-item"><a href="qnaList.html" class="nav-link">Q&A</a>
 						</li>
-						<li class="nav-item"><a href="myPage.html" class="nav-link">MyPage</a>
+						<li class="nav-item"><a href="/member/myPage" class="nav-link">MyPage</a>
 						</li>
 					</ul>
 

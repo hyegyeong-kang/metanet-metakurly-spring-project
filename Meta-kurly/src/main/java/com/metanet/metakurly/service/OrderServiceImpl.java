@@ -65,19 +65,28 @@ public class OrderServiceImpl implements OrderService {
 		return mapper.cancelOrder(o_id);
 	}
 
+//	@Override
+//	public List<OrderProductDTO> getProductInfo(List<OrderProductDTO> orderProducts) {
+//		List<OrderProductDTO> order = new ArrayList<>();
+//		
+//		log.info("$$$$$$$ " + orderProducts);
+//		for(OrderProductDTO product : orderProducts) {
+//			OrderProductDTO orderProduct = mapper.getProductInfo(product.getP_id());
+//			orderProduct.setQuantity(product.getQuantity());
+//			orderProduct.init();
+//			order.add(orderProduct);
+//		}
+//		
+//		return order;
+//	}
+	
 	@Override
-	public List<OrderProductDTO> getProductInfo(List<OrderProductDTO> orderProducts) {
-		List<OrderProductDTO> order = new ArrayList<>();
-		
-		log.info("$$$$$$$ " + orderProducts);
-		for(OrderProductDTO product : orderProducts) {
-			OrderProductDTO orderProduct = mapper.getProductInfo(product.getP_id());
-			orderProduct.setQuantity(product.getQuantity());
-			orderProduct.init();
-			order.add(orderProduct);
-		}
-		
-		return order;
+	public OrderProductDTO getProductInfo(OrderProductDTO orderProduct) {
+		OrderProductDTO dto = mapper.getProductInfo(orderProduct.getP_id());
+		dto.setQuantity(orderProduct.getQuantity());
+		dto.init();
+
+		return dto;
 	}
 
 	@Override

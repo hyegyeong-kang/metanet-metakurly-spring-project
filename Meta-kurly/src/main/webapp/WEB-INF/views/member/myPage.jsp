@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@include file="includes/header.jsp"%>
+<%@include file="../includes/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/productList/product.css">
 
     <div class="container mt-5">
@@ -10,8 +10,8 @@
           <div class="col-md-6">
             <nav aria-label="Breadcrumb">
               <ul class="breadcrumb justify-content-center py-0 bg-transparent">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">kosa님의 마이페이지 입니다.</li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active"><c:out value="${member.name}"/>님의 마이페이지 입니다.</li>
               </ul>
             </nav>
             <h1 class="text-center">MyPage</h1>
@@ -68,4 +68,4 @@
     </div> <!-- .page-section -->
   </main>
 
-<%@include file="includes/footer.jsp"%>
+<%@include file="../includes/footer.jsp"%>

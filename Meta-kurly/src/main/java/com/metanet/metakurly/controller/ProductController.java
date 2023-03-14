@@ -28,9 +28,10 @@ public class ProductController {
 	private ReviewService rService;
 
 	@GetMapping("/list")
-	public void list(Model model) {
+	public String list(Model model) {
 		log.info("list");
 		model.addAttribute("list", service.getList());
+		return "productList";
 	}
 
 	@GetMapping("/detail")

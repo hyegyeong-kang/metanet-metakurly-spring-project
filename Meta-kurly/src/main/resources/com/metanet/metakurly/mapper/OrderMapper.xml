@@ -38,10 +38,11 @@
 		<result property="brand" column="brand"/>
 		<result property="price" column="productprice"/>
 		<result property="name" column="name"/>
+		<result property="img_url" column="img_url"/>
 	</resultMap>
 	
 	<select id="getOrderDetail" resultMap="orderMap">
-		select o.o_id, o.orders_date, o.status, o.total_amount, o.price as orderprice, o.m_id, od.quantity, p.p_id, p.brand, p.name, (p.price * od.quantity) as productprice
+		select o.o_id, o.orders_date, o.status, o.total_amount, o.price as orderprice, o.m_id, od.quantity, p.p_id, p.brand, p.name, (p.price * od.quantity) as productprice, p.img_url
     	from orders o
 			join orders_detail od on o.o_id = od.o_id
 			join product p on od.p_id = p.p_id

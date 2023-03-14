@@ -78,14 +78,17 @@
 			style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; word-spacing: -2px; margin: 0 20px; padding: 25px 0 9px; border-bottom: 2px solid #666; color: #333; font-size: 16px; font-weight: bold;">
 			주문상품</div>
 
-	 	<c:forEach items="${products}" var="product">
+	 	<%-- <c:forEach items="${products}" var="product"> --%>
 			<div style="overflow: hidden; margin: 0 20px;">
 				<a target="_blank"
 					style="float: left; :70 px; :70 px; margin: 20px 0;"
-					href="https://m.oliveyoung.co.kr/m/goods/getGoodsDetail.do?goodsNo=A000000007088"><img
+					href="/product/detail" id="productImg"><img
 					style="border: 0; width: 70px; height: 70px;"
 					src="<c:out value='${product.img_url}'/>"
 					alt=""></a>
+					<form action="/product/detail" method="get" id="getForm">
+						<input type="hidden" name="p_id" value="${product.p_id}"/>
+					</form>
 				<div
 					style="float: left; width: 68%; margin: 0 0 0 15px; padding: 17px 0 15px;">
 					<a target="_blank"
@@ -111,7 +114,7 @@
 				</div>
 			</div>
 
-	 </c:forEach> 
+	 <%-- </c:forEach>  --%>
 		
 
 
@@ -166,8 +169,8 @@
 					style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; overflow: hidden; padding: 6px 0 7px;">
 					<strong
 						style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; float: left; font-weight: normal;">
-						사용 포인트 </strong>
-						<span id="errorMsg" style="visibility: hidden">입력한 포인트를 사용할 수 없습니다</span>
+						사용 포인트 </strong><br>
+						<div id="errorMsg" style="visibility: hidden">입력한 포인트를 사용할 수 없습니다</div>
 						<span
 						style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; float: right; color: #f47330; font-weight: bold; font-size: 16px; letter-spacing: 0;">
 						<input type="text" name="usePoint" id="usePointNum" style="width: 93%" value="0"><em
@@ -226,11 +229,12 @@
 <script type="text/javascript">
 	$("#usePointNum").change(function(e){
 		var usePoint = $(this).val();
-
-		var price = ${product.totalPrice};
-		if(usePoint > price){
+		
+		var price = 0;
+		price = ${product.totalPrice};
+		if(usePoint > price || usePoint > ${member.point}){
 			$("#errorMsg").css("visibility", "visible");
-			$(this).val("");
+			$(this).val("0");
 		}
 		else{
 			$("#errorMsg").css("visibility", "hidden");
@@ -253,5 +257,11 @@
 		
 		$("#paymentForm").submit();
 		
+	});
+	
+	$("#productImg").click(function(){
+		$("#getForm").submit();
+		
+		return false;
 	});
 </script>
