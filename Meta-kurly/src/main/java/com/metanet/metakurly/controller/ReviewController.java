@@ -20,34 +20,17 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/review")
 @Log4j
 public class ReviewController {
 	
-	private final MemberService memberService;
-	private final ReviewService reviewService;
- // , @RequestParam(defaultValue = "1") int page
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String myOrderList(Model model, HttpSession session) {
-		
-		int sessionId = Integer.parseInt(session.getAttribute("sessionId").toString());
-		
-	//	Member member = memberService.findMember(sessionId); // 세션값을 이용해 회원 찾기
-		
-		List<ReviewDTO> reviewList = reviewService.getMyReviewList(sessionId);
-		
-		model.addAttribute("reviewList", reviewList);
-		
-		return "qnaList";
+	@GetMapping("")
+	public String showReview() {
+		return "review";
 	}
 	
-	
-//	@GetMapping("/product/review")
-//	public String review(Model model, HttpSession session, @RequestParam(defaultValue = "1") int page) {
-//		
-//		model.addAttribute("sessionId", session.getAttribute("sessionId"));
-//		
-//		List<ReviewDTO> reviewList = reviewService.findReviewList()
-//		
-//		return "product/review";
-//	}
+	@GetMapping("/{reviewIdx}")
+	public String showReviewDetail() {
+		return "reviewDetail";
+	}
 }

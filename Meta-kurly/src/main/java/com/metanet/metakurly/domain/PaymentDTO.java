@@ -3,11 +3,10 @@ package com.metanet.metakurly.domain;
 import lombok.Data;
 
 @Data
-public class OrderDetailDTO {
+public class PaymentDTO {
+	private Long payment_id;
 	private Long o_id;
-	private Long p_id;
-	private int quantity;
 	private Long m_id;
-	
-	private ProductDTO productDTO;
+	private String method;
+	private int payment_amount;
 }
