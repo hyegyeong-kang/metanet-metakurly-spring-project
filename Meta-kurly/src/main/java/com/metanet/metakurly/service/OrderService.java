@@ -8,7 +8,7 @@ import com.metanet.metakurly.domain.PaymentDTO;
 
 public interface OrderService {
 	
-	public OrderDTO getOrder(Long m_id, Long o_id);
+	public OrderDTO getOrder(Long o_id);
 	
 	public OrderDTO getOrderDetailList(Long o_id);
 	
@@ -16,9 +16,7 @@ public interface OrderService {
 	
 	public PaymentDTO getPayment(Long o_id);
 	
-	public List<OrderProductDTO> getProductsInfo(List<OrderProductDTO> orderProducts);
-	
-	public OrderProductDTO getProductInfo(OrderProductDTO orderProduct);
+	public List<OrderProductDTO> getProductInfo(List<OrderProductDTO> orderProducts);
 	
 	public void addOrder(OrderDTO order, PaymentDTO payment);
 	//public void addOrder(OrderProductDTO orderProduct);

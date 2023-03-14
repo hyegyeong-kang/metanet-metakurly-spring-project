@@ -11,7 +11,7 @@
 	
 	<!-- 특정 회원의 특정 주문 보기 -->
 	<select id="getOrder" resultType="com.metanet.metakurly.domain.OrderDTO">
-		select * from orders where m_id = #{m_id} and o_id = #{o_id}
+		select * from orders where o_id = #{o_id}
 	</select>
 	
 	<!-- 특정 주문의 상세 보기 -->
@@ -51,7 +51,7 @@
 	<!-- 특정 회원의 주문하기 -->
 	<!-- 주문 생성 -->
 	<insert id="createOrder">
-		insert into orders(o_id, orders_date, total_amount, price, m_id) values(#{o_id}, sysdate, #{total_amount}, #{price}, #{m_id})
+		insert into orders values(#{o_id}, sysdate, '결제완료', #{total_amount}, #{price}, #{m_id})
 		<selectKey keyProperty="o_id" order="BEFORE" resultType="long">
 			select orders_seq.nextval from dual
 		</selectKey>
