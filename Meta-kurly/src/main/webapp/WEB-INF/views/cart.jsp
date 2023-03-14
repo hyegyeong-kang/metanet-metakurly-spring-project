@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@include file="includes/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/productList/product.css">
@@ -26,45 +29,13 @@
                     <div class="del_btn">삭제 (<span class="num">0</span>)</div>
                 </li>
                 
-                
-               		<c:forEach items="${list}" var="cart">
-               		<li>
-						 	<tr> 
-							<td class="td_width cart_info_td"> 
-							<div class="checkbox">
-								<input type="checkbox" id="chk_list" name="chk_list" value="list" class="cart_checkbox" checked="checked"/>
-								<label for="item_chk01"></label>
-                    		</div>
-                    		<div class="item_detail">
-								<input type="hidden" class="individual_price_input" value="${cart.productList[0].name}">
-								<input type="hidden" class="individual_count_input" value="${cart.quantity}">
-							</div>
-							<div class="opt_info">
-								<input type="hidden" class="individual_totalPrice_input" value="${cart.productList[0].price}">
-								<div class="price_btn">
-		                            <input type="button" value="-" class="minus_btn">
-		                            <input type="text" value="1" class="number">
-		                            <input type="button" value="+" class="plus_btn">
-		                        </div>
-							</div>
-								<div class="total_p">
-	                            <strong class="price_amount">20,000</strong>원
-	                            <span class="del_li_btn"><img src="https://tictoc-web.s3.ap-northeast-2.amazonaws.com/web/img/icon/btn_del_circle.svg"></span>
-	                        	</div>
-							</td> 
-							 </tr> 
-							</li>
-					</c:forEach>
-                
-                
-                
+                <c:forEach items="${list}" var="cart">
                 <li>
                     <div class="checkbox">
                         <input type="checkbox" name="item_chk" id="item_chk01">
                         <label for="item_chk01"></label>
                     </div>
                     <div class="item_detail">
-                    	<c:forEach items="${list}" var="cart">
 							<tr>
 							<td class="td_width cart_info_td">
 								<input type="checkbox" id="chk_list" name="chk_list" value="list" class="cart_checkbox" checked="checked"/>
@@ -73,13 +44,12 @@
 								<input type="hidden" class="individual_count_input" value="${cart.quantity}">
 							</td>
 							</tr>
-						</c:forEach>
                         <img src="https://tictoc-web.s3.ap-northeast-2.amazonaws.com/img/shop/detail_thumb_s_01.jpg">
-                        <p class="name"><strong>모바일 상품권</strong></p>
+                        <p class="name" ><strong><c:out value="${cart.productList[0].name}"></c:out></strong></p>
                         <p class="txt">A. 3만원권,남편과의 데이트</p>
                     </div>
                     <div class="opt_info">
-                        <strong class="price_unit">10,000</strong>원
+                        <strong class="price_unit"><c:out value="${cart.productList[0].price}"></c:out></strong>원
                         <div class="price_btn">
                             <input type="button" value="-" class="minus_btn">
                             <input type="text" value="1" class="number">
@@ -91,31 +61,7 @@
                         </div>
                     </div>
                 </li>
-
-                <li>
-                    <div class="checkbox">
-                        <input type="checkbox" name="item_chk" id="item_chk02">
-                        <label for="item_chk02"></label>
-                    </div>
-                    <div class="item_detail">
-                        <img src="https://tictoc-web.s3.ap-northeast-2.amazonaws.com/img/shop/detail_thumb_s_01.jpg">
-                        <p class="name"><strong>모바일 상품권</strong></p>
-                        <p class="txt">A. 3만원권,남편과의 데이트</p>
-                    </div>
-                    <div class="opt_info">
-                        <strong class="price_unit">20,000</strong>원
-                        <div class="price_btn">
-                            <input type="button" value="-" class="minus_btn">
-                            <input type="text" value="1" class="number">
-                            <input type="button" value="+" class="plus_btn">
-                        </div>
-                        <div class="total_p">
-                            <strong class="price_amount">20,000</strong>원
-                            <span class="del_li_btn"><img src="https://tictoc-web.s3.ap-northeast-2.amazonaws.com/web/img/icon/btn_del_circle.svg"></span>
-                        </div>
-                    </div>
-
-                </li>
+                </c:forEach>
             </ul>
 
             <div class="cart_total_area">
