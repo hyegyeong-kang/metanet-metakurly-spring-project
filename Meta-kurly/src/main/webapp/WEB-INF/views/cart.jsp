@@ -25,12 +25,55 @@
                     </div>
                     <div class="del_btn">삭제 (<span class="num">0</span>)</div>
                 </li>
+                
+                
+               		<c:forEach items="${list}" var="cart">
+               		<li>
+						 	<tr> 
+							<td class="td_width cart_info_td"> 
+							<div class="checkbox">
+								<input type="checkbox" id="chk_list" name="chk_list" value="list" class="cart_checkbox" checked="checked"/>
+								<label for="item_chk01"></label>
+                    		</div>
+                    		<div class="item_detail">
+								<input type="hidden" class="individual_price_input" value="${cart.productList[0].name}">
+								<input type="hidden" class="individual_count_input" value="${cart.quantity}">
+							</div>
+							<div class="opt_info">
+								<input type="hidden" class="individual_totalPrice_input" value="${cart.productList[0].price}">
+								<div class="price_btn">
+		                            <input type="button" value="-" class="minus_btn">
+		                            <input type="text" value="1" class="number">
+		                            <input type="button" value="+" class="plus_btn">
+		                        </div>
+							</div>
+								<div class="total_p">
+	                            <strong class="price_amount">20,000</strong>원
+	                            <span class="del_li_btn"><img src="https://tictoc-web.s3.ap-northeast-2.amazonaws.com/web/img/icon/btn_del_circle.svg"></span>
+	                        	</div>
+							</td> 
+							 </tr> 
+							</li>
+					</c:forEach>
+                
+                
+                
                 <li>
                     <div class="checkbox">
                         <input type="checkbox" name="item_chk" id="item_chk01">
                         <label for="item_chk01"></label>
                     </div>
                     <div class="item_detail">
+                    	<c:forEach items="${list}" var="cart">
+							<tr>
+							<td class="td_width cart_info_td">
+								<input type="checkbox" id="chk_list" name="chk_list" value="list" class="cart_checkbox" checked="checked"/>
+								<input type="hidden" class="individual_price_input" value="${cart.productList[0].name}">
+								<input type="hidden" class="individual_totalPrice_input" value="${cart.productList[0].price}">
+								<input type="hidden" class="individual_count_input" value="${cart.quantity}">
+							</td>
+							</tr>
+						</c:forEach>
                         <img src="https://tictoc-web.s3.ap-northeast-2.amazonaws.com/img/shop/detail_thumb_s_01.jpg">
                         <p class="name"><strong>모바일 상품권</strong></p>
                         <p class="txt">A. 3만원권,남편과의 데이트</p>
@@ -80,8 +123,6 @@
 
                 <div class="cart_total_price">
                     <p>총 상품금액 <strong class="item_price">60,000</strong>원 <span class="plus_ic"></span></p>
-                    <p>할인금액 <strong class="sale_price color-symbol">-10,000</strong>원 <span class="plus_ic"></span></p>
-                    <p>총 배송비 <strong class="delivery_price">2,500</strong>원 <span class="equal_ic"></span></p>
                     <p>총 결제금액 <strong class="total_price color-red">52,500</strong>원</p>
                 </div>
             </div>

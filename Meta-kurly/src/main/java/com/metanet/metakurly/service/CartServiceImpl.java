@@ -3,10 +3,13 @@ package com.metanet.metakurly.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.metanet.metakurly.domain.CartDTO;
 import com.metanet.metakurly.mapper.CartMapper;
 
+
+@Service
 public class CartServiceImpl implements CartService {
 	
 	@Autowired
@@ -41,7 +44,6 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public void deleteCart(Long p_id, Long m_id) {
 		mapper.deleteCart(p_id, m_id);
-		
 	}
 
 	
@@ -53,7 +55,7 @@ public class CartServiceImpl implements CartService {
 	
 	// 장바구니 물건 업데이트 (장바구니에서 수량변경하는 것)
 	@Override
-	public void updateCart(Long p_id, Long m_id, Long quantity) {
+	public void updateCart(Long p_id, Long m_id, int quantity) {
 		mapper.updateCart(p_id, m_id, quantity);
 	}
 

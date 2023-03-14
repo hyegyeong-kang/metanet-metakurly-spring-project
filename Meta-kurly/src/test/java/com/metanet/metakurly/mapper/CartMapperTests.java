@@ -28,23 +28,21 @@ public class CartMapperTests {
 //	public void testInsertCart() {
 //		CartDTO cart = new CartDTO();
 //		
-//		cart.setM_id(1L);
-//		cart.setP_id(1L);
-//		cart.setQuantity(1L);
-//		cart.setTotal_price(20000L);
+//		cart.setM_id(9L);
+//		cart.setP_id(9L);
+//		cart.setQuantity(6L);
 //		
 //		mapper.addCart(cart);
 //		
 //		log.info(cart);
 //	}
 	
-//	@Test	// success // 1 보다 크면 해당상품 장바구니에 있는 것
+//	@Test	// success // 1 蹂대떎 �겕硫� �빐�떦�긽�뭹 �옣諛붽뎄�땲�뿉 �엳�뒗 寃�
 //	public void testCheckCart() {
-//		log.info("3333333333");
-//		log.info("CHK: " + mapper.checkCart(1L, 3L));
+//		log.info("CHK: " + mapper.checkCart(5L, 3L));
 //	}
 	
-//	@Test	// fail
+//	@Test	// success
 //	public void testUpdateCount() {
 //		
 //		CartDTO cart = new CartDTO();
@@ -61,29 +59,25 @@ public class CartMapperTests {
 //	@Test // success
 //	public void testDeleteCart() {
 //		
-//		mapper.deleteCart(1L, 1L);
+//		log.info("ddd !!@!" + mapper.deleteCart(5L, 1L));
 //	}
 	
-//	@Test  //fail
+//	@Test  // success
 //	public void testDeleteAllCart() {
 //		
-//		mapper.deleteAllCart(3L);
+//		mapper.deleteAllCart(1L);
 //	}
 	
-//	@Test  // fail
+//	@Test  // success
 //	public void testUpdateCart() {
 //					
-//		mapper.updateCart(5L, 3L, 9L);
+//		mapper.updateCart(1L, 1L, 9L);
 //
 //	}
 	
-	@Test
-	public void testGetTotalPrice() {
-		log.info("TOTAL: " + mapper.getTotalPrice(3L));
-	}
+//	@Test  // success
+//	public void testGetTotalPrice() {
+//		log.info("TOTAL: " + mapper.getTotalPrice(1L));
+//	}
 	
-	
-	
-	
-
 }

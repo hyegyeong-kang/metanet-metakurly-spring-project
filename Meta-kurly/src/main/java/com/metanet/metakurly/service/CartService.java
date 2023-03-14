@@ -26,7 +26,7 @@ public interface CartService {
 	public void deleteAllCart(Long m_id);
 	
 	// 장바구니 물건 업데이트 (장바구니에서 수량변경하는 것)
-	public void updateCart(Long p_id, Long m_id, Long quantity);
+	public void updateCart(Long p_id, Long m_id, int quantity);
 	
 	// 해당 회원의 장바구니 전체 금액 출력
 	public Long getTotalPrice(Long m_id);
