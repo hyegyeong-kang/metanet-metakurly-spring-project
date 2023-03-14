@@ -20,7 +20,7 @@
 						완료</strong>되었습니다.
 				</div>
 				<a target="_blank"
-					style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-: 22px; font-family: '맑은고딕', 'malgun gothic', 'dotum', sans-serif; letter-spacing: -1px; display: inline-block; min-: 135px; :40 px; margin: 19px 0 0; padding: 8px 15px 0; border-radius: 5px; border: 0; background: #babc00; color: #fff; font-size: 16px; line-: 22px; letter-spacing: -1px; font-family: 'nanumbarungothicbold'; font-weight: bold; cursor: pointer; text-decoration: none; text-align: center;"
+					style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-: 22px; font-family: '맑은고딕', 'malgun gothic', 'dotum', sans-serif; letter-spacing: -1px; display: inline-block; min-: 135px; :40 px; margin: 19px 0 0; padding: 8px 15px 0; border-radius: 5px; border: 0; background: #7B68EE; color: #fff; font-size: 16px; line-: 22px; letter-spacing: -1px; font-family: 'nanumbarungothicbold'; font-weight: bold; cursor: pointer; text-decoration: none; text-align: center;"
 					href="/orders/detail/${order.o_id}">주문내역조회</a>
 			</div>
 		</div>
@@ -60,7 +60,7 @@
 							style="width: 120px; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; padding: 14px 0 16px 16px; line-height: 20px; text-align: left; font-weight: normal; vertical-align: top; background: #f6f6f6; border-bottom: 1px solid #e6e6e6;">주문번호</th>
 						<td
 							style="width: 558px; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; padding: 14px 0 16px 16px; line-height: 20px; color: #333; border-bottom: 1px solid #e6e6e6;"><strong
-							style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; color: #babc00; letter-spacing: 0;"><c:out value="${order.o_id}"/></strong></td>
+							style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-size: 14px; line-height: 22px; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; color: #7B68EE; letter-spacing: 0;"><c:out value="${order.o_id}"/></strong></td>
 					</tr>
 				</tbody>
 			</table>

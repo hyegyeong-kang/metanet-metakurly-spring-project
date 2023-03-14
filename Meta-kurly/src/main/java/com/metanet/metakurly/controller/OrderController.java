@@ -192,7 +192,7 @@ public class OrderController {
 		service.cancelOrder(o_id);
 		rttr.addFlashAttribute("o_id", o_id);
 
-		return "redirect:/orders/cancel";
+		return "redirect:/orders/detail/" + o_id;
 	}
 
 	@GetMapping("/cancel")
