@@ -12,11 +12,13 @@ public interface MemberService {
 	//로그인
 	public MemberDTO login(MemberDTO member) throws Exception;
 	
+	//로그아웃
 	public void logout(HttpSession session);
 	
-//	//로그인 정보
-//	public MemberDTO infoMember(MemberDTO member);
+	//회원정보 수정
+	public int modify(MemberDTO member) throws Exception;
 	
-	public MemberDTO modify(MemberDTO member);
+	//회원 탈퇴
+	public void delete(MemberDTO member) throws Exception;
 
 }

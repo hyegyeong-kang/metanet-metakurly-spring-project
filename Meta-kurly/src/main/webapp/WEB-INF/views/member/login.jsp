@@ -43,10 +43,8 @@
       	</c:if>
       </div>
 
-	  <label><input name="remember-me" type="checkbox">&nbsp;&nbsp;Remember Me</label>
-
   	  <button type="submit" id="submit">로그인</button>
-
+	  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     </form>
     
   
