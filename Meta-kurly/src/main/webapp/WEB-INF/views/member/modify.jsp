@@ -25,12 +25,12 @@
   
 	<div style="text-align:center"><h1>회원 정보 수정</h1></div>
 
-    <form action="${path}/member/modify" id="modifyForm" method="post">
-
+    <form action="${path}/member/modify" name="modifyForm" method="post">
+		<input type="hidden" name="m_id" value="${member.m_id}">
       <div>
         <div>아이디<span class="orange">&nbsp;*</span></div>
         <div>
-          <input name="userId" type="text" value="${member.userId}" disabled>
+          <input name="userId" type="text" value="${member.userId}" readonly="readonly">
         </div>
       </div>
 
@@ -52,7 +52,7 @@
       <div>
         <div>휴대폰<span class="orange">&nbsp;*</span></div>
         <div>
-          <input name="phone" type="text" placeholder="ex) 010-1234-5678" value="${member.phone}">
+          <input name="phone" type="text" placeholder="ex) 010-1234-5678" value="${member.phone}" required>
         </div>
       </div>
 
