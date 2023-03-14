@@ -19,7 +19,7 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/product/*")
+@RequestMapping("/products/*")
 @AllArgsConstructor
 public class ProductController {
 
@@ -31,23 +31,23 @@ public class ProductController {
 	public String list(Model model) {
 		log.info("list");
 		model.addAttribute("list", service.getList());
-		return "productList";
+		return "products/productList";
 	}
 
-	@GetMapping("/detail")
-	public String get(@RequestParam("p_id") Long p_id, Model model) {
+	@GetMapping("/detail/{p_id}")
+	public String get(@PathVariable("p_id") Long p_id, Model model) {
 
 		log.info("detail");
 		model.addAttribute("product", service.get(p_id));
-		return "productDetail";
+		return "products/productDetail";
 
 	}
 
-	@GetMapping("/bestProduct")
+	@GetMapping("/bestList")
 	public String getBestProductList(Model model) {
 		log.info("bestProductList");
 		model.addAttribute("bestProductList", service.getBestProductList());
-		return "bestProductList";
+		return "products/bestProductList";
 
 	}
 	

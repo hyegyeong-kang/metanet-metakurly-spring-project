@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%@include file="includes/header.jsp"%>
+<%@include file="../includes/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/productList/product.css">
 <link rel="stylesheet" href="/resources/css/productList/productDetail.css">
     
@@ -59,7 +59,7 @@
 					<div class="viewBody">
 						<ul class="contentNav">
 							<li class="active"><a href="">상품 정보</a></li>
-							<li><a href="/review?p_id=${product.p_id}">상품 후기<span>(<span class="count">20</span>)</span></a></li>
+							<li><a href="/products/reviews/<c:out value="${product.p_id}"></c:out>">상품 후기<span>(<span class="count">20</span>)</span></a></li>
 							<li><a href="">Q & A <span></span></a></li>
 							<li><a href="">반품 / 교환</a></li>
 						</ul>
@@ -179,7 +179,7 @@
 
 <div id="addCartProduct" style="display:none"><c:out value="${product.p_id}" /></div>
 
-<%@include file="includes/footer.jsp"%>
+<%@include file="../includes/footer.jsp"%>
 
 <script>
 let product = document.getElementById("addCartProduct").innerText;

@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%@include file="includes/header.jsp"%>
+<%@include file="../includes/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/productList/product.css">
 <link rel="stylesheet" href="/resources/css/productList/bestProductList.css">
 
@@ -17,7 +17,7 @@
                 <li class="breadcrumb-item active">Best 100</li>
               </ul>
             </nav>
-            <h1 class="text-center">Best Products</h1>
+            <h1 class="text-center">All Products</h1>
           </div>
         </div>
       </div>
@@ -31,9 +31,6 @@
       	<!--중단 상품리스트 -->
 
 		<!--상품리스트1-->
-		<section class="product-section-1">
-  <h1>이 상품 어때요?</h1>
-
   <ul class="pro-list-box-1" >
 	<li	class="list-1">
       <c:forEach items='${bestProductList}' var="product">
@@ -175,9 +172,8 @@
   <a href="#"><img src="https://product-image.kurly.com/banner/random-band/pc/img/16d8e884-ffe7-4089-ae7d-8d2e9197af63.jpg" alt=""></a>
 </section>
       </div> <!-- .container -->
-    </div> <!-- .page-section -->
 
   </main>
 
 
-<%@include file="includes/footer.jsp"%>
+<%@include file="../includes/footer.jsp"%>

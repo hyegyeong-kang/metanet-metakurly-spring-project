@@ -76,36 +76,20 @@
         </nav>
         
         <div class="row">
-          <div class="col-lg-8">
-            <div class="blog-single-wrap">
-
-              <div class="post-content">
-                <blockquote class="quote">
-                <c:out></c:out>
-                <span class="author">컬리짱</span></blockquote>
-              </div>
-            </div>
-  
+          <div class="col-lg-8">  
             <div class="comment-form-wrap pt-5">
-              <h2 class="mb-5">댓글 남기기</h2>
-              <form action="#" class="">
+              <h2 class="mb-5">리뷰 작성</h2>
+              <form action="/products/reviews" method="post" role="form" class="">
                 <div class="form-row form-group">
-                  <div class="col-md-6">
-                    <label for="name">아이디 *</label>
-                    <input type="text" class="form-control" id="name">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="email">Email *</label>
-                    <input type="email" class="form-control" id="email">
-                  </div>
+                  
                 </div>
    
                 <div class="form-group">
-                  <label for="message">내용</label>
-                  <textarea name="msg" id="message" cols="30" rows="8" class="form-control"></textarea>
+                  <label for="contents">내용</label>
+                  <textarea name="contents" id="contents" cols="30" rows="8" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                  <input type="submit" value="댓글 등록" class="btn btn-primary">
+                  <input type="submit" value="리뷰 등록" class="btn btn-primary">
                 </div>
     
               </form>

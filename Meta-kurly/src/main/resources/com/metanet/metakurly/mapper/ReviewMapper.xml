@@ -17,23 +17,21 @@
    
    <!-- 특정 상품에 해당하는 리뷰 리스트 가져오기 -->
    <select id="getProductReviewList"
+   		resultType="com.metanet.metakurly.domain.ProductDTO"
       resultMap="productMap">
-      select r.r_id as r_id,
-      		 r.m_id as m_id,
-      		 r.review_date as review_date,
-      		 r.contents as contents,
-      		 r.p_id as p_id,
-      		 p.price as price,
-      		 p.name as name 
-      from review r, product p
-      where r.p_id = p.p_id
-      and r.p_id = #{p_id}
+      select r.r_id, r.m_id, r.review_date, r.contents, r.p_id, p.price, p.name, p.brand, p.img_url, p.delivery_type, m.name, m.userId 
+      from review r left join product p on r.p_id = p.p_id
+      left join member m on m.m_id = r.m_id
+      where r.p_id = #{p_id}
    </select>
    
    <resultMap type="com.metanet.metakurly.domain.ProductDTO" id="productMap">
        <id property="p_id" column="p_id"/>
        <result property="price" column="price"/>
        <result property="name" column="name"/>
+       <result property="brand" column="brand"/>
+       <result property="img_url" column="img_url"/>
+       <result property="delivery_type" column="delivery_type"/>
        <collection property="reviewList" resultMap="reviewMap">
 	 	</collection>
    </resultMap>
@@ -45,7 +43,12 @@
  		<result property="m_id" column="m_id"/>
  		<result property="p_id" column="p_id"/>
 	</resultMap>
-  
+	
+<!-- 	   <resultMap type="com.metanet.metakurly.domain.MemberDTO" id="memberMap">
+   		<result property="name" column="name"/>
+   		<result property="userId" column="userId"/>
+	</resultMap>
+   -->
 
    <!-- 내가 구매한 상품 리뷰 작성하기 -->
    <insert id="registerReview">

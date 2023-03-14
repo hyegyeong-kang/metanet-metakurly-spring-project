@@ -25,10 +25,10 @@ public class ReviewMapperTests {
 //	}
 	
 	
-//	@Test // ���� -> p_id �� 1 �� ��ǰ�� ���� ��������
-//	public void testGetProductReviewList() {
-//		mapper.getProductReviewList(3L).forEach(review -> log.info(review));
-//	}
+	@Test // ���� -> p_id �� 1 �� ��ǰ�� ���� ��������
+	public void testGetProductReviewList() {
+		mapper.getProductReviewList(1L).forEach(review -> log.info(review));
+	}
 	
 	
 //	@Test // ����

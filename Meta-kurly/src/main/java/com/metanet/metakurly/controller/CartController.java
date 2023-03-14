@@ -44,7 +44,7 @@ public class CartController {
 
 		log.info("KANG: " + cartList);
 		model.addAttribute("list", cartList);
-		return "/cart";
+		return "cart/cart";
 	}
 	
 	
