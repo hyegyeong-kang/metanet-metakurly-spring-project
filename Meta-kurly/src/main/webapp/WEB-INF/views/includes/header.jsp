@@ -57,12 +57,12 @@
 
 					<div class="ml-auto">
 					<c:if test="${member == null}">
-						<a href="../member/signup" class="btn btn-outline rounded-pill">회원가입</a>
-						<a href="../member/login" class="btn btn-outline rounded-pill">로그인</a>
+						<a href="/member/signup" class="btn btn-outline rounded-pill">회원가입</a>
+						<a href="/member/login" class="btn btn-outline rounded-pill">로그인</a>
 					</c:if>
 					<c:if test="${member != null}">
 						<p>환영합니다! ${member.userId} 님</p>
-						<a href="../member/logout">로그아웃</a>
+						<a href="/member/logout">로그아웃</a>
 					</c:if>
 					</div>
 				</div>

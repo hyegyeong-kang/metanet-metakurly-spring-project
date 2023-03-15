@@ -176,6 +176,25 @@ public class OrderController {
 		// model.addAttribute("products", service.getProductsInfo(orderProducts));
 		log.info("######products " + service.getProductInfo(orderProduct));
 	}
+	
+//	@PostMapping("/order")
+//	public void orderProduct(List<OrderProductDTO> orderProductList, Model model) {
+//
+////		MemberDTO member = (MemberDTO) session.getAttribute("member"); Long m_id =
+////		member.getM_id();
+//		/*
+//		 * ProductDTO product = pService.get(orderProduct.getP_id());
+//		 * orderProduct.setBrand(product.getBrand());
+//		 * orderProduct.setName(product.getName());
+//		 * orderProduct.setPrice(product.getPrice());
+//		 */
+//
+//		model.addAttribute("product", service.getProductsInfo(orderProductList));
+//		// model.addAttribute("products", service.getProductInfo(orderProduct.get));
+//
+//		// model.addAttribute("products", service.getProductsInfo(orderProducts));
+//		log.info("######products " + service.getProductsInfo(orderProductList));
+//	}
 
 	/* 주문하기 */
 //	@GetMapping("/{m_id}")
