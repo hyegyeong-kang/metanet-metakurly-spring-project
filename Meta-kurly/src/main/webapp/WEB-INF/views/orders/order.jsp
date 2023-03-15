@@ -77,8 +77,9 @@
 		<div
 			style="margin: 0; padding: 0; border: 0; box-sizing: border-box; font-family: '맑은고딕', 'Malgun Gothic', 'dotum', sans-serif; letter-spacing: -1px; word-spacing: -2px; margin: 0 20px; padding: 25px 0 9px; border-bottom: 2px solid #666; color: #333; font-size: 16px; font-weight: bold;">
 			주문상품</div>
-
+		
 	 	<%-- <c:forEach items="${products}" var="product"> --%>
+	 	<%-- <c:if test="${products.size() == 1}"> --%>
 			<div style="overflow: hidden; margin: 0 20px;">
 				<a target="_blank"
 					style="float: left; :70 px; :70 px; margin: 20px 0;"
@@ -113,8 +114,8 @@
 					</div>
 				</div>
 			</div>
-
-	 <%-- </c:forEach>  --%>
+		<%-- </c:if> --%>
+	 <%-- </c:forEach> --%>
 		
 
 

@@ -66,7 +66,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 //	@Override
-//	public List<OrderProductDTO> getProductInfo(List<OrderProductDTO> orderProducts) {
+//	public List<OrderProductDTO> getProductsInfo(List<OrderProductDTO> orderProducts) {
 //		List<OrderProductDTO> order = new ArrayList<>();
 //		
 //		log.info("$$$$$$$ " + orderProducts);
