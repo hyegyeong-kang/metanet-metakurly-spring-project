@@ -19,7 +19,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <div class="cart_table">
-            <p><strong>장바구니</strong></p>
+            <p><strong style="color:#7B68EE">장바구니</strong></p>
             
 
             <ul class="cart_list">
@@ -47,7 +47,7 @@
 							</td>
 							</tr>
                         <img src="<c:out value="${cart.productList[0].img_url}" />" />
-                        <p class="name" ><strong><c:out value="${cart.productList[0].name}"></c:out></strong></p>
+                        <p class="name"><strong><c:out value="${cart.productList[0].name}"></c:out></strong></p>
                     </div>
                     <div class="opt_info">
                         <strong class="price_unit"><c:out value="${cart.productList[0].price}"></c:out></strong>원
@@ -66,14 +66,14 @@
                 </c:forEach>
             </ul>
 
-<!--             <div class="cart_total_area">
+            <div class="cart_total_area">
                 <p>결제 정보</p>
 
                 <div class="cart_total_price">
-                	<p>총 상품금액 <strong class="item_price">60,000</strong>원 <span class="plus_ic"></span></p>
-                    <p>총 결제금액 <strong class="total_price color-red">52,500</strong>원</p>
+                	<p>총 상품금액 <strong class="item_price" style="color:#7B68EE">17,600</strong>원 <span class="plus_ic"></span></p>
+                    <p>총 결제금액 <strong class="total_price color-red" style="color:#7B68EE">17,600</strong>원</p>
                 </div>
-            </div> -->
+            </div>
 
             <div class="btn_box">
                 <button type="button" onclick="history.go(-1);return false;" class="btn wh-btn" style="border-color:#7B68EE">계속 쇼핑하기</button>
