@@ -41,10 +41,10 @@ public class ReviewController {
 	public String showProductReview(@PathVariable("p_id") Long p_id, Model model, HttpSession session) {
 		log.info("/reviews/{p_id} : " + p_id);
 		MemberDTO member = (MemberDTO) session.getAttribute("member");
-		Long m_id = member.getM_id();
+//		Long m_id = member.getM_id();
 		
 		List<ProductDTO> productReview = service.getProductReviewList(p_id);
-		model.addAttribute("review", productReview);
+		model.addAttribute("product", productReview);
 		log.info(service.getProductReviewList(p_id));
 		return "reviews/review"; 
 	}
@@ -53,10 +53,9 @@ public class ReviewController {
 	public String showReviewDetail(@PathVariable("p_id") Long p_id, Model model, HttpSession session) {
 		log.info("/reviews/{p_id} : " + p_id);
 		MemberDTO member = (MemberDTO) session.getAttribute("member");
-		Long m_id = member.getM_id();
 		
 		List<ProductDTO> productReview = service.getProductReviewList(p_id);
-		model.addAttribute("review", productReview);
+		model.addAttribute("product", productReview);
 		log.info(service.getProductReviewList(p_id));
 		
 		return "reviews/reviewDetail";

@@ -16,9 +16,7 @@
    
    
    <!-- 특정 상품에 해당하는 리뷰 리스트 가져오기 -->
-   <select id="getProductReviewList"
-   		resultType="com.metanet.metakurly.domain.ProductDTO"
-      resultMap="productMap">
+   <select id="getProductReviewList" resultMap="productMap">
       select r.r_id, r.m_id, r.review_date, r.contents, r.p_id, p.price, p.name, p.brand, p.img_url, p.delivery_type, m.name, m.userId 
       from review r left join product p on r.p_id = p.p_id
       left join member m on m.m_id = r.m_id
@@ -32,11 +30,11 @@
        <result property="brand" column="brand"/>
        <result property="img_url" column="img_url"/>
        <result property="delivery_type" column="delivery_type"/>
-       <collection property="reviewList" resultMap="reviewMap">
+       <collection property="reviewList" resultMap="reviewListMap">
 	 	</collection>
    </resultMap>
    
-   <resultMap type="com.metanet.metakurly.domain.ReviewDTO" id="reviewMap">
+   <resultMap type="com.metanet.metakurly.domain.ReviewDTO" id="reviewListMap">
    		<result property="r_id" column="r_id"/>
    		<result property="review_date" column="review_date"/>
    		<result property="contents" column="contents"/>

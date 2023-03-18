@@ -50,7 +50,7 @@
               <a href="/product/bestProduct" class="nav-link">베스트</a>
             </li>
             <li class="nav-item">
-              <a href="/product" class="nav-link">전체상품</a>
+              <a href="/products/list" class="nav-link">전체상품</a>
             </li>
             <li class="nav-item active">
               <a href="review" class="nav-link">리뷰</a>
@@ -59,7 +59,6 @@
               <a href="myPage" class="nav-link">마이페이지</a>
             </li>
           </ul>
-
           <div class="ml-auto">
             <a href="#" class="btn btn-outline rounded-pill">로그인</a>
           </div>
@@ -82,7 +81,7 @@
         <div class="row">
           <div class="col-lg-8">
             <div class="blog-single-wrap">
-				<c:forEach items='${review}' var="product" varStatus="status">
+				<c:forEach items='${product}' var="product" varStatus="status">
 	
 		              <div class="post-content">
 		                <blockquote class="quote">
