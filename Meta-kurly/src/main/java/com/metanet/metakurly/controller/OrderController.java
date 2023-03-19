@@ -2,20 +2,19 @@ package com.metanet.metakurly.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.metanet.metakurly.domain.MemberDTO;
@@ -117,8 +116,8 @@ public class OrderController {
 
 	@PostMapping("/payment")
 //	public String payment(OrderDTO order) {
-	public String payment(HttpSession session, @RequestParam String deliveryMsg, @RequestParam Long p_id,
-			@RequestParam int usePoint, OrderDTO order, PaymentDTO payment, Model model) {
+	public String payment(HttpSession session, @RequestParam String deliveryMsg, 
+			@RequestParam int usePoint, OrderProductDTO orderProduct, PaymentDTO payment, Model model) {
 		// service.addOrder(order, payment);
 		/*
 		 * log.info("order!!! " + order.getTotal_amount()); log.info("order!!! " +
@@ -126,17 +125,27 @@ public class OrderController {
 		 * log.info("payment!!! " + payment.getPayment_amount()); log.info("msg!!! " +
 		 * deliveryMsg);
 		 */
+		log.info("%%%orderProduct ="+orderProduct.getOrderProductList());
+		log.info("%%%payment ="+payment);
+		OrderDTO order = new OrderDTO();
 		MemberDTO member = (MemberDTO) session.getAttribute("member");
 		order.setM_id(member.getM_id());
-
+		List<OrderProductDTO> orderProducts = orderProduct.getOrderProductList();
+		order.setPrice(payment.getPayment_amount() + usePoint);
+		
 		List<OrderDetailDTO> list = new ArrayList<>();
-		OrderDetailDTO detailDto = new OrderDetailDTO();
-		detailDto.setP_id(p_id);
-		detailDto.setProductDTO(pService.get(p_id));
-		detailDto.setQuantity(order.getTotal_amount());
-		list.add(detailDto);
+		int total_quantity = 0;
+		for(OrderProductDTO product : orderProducts) {
+			OrderDetailDTO detailDto = new OrderDetailDTO();
+			detailDto.setP_id(product.getP_id());
+			detailDto.setProductDTO(pService.get(product.getP_id()));
+			detailDto.setQuantity(product.getQuantity());
+			list.add(detailDto);
+			log.info(detailDto);
+			total_quantity += product.getQuantity();
+		}
+		order.setTotal_amount(total_quantity);
 		log.info(list);
-		log.info(detailDto);
 		order.setOrderDetailList(list);
 
 		payment.setM_id(member.getM_id());
@@ -169,12 +178,26 @@ public class OrderController {
 		 * orderProduct.setName(product.getName());
 		 * orderProduct.setPrice(product.getPrice());
 		 */
-
-		model.addAttribute("product", service.getProductInfo(orderProduct));
+		List<OrderProductDTO> orderProducts = orderProduct.getOrderProductList();
+		if(orderProducts.size() > 1) {
+			model.addAttribute("products", service.getProductsInfo(orderProducts));
+			log.info("products in cart page-- " + service.getProductsInfo(orderProducts));
+		}
+		else {
+			model.addAttribute("products", service.getProductsInfo(orderProducts));
+			log.info("products in detail page " + service.getProductsInfo(orderProducts));
+		}
+		
 		// model.addAttribute("products", service.getProductInfo(orderProduct.get));
 
 		// model.addAttribute("products", service.getProductsInfo(orderProducts));
-		log.info("######products " + service.getProductInfo(orderProduct));
+		
+	}
+	
+	@PostMapping("/cartProduct")
+	public void orderCartProducts(OrderProductDTO orderProduct, Model model) {
+		log.info(orderProduct.getOrderProductList());
+		//model.addAttribute("cartList", cartList);
 	}
 	
 //	@PostMapping("/order")

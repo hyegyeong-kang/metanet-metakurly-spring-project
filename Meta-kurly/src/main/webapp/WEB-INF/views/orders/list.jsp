@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%@include file="../includes/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/productList/product.css">
@@ -28,8 +29,8 @@
 							<a href='#'><c:out value="${order.status}"/></a>
 			            </div>
 						<h6 class="post-title"><a href='/orders/detail/<c:out value="${order.o_id}"/>'><c:out value="${order.orderDetailList[0].productDTO.brand}"/> <c:out value="${order.orderDetailList[0].productDTO.name}"/> 
-						<c:if test="${order.total_amount > 1}">
-						외 <c:out value="${order.total_amount - 1}"/>개</a>
+						<c:if test="${fn:length(order.orderDetailList) > 1}">
+						외 <c:out value="${fn:length(order.orderDetailList) - 1}"/>개</a>
 						</c:if>
 						</h6>
 						<div class="meta">
