@@ -26,14 +26,14 @@
       <div class="container">
         <div class="row align-items-center">
           
-          <div class="col-lg-6 py-3">
- 			<button type="button" class="btn btn-primary rounded-pill mt-4"><a href="/member/modify">회원정보수정</a></button>
+          <div class="col-lg-4 py-3">
+ 			<button type="button" id="modifyBtn" class="btn btn-primary rounded-pill">회원정보수정</button>
  		</div>
- 		<div class="col-lg-6 py-3">
-          	<button type="submit" class="btn btn-primary rounded-pill mt-4"><a href="/orders/list">주문내역보기</a></button>
+ 		<div class="col-lg-4 py-3">
+          	<button type="button" id="orderListBtn" class="btn btn-primary rounded-pill">주문내역보기</button>
           	</div>
-          	<div class="col-lg-6 py-3">
-          	<button type="submit" class="btn btn-primary rounded-pill mt-4"><a href="/cart/cartList">장바구니</a></button>
+          	<div class="col-lg-4 py-3">
+          	<button type="button" id="cartBtn" class="btn btn-primary rounded-pill">장바구니</button>
           	</div>
           <!-- <div class="col-lg-6 py-3">
             <h2 class="title-section">주문내역보기</h2>
@@ -81,3 +81,17 @@
   </main>
 
 <%@include file="../includes/footer.jsp"%>
+
+<script>
+	$('#modifyBtn').click(function(){
+		location.href = "/member/modify";
+	});
+	
+	$('#orderListBtn').click(function(){
+		location.href = "/orders/list";
+	});
+	
+	$('#cartBtn').click(function(){
+		location.href = "/cart/cartList";
+	});
+</script>
