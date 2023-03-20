@@ -192,7 +192,7 @@ $("#addCart").click(function(){
    /* $("#postForm").submit();
    console.log(this);
    this.preventDefault(); */
-   
+
    var productInfo = {
       p_id: product,
       quantity: qt
@@ -208,9 +208,6 @@ $("#addCart").click(function(){
       dataType: 'text',
       contentType: 'application/json',
       success: function(data){
-         /* alert("SUCCESS!");
-         console.log('success' + data); */
-
          location.replace("/cart/cartList");
       }
    });
