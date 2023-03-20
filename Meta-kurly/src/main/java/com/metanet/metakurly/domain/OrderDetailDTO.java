@@ -1,7 +1,5 @@
 package com.metanet.metakurly.domain;
 
-import java.util.List;
-
 import lombok.Data;
 
 @Data
@@ -11,5 +9,5 @@ public class OrderDetailDTO {
 	private int quantity;
 	private Long m_id;
 	
-	private List<ProductDTO> productList;
+	private ProductDTO productDTO;
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@include file="includes/header.jsp"%>
+<%@include file="../includes/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/productList/product.css">
 
     <div class="container mt-5">
@@ -10,8 +10,8 @@
           <div class="col-md-6">
             <nav aria-label="Breadcrumb">
               <ul class="breadcrumb justify-content-center py-0 bg-transparent">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">kosa님의 마이페이지 입니다.</li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active"><c:out value="${member.name}"/>님의 마이페이지 입니다.</li>
               </ul>
             </nav>
             <h1 class="text-center">MyPage</h1>
@@ -25,10 +25,20 @@
     <div class="page-section">
       <div class="container">
         <div class="row align-items-center">
+          
           <div class="col-lg-6 py-3">
-            <h2 class="title-section">Get in Touch</h2>
+ 			<button type="button" class="btn btn-primary rounded-pill mt-4"><a href="/member/modify">회원정보수정</a></button>
+ 		</div>
+ 		<div class="col-lg-6 py-3">
+          	<button type="submit" class="btn btn-primary rounded-pill mt-4"><a href="/orders/list">주문내역보기</a></button>
+          	</div>
+          	<div class="col-lg-6 py-3">
+          	<button type="submit" class="btn btn-primary rounded-pill mt-4"><a href="/cart/cartList">장바구니</a></button>
+          	</div>
+          <!-- <div class="col-lg-6 py-3">
+            <h2 class="title-section">주문내역보기</h2>
             <div class="divider"></div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br> Laborum ratione autem quidem veritatis!</p>
+             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br> Laborum ratione autem quidem veritatis!</p> 
   
             <ul class="contact-list">
               <li>
@@ -44,9 +54,11 @@
                 <div class="content"><a href="#">+00 1122 3344 55</a></div>
               </li>
             </ul>
-          </div>
-          <div class="col-lg-6 py-3">
-            <div class="subhead">Contact Us</div>
+            
+          </div> -->
+          
+          <!-- <div class="col-lg-6 py-3">
+            <div class="subhead">회원정보수정</div>
             <h2 class="title-section">Drop Us a Line</h2>
             <div class="divider"></div>
             
@@ -62,10 +74,10 @@
               </div>
               <button type="submit" class="btn btn-primary rounded-pill mt-4">Send Message</button>
             </form>
-          </div>
+          </div> -->
         </div>
       </div> <!-- .container -->
     </div> <!-- .page-section -->
   </main>
 
-<%@include file="includes/footer.jsp"%>
+<%@include file="../includes/footer.jsp"%>

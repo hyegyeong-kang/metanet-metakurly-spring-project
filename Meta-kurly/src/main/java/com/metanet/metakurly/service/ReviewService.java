@@ -2,27 +2,28 @@ package com.metanet.metakurly.service;
 
 import java.util.List;
 
+import com.metanet.metakurly.domain.ProductDTO;
 import com.metanet.metakurly.domain.ReviewDTO;
 
 public interface ReviewService {
 	
-	// ³»°¡ ÀÛ¼ºÇÑ ¸®ºä ¸®½ºÆ® °¡Á®¿À±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<ReviewDTO> getMyReviewList(int m_id);
 	
-	// Æ¯Á¤ »óÇ°¿¡ ÇØ´çÇÏ´Â ¸®ºä ¸®½ºÆ® °¡Á®¿À±â
-	public List<ReviewDTO> getProductReviewList(Long p_id);
+	// Æ¯ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	public List<ProductDTO> getProductReviewList(Long p_id);
 		
-	// ³»°¡ ±¸¸ÅÇÑ »óÇ° ¸®ºä ÀÛ¼ºÇÏ±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ï±ï¿½
 	public void registerReview(ReviewDTO review);	
 
-	// ³»°¡ ¾´ ¸®ºä °¹¼ö °¡Á®¿À±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int totalMyReviewList(int memberUid);
 	
-	// ³»°¡ ±¸¸ÅÇÑ »óÇ° ¸®ºä ¼öÁ¤ÇÏ±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 	public boolean updateReview(ReviewDTO review);
 	
-	// ³»°¡ ±¸¸ÅÇØ¼­ ÀÛ¼ºÇÑ ¸®ºä »èÁ¦ÇÏ±â
-	public boolean deleteReview(Long r_id);
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
+	public boolean deleteReview(ReviewDTO review);
 	
 	
 	

@@ -10,47 +10,36 @@
 		values (member_seq.nextval, #{userId}, #{password}, #{name}, #{email}, #{phone}, #{address})
 	</insert>
 	
-	<select id="idChk" resultType="int">
+	<select id="idCheck" resultType="int">
 		select count(*)
 		from member
 		where userid = #{userId}
 	</select>
  
- 	<!-- <select id="login" resultType="com.metanet.metakurly.domain.MemberDTO">
- 		select userid, password from member
- 		where userid = #{userID}
- 		and password = #{password}
- 	</select> -->
-
-	<resultMap type="com.metanet.metakurly.MemberVO" id="memberMap">
-		<id property="userId" column="userid" />
-		<result property="userId" column="userid" />
-		<result property="password" column="password" />
-		<result property="authority" column="authority" />
-	</resultMap>
-
-	<resultMap type="com.metanet.metakurly.domain.AuthVO" id="authMap">
-		<result property="userId" column="userid" />
-		<result property="authority" column="authority" />
-	</resultMap>
-
-	<select id="login" resultMap="memberMap">
-		SELECT
-		userid, password, authority
-		FROM member
-		WHERE userid = #{userId}
-	</select>
+ 	<select id="login" resultType="com.metanet.metakurly.domain.MemberDTO">
+ 		select *
+ 		from member
+ 		where userid = #{userId}
+ 	</select>
 
 	<update id="modify">
 		update member
-		set email= #{email},
+		set password = #{password},
+		name = #{name},
+		email= #{email},
 		phone= #{phone},
-		address = #{address},
+		address = #{address}
+		where m_id = #{m_id, jdbcType=VARCHAR}
+	</update>
+	
+	<update id="delete">
+		update member
+		set status = #{status}
 		where m_id = #{m_id}
 	</update>
  
  
- 	<insert id="signUpSelectKey">
+<!--  	<insert id="signUpSelectKey">
 
 		<selectKey keyProperty="m_id" order="BEFORE"
 			resultType="long">
@@ -59,7 +48,7 @@
 
 		insert into member (m_id, userid, password, name, email, phone, address)
 		values (#{m_id}, #{userId}, #{password}, #{name}, #{email}, #{phone}, #{address})
-	</insert>
+	</insert> -->
  
  
  

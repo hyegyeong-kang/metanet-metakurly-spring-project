@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,20 +44,26 @@
 
 				<div class="navbar-collapse collapse" id="navbarContent">
 					<ul class="navbar-nav ml-lg-4 pt-3 pt-lg-0">
-						<li class="nav-item"><a href="/" class="nav-link">Home</a>
+						<li class="nav-item"><a href="/" class="nav-link">홈</a>
 						</li>
-						<li class="nav-item active"><a href="bestProductList.html"
-							class="nav-link">Best</a></li>
-						<li class="nav-item"><a href="productList.html"
-							class="nav-link">Products</a></li>
-						<li class="nav-item"><a href="qnaList.html" class="nav-link">Q&A</a>
+						<li class="nav-item"><a href="/products/bestList"
+							class="nav-link">베스트</a></li>
+						<li class="nav-item"><a href="/products/list"
+							class="nav-link">모든상품</a></li>
 						</li>
-						<li class="nav-item"><a href="myPage.html" class="nav-link">MyPage</a>
+						<li class="nav-item"><a href="/member/myPage" class="nav-link">마이페이지</a>
 						</li>
 					</ul>
 
 					<div class="ml-auto">
-						<a href="#" class="btn btn-outline rounded-pill">Sign in</a>
+					<c:if test="${member == null}">
+						<a href="/member/signup" class="btn btn-outline rounded-pill">회원가입</a>
+						<a href="/member/login" class="btn btn-outline rounded-pill">로그인</a>
+					</c:if>
+					<c:if test="${member != null}">
+						<p>환영합니다! ${member.userId} 님</p>
+						<a href="/member/logout">로그아웃</a>
+					</c:if>
 					</div>
 				</div>
 			</div>

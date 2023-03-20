@@ -1,35 +1,47 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-	<table>
-		<tr>
-			<th>È¸¿ø¹øÈ£</th>
-			<th>ÁÖ¹®¹øÈ£</th>
-			<th>ÁÖ¹®ÀÏ</th>
-			<th>»óÅÂ</th>
-			<th>ÃÑ ÁÖ¹®¼ö·®</th>
-			<th>ÃÑ °¡°Ý</th>
-		</tr>
+<%@include file="../includes/header.jsp"%>
+<link rel="stylesheet" href="/resources/css/productList/product.css">
+<link rel="stylesheet" href="/resources/css/login/login.css">
+    
+  </header>
+
+  <main>
+    <div class="page-section">
+      <div class="container">
+      	<!--ì¤‘ë‹¨ ìƒí’ˆë¦¬ìŠ¤íŠ¸ -->
+
+	<div class="widget-box">
+		<h4 class="widget-title">ì£¼ë¬¸ë‚´ì—­</h4>
+		<div class="divider"></div>
+		
 		<c:forEach items="${list}" var="order">
-			<tr>
-				<td><c:out value="${order.m_id}" /></td>
-				<td><c:out value="${order.o_id}" /></td>
-				<td><fmt:formatDate pattern="yyyy-MM-dd"
-						value="${order.orders_date}" /></td>
-				<td><c:out value="${order.status}" /></td>
-				<td><c:out value="${order.total_amount}" /></td>
-				<td><c:out value="${order.price}" /></td>
-			</tr>
+			<div class="blog-item">
+					<a class="post-thumb" href="">
+						<img src="${order.orderDetailList[0].productDTO.img_url}" alt="">
+					</a>
+					<div class="content">
+						<div class="meta">
+							<a href='#'><c:out value="${order.status}"/></a>
+			            </div>
+						<h6 class="post-title"><a href='/orders/detail/<c:out value="${order.o_id}"/>'><c:out value="${order.orderDetailList[0].productDTO.brand}"/> <c:out value="${order.orderDetailList[0].productDTO.name}"/> 
+						<c:if test="${order.total_amount > 1}">
+						ì™¸ <c:out value="${order.total_amount - 1}"/>ê°œ</a>
+						</c:if>
+						</h6>
+						<div class="meta">
+							<!-- <a href="#"><span class="mai-person"></span> Admin</a> -->
+							<a href='#'>ì£¼ë¬¸ë²ˆí˜¸ <c:out value="${order.o_id}"/></a>
+							<span class="mai-calendar"></span><fmt:formatDate pattern="yyyy-MM-dd" value="${order.orders_date}" />
+							<!-- <a href="#"><span class="mai-chatbubbles"></span> 19</a> -->
+			            </div>
+					</div>
+				</div>
 		</c:forEach>
-	</table>
-</body>
-</html>
+
+    </div>
+
+<%@include file="../includes/footer.jsp"%>
