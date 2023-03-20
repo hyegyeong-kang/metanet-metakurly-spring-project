@@ -12,9 +12,6 @@ public class CartDTO {
 	private Long p_id;
 	private int quantity;
 	
-	
-	//private int totalPrice;
-	
 	private List<ProductDTO> productList;
-
+	
 }
