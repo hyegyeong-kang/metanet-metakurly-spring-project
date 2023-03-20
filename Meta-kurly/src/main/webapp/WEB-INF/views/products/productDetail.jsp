@@ -187,20 +187,12 @@ let qt =  document.getElementById("result").innerText;
 
 
 $("#addCart").click(function(){
-	console.log(product + "productasdfasdfasdfasd");
-	console.log(qt + "qt : adfasdfasdfasdfasd!!!!!!!!!");
-   /* $("#postForm").submit();
-   console.log(this);
-   this.preventDefault(); */
 
    var productInfo = {
       p_id: product,
       quantity: qt
    };
 
-
-/*    console.log("!!!!!!!!!!!!" + JSON.stringify(productArr));
- */   //data: JSON.stringify(productArr),
    $.ajax({
       url: '/cart/cartAdd',
       type: 'post',
