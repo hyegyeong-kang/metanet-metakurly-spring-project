@@ -35,14 +35,14 @@ import lombok.extern.log4j.Log4j;
 public class ReviewController {
 	
 	private ReviewService service;
+	private MemberService mService;
 
 	
 	@GetMapping("/reviews/{p_id}")
-	public String showProductReview(@PathVariable("p_id") Long p_id, Model model, HttpSession session) {
+	public String showProductReview(@PathVariable("p_id") Long p_id, Model model) {
+
 		log.info("/reviews/{p_id} : " + p_id);
-		MemberDTO member = (MemberDTO) session.getAttribute("member");
-//		Long m_id = member.getM_id();
-		
+				
 		List<ProductDTO> productReview = service.getProductReviewList(p_id);
 		model.addAttribute("product", productReview);
 		log.info(service.getProductReviewList(p_id));
@@ -52,7 +52,6 @@ public class ReviewController {
 	@GetMapping("/detail/{p_id}/reviews")
 	public String showReviewDetail(@PathVariable("p_id") Long p_id, Model model, HttpSession session) {
 		log.info("/reviews/{p_id} : " + p_id);
-		MemberDTO member = (MemberDTO) session.getAttribute("member");
 		
 		List<ProductDTO> productReview = service.getProductReviewList(p_id);
 		model.addAttribute("product", productReview);
@@ -62,19 +61,43 @@ public class ReviewController {
 	}
 	
 	@GetMapping("/reviews")
-	public String showCreateReview() {
+	public String showCreateReview(ReviewDTO review, Model model) {
+		log.info("review..get..!");
 		return "reviews/reviewForm";
 	}
 	
 	@PostMapping("/reviews")
-	public String createReview(ReviewDTO review, RedirectAttributes rttr) {
-		log.info("register : " + review);
+	public String createReview(HttpSession session, ReviewDTO review, Model model, HttpServletRequest request) {
+		MemberDTO member = (MemberDTO) session.getAttribute("member");
+		review.setM_id(member.getM_id());
+		review.setContents(request.getParameter("contents"));
+		review.setP_id(2L);
+		
+		log.info("요기>!!!!!!");
+		
 		
 		service.registerReview(review);
+	
+		log.info("register : " + review);
+			
 		
-		rttr.addFlashAttribute("result", review.getR_id());
 		return "redirect:/";
 	}
+	
+//	@GetMapping("/reviews")
+//	public String showCreateReview() {
+//		return "reviews/reviewForm";
+//	}
+//	
+//	@PostMapping("/reviews")
+//	public String createReview(ReviewDTO review, RedirectAttributes rttr) {
+//		log.info("register : " + review);
+//		
+//		service.registerReview(review);
+//		
+//		rttr.addFlashAttribute("result", review.getR_id());
+//		return "redirect:/";
+//	}
 	
 	@GetMapping("/reviews/review/{r_id}")
 	public String showModifyReview() {

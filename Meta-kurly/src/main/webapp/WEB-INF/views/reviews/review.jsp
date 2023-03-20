@@ -41,7 +41,7 @@
 			         <table>
 			         	<thead>
 			         		<td>번호</td>
-			         		<td>회원 번호</td>
+			         		<td>작성자</td>
 			         		<td>내용</td>
 			         		<td>작성일</td>
 			         	</thead>
@@ -50,7 +50,7 @@
 								 <tbody>
 								 		<tr>
 									    	<td><c:out value="${status.count }"></c:out></td>
-									    	<td><c:out value="${review.m_id }"></c:out></td>
+									    	<td><c:out value="${member.name}"></c:out></td>
 									    	<td><a href="/products/detail/${review.p_id}/reviews"><c:out value="${review.contents }"></c:out></a></td>
 									    	<td><c:out value="${review.review_date }"></c:out></td>
 										</tr>

@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.Select;
 import com.metanet.metakurly.domain.MemberDTO;
 
 public interface MemberMapper {
+	// 회원 정보 불러오기
+	public MemberDTO getMemberById(long m_id);
 	
 	//회원 등록
 	public int signUp(MemberDTO member);

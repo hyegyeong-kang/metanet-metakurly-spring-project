@@ -5,6 +5,8 @@ import javax.servlet.http.HttpSession;
 import com.metanet.metakurly.domain.MemberDTO;
 
 public interface MemberService {
+	// 회원 정보 불러오기
+	public MemberDTO getMemberById(long m_id);
 
 	//회원가입
 	public int signUp(MemberDTO member);

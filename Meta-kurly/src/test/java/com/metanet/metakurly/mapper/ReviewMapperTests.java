@@ -25,24 +25,24 @@ public class ReviewMapperTests {
 //	}
 	
 	
-	@Test // ���� -> p_id �� 1 �� ��ǰ�� ���� ��������
-	public void testGetProductReviewList() {
-		mapper.getProductReviewList(1L).forEach(review -> log.info(review));
-	}
-	
-	
-//	@Test // ����
-//	public void testRegisterReview() {
-//		ReviewDTO review = new ReviewDTO();
-//		
-//		review.setM_id(1L);
-//		review.setP_id(2L);
-//		review.setContents("새로 등록한 리뷰입니다.");
-//		
-//		mapper.registerReview(review);
-//		
-//		log.info(review);
+//	@Test // ���� -> p_id �� 1 �� ��ǰ�� ���� ��������
+//	public void testGetProductReviewList() {
+//		mapper.getProductReviewList(1L).forEach(review -> log.info(review));
 //	}
+	
+	
+	@Test 
+	public void testRegisterReview() {
+		ReviewDTO review = new ReviewDTO();
+		
+		review.setM_id(1L);
+		review.setP_id(2L);
+		review.setContents("새로 등록한 리뷰입니다.");
+		
+		mapper.registerReview(review);
+		
+		log.info(review);
+	}
 //	
 //	@Test // ����
 //	public void testUpdateReview() {

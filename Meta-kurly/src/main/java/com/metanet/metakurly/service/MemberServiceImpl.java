@@ -51,5 +51,10 @@ public class MemberServiceImpl implements MemberService{
 		mapper.delete(member);
 	}
 
+	@Override
+	public MemberDTO getMemberById(long m_id) {
+		return mapper.getMemberById(m_id);
+	}
+
 		
 }

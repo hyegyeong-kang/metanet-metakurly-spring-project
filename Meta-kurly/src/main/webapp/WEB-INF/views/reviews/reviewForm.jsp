@@ -79,19 +79,16 @@
           <div class="col-lg-8">  
             <div class="comment-form-wrap pt-5">
               <h2 class="mb-5">리뷰 작성</h2>
-              <form action="/products/reviews" method="post" role="form" class="">
-                <div class="form-row form-group">
-                  
-                </div>
+              <form id="reivewForm" action="/products/reviews" method="post">
+                <div class="form-row form-group"></div>
    
                 <div class="form-group">
                   <label for="contents">내용</label>
-                  <textarea name="contents" id="contents" cols="30" rows="8" class="form-control"></textarea>
+                  <textarea name="contents" id="contents" cols="30" rows="8" class="form-control" placeholder="리뷰 내용을 입력해주세요."></textarea>
                 </div>
                 <div class="form-group">
-                  <input type="submit" value="리뷰 등록" class="btn btn-primary">
+                  <input id="reviewBtn" type="submit" value="리뷰 등록" class="btn btn-primary">
                 </div>
-    
               </form>
             </div>
   
@@ -247,7 +244,6 @@
       </div>
     </div> <!-- .container -->
   </footer> <!-- .page-footer -->
-
 
   <script src="/resources/js/jquery-3.5.1.min.js"></script>
 
