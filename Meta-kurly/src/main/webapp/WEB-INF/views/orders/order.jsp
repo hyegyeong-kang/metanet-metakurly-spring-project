@@ -7,7 +7,12 @@
 <link rel="stylesheet" href="/resources/css/productList/product.css">
 <link rel="stylesheet" href="/resources/css/login/login.css">
 <link rel="stylesheet" href="/resources/css/orders/order.css">
-
+<style>
+	div.contents{
+		width: 76%;
+		margin: auto;
+	}
+</style>
   </header>
 
   <main>

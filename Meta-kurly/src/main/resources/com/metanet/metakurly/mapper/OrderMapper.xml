@@ -5,7 +5,7 @@
 	<!-- 특정 회원의 주문 목록 보기 -->
 	<select id="getOrderList" resultType="com.metanet.metakurly.domain.OrderDTO">
 		<![CDATA[
-			select * from orders where o_id > 0 and m_id = #{m_id}
+			select * from orders where o_id > 0 and m_id = #{m_id} order by orders_date desc
 		]]>
 	</select>
 	

@@ -25,11 +25,11 @@ public class OrderMapperTests {
 	@Autowired
 	private ProductMapper pMapper;
 	
-//	@Test
-//	public void getDetailTest() {
-////		mapper.getOrderDetail(3L).forEach(detail -> log.info(detail));
-//		log.info(mapper.getOrderDetail(3L));
-//	}
+	@Test
+	public void getDetailTest() {
+//		mapper.getOrderDetail(3L).forEach(detail -> log.info(detail));
+		log.info(mapper.getOrderDetail(3L));
+	}
 	
 //	@Test
 //	public void createOrderTest() {
@@ -55,8 +55,8 @@ public class OrderMapperTests {
 //		log.info(order);
 //	}
 	
-	@Test
-	public void cancelOrderTest() {
-		log.info("주문 취소 Count : " + mapper.cancelOrder(2L));
-	}
+//	@Test
+//	public void cancelOrderTest() {
+//		log.info("주문 취소 Count : " + mapper.cancelOrder(2L));
+//	}
 }

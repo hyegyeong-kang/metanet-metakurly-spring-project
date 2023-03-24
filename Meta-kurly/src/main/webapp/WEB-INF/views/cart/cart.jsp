@@ -34,7 +34,7 @@
                 <c:forEach items="${list}" var="cart">
                 <li>
                     <div class="checkbox">
-                        <input type="checkbox" name="item_chk" id="item_chk01">
+                        <input type="checkbox" name="item_chk" class="item_chk">
                         <label for="item_chk01"></label>
                     </div>
                     <div class="item_detail">
@@ -79,6 +79,13 @@
                 <button type="button" onclick="history.go(-1);return false;" class="btn wh-btn" style="border-color:#7B68EE">계속 쇼핑하기</button>
                 <button type="button" onclick="order()" class="btn black-btn" style="background-color:#7B68EE">구매하기</button>
             </div>
+            
+            <form id="postForm" action="/orders/order" method="post">
+				<c:forEach items="${list}" var="cart">
+					<input type="hidden" name="orderProductList[${status.index}].p_id" value="${cart.p_id}"/>
+					<input type="hidden" name="orderProductList[${status.index}].quantity" value="${cart.quantity}"/>
+				</c:forEach>
+			</form>
 
         </div>
 		
@@ -105,6 +112,13 @@
 	             
 	             }
 	         }); */
+	       	 let item = $(".item_chk");
+	         for(let i = 0; i < item.length; i++){
+	        	if(item[i].checked == true){
+	        		
+	        	}
+	         }
+	   		//$("#postForm").submit();
 	   	}
   		
   		$(document).ready(function(){

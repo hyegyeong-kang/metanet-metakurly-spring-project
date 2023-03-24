@@ -36,8 +36,8 @@ public class OrderServiceImpl implements OrderService {
 		log.info("getList Service...");
 		List<OrderDTO> list = mapper.getOrderList(m_id);
 		log.info(list);
-//		list.forEach(order -> order.setOrderDetailList(mapper.getOrderDetail(order.getO_id()).getOrderDetailList()));
-//		return list;
+		list.forEach(order -> order.setOrderDetailList(mapper.getOrderDetail(order.getO_id()).getOrderDetailList()));
+		return list;
 	}
 
 //	@Transactional

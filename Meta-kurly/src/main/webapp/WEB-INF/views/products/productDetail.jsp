@@ -213,7 +213,7 @@ $("#addCart").click(function(){
          /* alert("SUCCESS!");
          console.log('success' + data); */
 
-         location.replace("/cart/cartList");
+         location.href = "/cart/cartList";
       }
    });
 });

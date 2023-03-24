@@ -11,7 +11,7 @@
 
 <meta name="copyright" content="MACode ID, https://macodeid.com">
 
-<title>MetaKurly | Products Detail</title>
+<title>MetaKurly</title>
 
 <link rel="stylesheet" href="/resources/vendor/animate/animate.css">
 

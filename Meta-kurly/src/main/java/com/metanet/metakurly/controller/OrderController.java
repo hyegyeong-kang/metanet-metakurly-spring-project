@@ -44,7 +44,7 @@ public class OrderController {
 //		model.addAttribute("list", service.getOrderList(m_id));
 //	}
 
-	/* 주문내역 */
+	/* 二쇰Ц�궡�뿭 */
 	@GetMapping("/list")
 	public String getOrderList(HttpSession session, Model model) {
 		MemberDTO member = (MemberDTO) session.getAttribute("member");
@@ -69,7 +69,7 @@ public class OrderController {
 //		model.addAttribute("list", service.getOrderDetailList(o_id));
 //	}
 
-	/* 특정 주문의 주문 상세 보기 */
+	/* �듅�젙 二쇰Ц�쓽 二쇰Ц �긽�꽭 蹂닿린 */
 	@GetMapping("/detail/{o_id}")
 	public String getOrderDetail(@PathVariable("o_id") Long o_id, Model model) {
 		model.addAttribute("order", service.getOrderDetailList(o_id));
@@ -81,7 +81,7 @@ public class OrderController {
 		return "/orders/detail";
 	}
 
-	/* 상품 상세 페이지에서 주문하기 */
+	/* �긽�뭹 �긽�꽭 �럹�씠吏��뿉�꽌 二쇰Ц�븯湲� */
 	@GetMapping("/order")
 	public void order(/* OrderProductDTO item, Model model */) {
 //		log.info(item);
@@ -219,7 +219,7 @@ public class OrderController {
 //		log.info("######products " + service.getProductsInfo(orderProductList));
 //	}
 
-	/* 주문하기 */
+	/* 二쇰Ц�븯湲� */
 //	@GetMapping("/{m_id}")
 //	public String order(@PathVariable("m_id") Long m_id, OrderProductListDTO productList, Model model) {
 //		model.addAttribute("products", service.getProductsInfo(productList.getProducts()));
@@ -228,7 +228,7 @@ public class OrderController {
 //		return "/orders/order";
 //	}
 
-	/* 주문 취소하기 */
+	/* 二쇰Ц 痍⑥냼�븯湲� */
 	@PostMapping("/cancel/{o_id}")
 	public String cancleOrder(@PathVariable("o_id") Long o_id, RedirectAttributes rttr) {
 		service.cancelOrder(o_id);
