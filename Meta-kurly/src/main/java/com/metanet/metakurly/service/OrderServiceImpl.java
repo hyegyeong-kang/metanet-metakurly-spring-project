@@ -39,16 +39,6 @@ public class OrderServiceImpl implements OrderService {
 		list.forEach(order -> order.setOrderDetailList(mapper.getOrderDetail(order.getO_id()).getOrderDetailList()));
 		return list;
 	}
-
-//	@Transactional
-//	@Override
-//	public void addOrder(OrderDTO order, PaymentDTO payment) {
-//		log.info("creatOrder Service...");
-//		mapper.createOrder(order);
-//		mapper.createOrderDetail(order);
-//		mapper.modifyOrder(order);
-//		paymentMapper.createPayment(payment);
-//	}
 	
 	@Transactional
 	@Override
@@ -56,7 +46,6 @@ public class OrderServiceImpl implements OrderService {
 		log.info("creatOrder Service...");
 		mapper.createOrder(order);
 		mapper.createOrderDetail(order);
-//		mapper.modifyOrder(order);
 		paymentMapper.createPayment(payment);
 	}
 
@@ -80,15 +69,6 @@ public class OrderServiceImpl implements OrderService {
 		
 		return order;
 	}
-	
-//	@Override
-//	public OrderProductDTO getProductInfo(OrderProductDTO orderProduct) {
-//		OrderProductDTO dto = mapper.getProductInfo(orderProduct.getP_id());
-//		dto.setQuantity(orderProduct.getQuantity());
-//		dto.init();
-//
-//		return dto;
-//	}
 
 	@Override
 	public PaymentDTO getPayment(Long o_id) {

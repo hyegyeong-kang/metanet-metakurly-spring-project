@@ -111,7 +111,8 @@
 		
 							<span
 								style="color: #333; font-size: 20px; font-weight: bold; padding: 0 0 0 7px;">
-								<fmt:formatNumber type="number" maxFractionDigits="3" value="${detail.productDTO.price * detail.quantity}" /><em
+								<fmt:formatNumber type="number" maxFractionDigits="3" value="${detail.productDTO.price}" />
+								<em
 								style="display: inline-block; color: #b0b0b0; font-style: normal; font-size: 12px; vertical-align: 1px; color: #333 !important; padding: 0 0 0 2px; vertical-align: 2px !important;">원</em>
 							</span>
 							
