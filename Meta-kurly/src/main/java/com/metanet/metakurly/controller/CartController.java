@@ -51,7 +51,7 @@ public class CartController {
 	@PostMapping("/cartAdd")
 	//@RequestMapping(value="/cartAdd", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public boolean addCart(HttpSession session, Model model, @RequestBody Map<String, Integer> productInfo) throws Exception {
+	public String addCart(HttpSession session, Model model, @RequestBody Map<String, Integer> productInfo) throws Exception {
 		MemberDTO member = (MemberDTO) session.getAttribute("member");
 		Long m_id = member.getM_id();
 		
@@ -81,8 +81,7 @@ public class CartController {
 
 			service.addCart(cart);
 		}
-		//return "redirect:/cart/cartList";
-		return true;
+		return "/cart/cartList";
 	}
 	
 	@GetMapping("/cartDelete")

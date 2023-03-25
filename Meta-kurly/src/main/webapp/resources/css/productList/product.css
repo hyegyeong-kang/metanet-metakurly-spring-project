@@ -18,6 +18,10 @@ a {
     text-decoration:none;
 }
 
+img {
+	width: inherit;
+}
+
 /* 라이브러리 */
 .con {
     margin:0 auto;
@@ -94,9 +98,9 @@ a {
 
 
 /* 고정형 레이아웃 용 */
-.con {
+/* .con {
     width:1180px;
-}
+} */
 
 .con-min-width {
     min-width:1180px;
@@ -183,7 +187,7 @@ a {
         width: 100%;
         padding: 10px;
     }
-    
+
     .prod-list {
         width:100%;
     }

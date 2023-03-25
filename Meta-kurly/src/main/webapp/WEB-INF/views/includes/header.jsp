@@ -62,7 +62,7 @@
 					</c:if>
 					<c:if test="${member != null}">
 						<p>환영합니다! ${member.userId} 님</p>
-						<a href="/member/logout">로그아웃</a>
+						<a href="/member/logout" class="btn btn-outline rounded-pill">로그아웃</a>
 					</c:if>
 					</div>
 				</div>

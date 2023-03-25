@@ -143,7 +143,7 @@ a {
 
 /*네비*/
 nav {
-  width: 1060px;
+  /* width: 1060px; */
   height: 56px;
   padding: 0 10px;
   margin: 0 auto;
@@ -276,7 +276,7 @@ nav > .delivery > ul > li > a > span {
 }
 .product-section-1 > .pro-list-box-1 {
   width: 1060px;
-  padding: 0 10px;
+  /* padding: 0 10px; */
   margin: 0 auto;
 }
 .product-section-1 > .pro-list-box-1::after {
@@ -442,7 +442,7 @@ nav > .delivery > ul > li > a > span {
 }
 .product-section-2 > .pro-list-box-2 {
   width: 1060px;
-  padding: 0 10px;
+  /* padding: 0 10px; */
   margin: 0 auto;
 }
 .product-section-2 > .pro-list-box-2::after {

@@ -213,9 +213,10 @@ $("#addCart").click(function(){
          /* alert("SUCCESS!");
          console.log('success' + data); */
 
-         location.href = "/cart/cartList";
+         window.location.href = data;
       }
    });
+   return false;
 });
 
 $("#buyBtn").click(function(){
