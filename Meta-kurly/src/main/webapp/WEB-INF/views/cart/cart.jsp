@@ -46,6 +46,7 @@
 								<input type="hidden" class="individual_count_input" value="${cart.quantity}">
 							</td>
 							</tr>
+							<input type="hidden" class="p_idInput" value="${cart.productList[0].p_id}">
                         <img src="<c:out value="${cart.productList[0].img_url}" />" />
                         <p class="name"><strong><c:out value="${cart.productList[0].name}"></c:out></strong></p>
                     </div>
@@ -79,6 +80,9 @@
                 <button type="button" onclick="history.go(-1);return false;" class="btn wh-btn" style="border-color:#7B68EE">계속 쇼핑하기</button>
                 <button type="button" onclick="order()" class="btn black-btn" style="background-color:#7B68EE">구매하기</button>
             </div>
+            
+            <form id="postForm" action="/orders/order" method="post">
+			</form>
 
         </div>
 		
@@ -88,24 +92,20 @@
   <div class="agree"></div> <!-- 이거 지우지 마세요! -->
   
   <script>
-  		function order(){
-	   		console.log("주문하기 버튼 눌림");
-/* 	   	 $.ajax({
-	         url : "/order/${ResultMap.seq}",
-	         type : "POST",
-	         data : $("#updateForm").serialize(),
-	         dataType: 'JSON',
-	         success : function (data) {
-	             if(data.resultMap.code == "1"){
-	                 alert("success!")
-	                 
-	             } else {
-	                 alert("error!")
-	             }
-	             
-	             }
-	         }); */
-	   	}
+		function order(){
+			let postForm = $("#postForm");
+		         
+			$(":checkbox[name='item_chk']:checked").each(function(index){
+				let p_id = $(this).parent().parent().find(".p_idInput").val();
+				let quantity = $(this).parent().parent().find(".number").text();
+
+				postForm.append($('<input/>', {type: 'hidden', name: 'orderProductList[' + index + '].p_id', value: p_id}));
+				postForm.append($('<input/>', {type: 'hidden', name: 'orderProductList[' + index + '].quantity', value: quantity}));
+				console.log(postForm);
+			});
+	  	 
+			postForm.submit();
+		}
   		
   		$(document).ready(function(){
   		    //전체 선택 클릭시 

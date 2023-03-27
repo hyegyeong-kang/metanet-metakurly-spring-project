@@ -35,19 +35,10 @@ public class OrderServiceImpl implements OrderService {
 	public List<OrderDTO> getOrderList(Long m_id) {
 		log.info("getList Service...");
 		List<OrderDTO> list = mapper.getOrderList(m_id);
+		log.info(list);
 		list.forEach(order -> order.setOrderDetailList(mapper.getOrderDetail(order.getO_id()).getOrderDetailList()));
 		return list;
 	}
-
-//	@Transactional
-//	@Override
-//	public void addOrder(OrderDTO order, PaymentDTO payment) {
-//		log.info("creatOrder Service...");
-//		mapper.createOrder(order);
-//		mapper.createOrderDetail(order);
-//		mapper.modifyOrder(order);
-//		paymentMapper.createPayment(payment);
-//	}
 	
 	@Transactional
 	@Override
@@ -55,7 +46,6 @@ public class OrderServiceImpl implements OrderService {
 		log.info("creatOrder Service...");
 		mapper.createOrder(order);
 		mapper.createOrderDetail(order);
-//		mapper.modifyOrder(order);
 		paymentMapper.createPayment(payment);
 	}
 
@@ -65,28 +55,19 @@ public class OrderServiceImpl implements OrderService {
 		return mapper.cancelOrder(o_id);
 	}
 
-//	@Override
-//	public List<OrderProductDTO> getProductsInfo(List<OrderProductDTO> orderProducts) {
-//		List<OrderProductDTO> order = new ArrayList<>();
-//		
-//		log.info("$$$$$$$ " + orderProducts);
-//		for(OrderProductDTO product : orderProducts) {
-//			OrderProductDTO orderProduct = mapper.getProductInfo(product.getP_id());
-//			orderProduct.setQuantity(product.getQuantity());
-//			orderProduct.init();
-//			order.add(orderProduct);
-//		}
-//		
-//		return order;
-//	}
-	
 	@Override
-	public OrderProductDTO getProductInfo(OrderProductDTO orderProduct) {
-		OrderProductDTO dto = mapper.getProductInfo(orderProduct.getP_id());
-		dto.setQuantity(orderProduct.getQuantity());
-		dto.init();
-
-		return dto;
+	public List<OrderProductDTO> getProductsInfo(List<OrderProductDTO> orderProducts) {
+		List<OrderProductDTO> order = new ArrayList<>();
+		
+		log.info("$$$$$$$ " + orderProducts);
+		for(OrderProductDTO product : orderProducts) {
+			OrderProductDTO orderProduct = mapper.getProductInfo(product.getP_id());
+			orderProduct.setQuantity(product.getQuantity());
+			orderProduct.init();
+			order.add(orderProduct);
+		}
+		
+		return order;
 	}
 
 	@Override

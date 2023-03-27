@@ -52,7 +52,7 @@
 		<c:out value="${payment.method}"/>
  		<form id="postForm" action="" method="post" style="display:flex">
 			<button id="cancelBtn" type="submit">주문취소</button>
-    		<button id="listBtn">주문목록</button>
+    		<button id="listBtn" type="submit">주문목록</button>
 		</form>
     </div>
    

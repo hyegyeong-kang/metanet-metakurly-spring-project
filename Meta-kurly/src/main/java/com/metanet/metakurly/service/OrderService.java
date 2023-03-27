@@ -16,11 +16,9 @@ public interface OrderService {
 	
 	public PaymentDTO getPayment(Long o_id);
 	
-	//public List<OrderProductDTO> getProductsInfo(List<OrderProductDTO> orderProducts);
-	public OrderProductDTO getProductInfo(OrderProductDTO orderProducts);
+	public List<OrderProductDTO> getProductsInfo(List<OrderProductDTO> orderProducts);
 	
 	public void addOrder(OrderDTO order, PaymentDTO payment);
-	//public void addOrder(OrderProductDTO orderProduct);
 	
 	public int cancelOrder(Long o_id);
 	

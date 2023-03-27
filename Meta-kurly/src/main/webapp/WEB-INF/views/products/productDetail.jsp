@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+<title>MetaKurly | Product</title>
 <%@include file="../includes/header.jsp"%>
 <link rel="stylesheet" href="/resources/css/productList/product.css">
 <link rel="stylesheet" href="/resources/css/productList/productDetail.css">
@@ -50,8 +51,8 @@
 							<div id="productPrice" style="display:none"><c:out value="${product.price}"></c:out></div>
 							<div class="all-price">총 상품금액        <span id='totalCost'><fmt:formatNumber type="number" maxFractionDigits="3" value="${product.price}" /></span>원</div>
 							<div class="btn">
-								<a id="addCart" href="/cart/cartAdd">장바구니</a>
-								<a id="buyBtn" href="/orders/order">구매하기</a>
+								<a id="addCart" href="">장바구니</a>
+								<a id="buyBtn" href="">구매하기</a>
 							</div>
 						</div>
 					</div>
@@ -171,8 +172,8 @@
 				</div>
 		</div>
 		<form id="postForm" action="/orders/order" method="post">
-			<input type="hidden" name="p_id" value="${product.p_id}"/>
-			<input type="hidden" id="quantityInput" name="quantity" value=""/>
+			<input type="hidden" name="orderProductList[0].p_id" value="${product.p_id}"/>
+			<input type="hidden" id="quantityInput" name="orderProductList[0].quantity" value=""/>
 		</form>
 
   </main>
@@ -183,10 +184,18 @@
 
 <script>
 let product = document.getElementById("addCartProduct").innerText;
-let qt =  document.getElementById("result").innerText;
+
 
 
 $("#addCart").click(function(){
+
+	let qt =  document.getElementById("result").innerText;
+	console.log(product + "productasdfasdfasdfasd");
+	console.log(qt + "qt : adfasdfasdfasdfasd!!!!!!!!!");
+   /* $("#postForm").submit();
+   console.log(this);
+   this.preventDefault(); */
+   
 
    var productInfo = {
       p_id: product,
@@ -200,9 +209,15 @@ $("#addCart").click(function(){
       dataType: 'text',
       contentType: 'application/json',
       success: function(data){
-         location.replace("/cart/cartList");
+
+         /* alert("SUCCESS!");
+         console.log('success' + data); */
+
+         location.href = data;
+
       }
    });
+   return false;
 });
 
 $("#buyBtn").click(function(){

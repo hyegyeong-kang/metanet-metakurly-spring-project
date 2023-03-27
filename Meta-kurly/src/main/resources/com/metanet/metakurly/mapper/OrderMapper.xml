@@ -5,7 +5,7 @@
 	<!-- 특정 회원의 주문 목록 보기 -->
 	<select id="getOrderList" resultType="com.metanet.metakurly.domain.OrderDTO">
 		<![CDATA[
-			select * from orders where o_id > 0 and m_id = #{m_id}
+			select * from orders where o_id > 0 and m_id = #{m_id} order by orders_date desc
 		]]>
 	</select>
 	
@@ -68,23 +68,6 @@
 			select orders_seq.currval from dual
 		</selectKey>
 	</insert> 
-	<!-- 주문 수정(총수량, 총가격) -->
-	<!-- <update id="modifyOrder">
-		update orders
-		set
-			status = '결제완료',
-			total_amount = ( 
-				select sum(quantity) from orders_detail where o_id = #{o_id}
- 			),
- 			price = ( 
- 				select sum(p.price * od.quantity) from product p join orders_detail od on p.p_id = od.p_id where o_id = #{o_id}
- 			)
- 		where
- 			o_id = #{o_id} -->
- 		<!-- <selectKey keyProperty="o_id" order="BEFORE" resultType="long">
-			select orders_seq.currval from dual
-		</selectKey> -->
-	<!-- </update> -->
 	
 	<!-- 주문 상품 정보 -->
 	<select id="getProductInfo" resultType="com.metanet.metakurly.domain.OrderProductDTO">

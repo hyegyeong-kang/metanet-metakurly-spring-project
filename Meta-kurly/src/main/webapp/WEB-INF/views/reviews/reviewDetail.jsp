@@ -4,68 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <meta name="copyright" content="MACode ID, https://macodeid.com">
-
-  <title>MetaKurly - Review</title>
-
-  <link rel="stylesheet" href="/resources/vendor/animate/animate.css">
-
-  <link rel="stylesheet" href="/resources/css/bootstrap.css">
-
-  <link rel="stylesheet" href="/resources/css/maicons.css">
-
-  <link rel="stylesheet" href="/resources/vendor/owl-carousel/css/owl.carousel.css">
-
-  <link rel="stylesheet" href="/resources/css/theme.css">
-
-</head>
-<body>
-
-  <!-- Back to top button -->
-  <div class="back-to-top"></div>
-
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
-      <div class="container">
-        <a href="index.html" class="navbar-brand">Meta<span class="text-primary">Kurly.</span></a>
-
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="navbar-collapse collapse" id="navbarContent">
-          <ul class="navbar-nav ml-lg-4 pt-3 pt-lg-0">
-            <li class="nav-item">
-              <a href="/" class="nav-link">홈</a>
-            </li>
-            <li class="nav-item">
-              <a href="/product/bestProduct" class="nav-link">베스트</a>
-            </li>
-            <li class="nav-item">
-              <a href="/product" class="nav-link">전체상품</a>
-            </li>
-            <li class="nav-item active">
-              <a href="review" class="nav-link">리뷰</a>
-            </li>
-            <li class="nav-item">
-              <a href="myPage" class="nav-link">마이페이지</a>
-            </li>
-          </ul>
-
-          <div class="ml-auto">
-            <a href="#" class="btn btn-outline rounded-pill">로그인</a>
-          </div>
-        </div>
-      </div>
-    </nav>
+  	<title>MetaKurly | Review</title>
+<%@include file="../includes/header.jsp"%>
   </header>
 
   <main>

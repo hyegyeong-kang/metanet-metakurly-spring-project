@@ -11,7 +11,7 @@
 
 <meta name="copyright" content="MACode ID, https://macodeid.com">
 
-<title>MetaKurly | Products Detail</title>
+<title>MetaKurly</title>
 
 <link rel="stylesheet" href="/resources/vendor/animate/animate.css">
 
@@ -62,7 +62,7 @@
 					</c:if>
 					<c:if test="${member != null}">
 						<p>환영합니다! ${member.userId} 님</p>
-						<a href="/member/logout">로그아웃</a>
+						<a href="/member/logout" class="btn btn-outline rounded-pill">로그아웃</a>
 					</c:if>
 					</div>
 				</div>

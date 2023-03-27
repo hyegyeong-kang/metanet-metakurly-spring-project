@@ -1,5 +1,7 @@
 package com.metanet.metakurly.domain;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -17,6 +19,8 @@ public class OrderProductDTO {
 	/* 계산이 필요한 값 */
 	private int totalPrice;
 	private int point;
+	
+	private List<OrderProductDTO> orderProductList;
 	
 	public void init() {
 		this.totalPrice = this.price * this.quantity;
