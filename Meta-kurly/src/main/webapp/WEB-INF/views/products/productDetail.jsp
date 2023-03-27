@@ -188,6 +188,7 @@ let product = document.getElementById("addCartProduct").innerText;
 
 
 $("#addCart").click(function(){
+
 	let qt =  document.getElementById("result").innerText;
 	console.log(product + "productasdfasdfasdfasd");
 	console.log(qt + "qt : adfasdfasdfasdfasd!!!!!!!!!");
@@ -195,14 +196,12 @@ $("#addCart").click(function(){
    console.log(this);
    this.preventDefault(); */
    
+
    var productInfo = {
       p_id: product,
       quantity: qt
    };
 
-
-/*    console.log("!!!!!!!!!!!!" + JSON.stringify(productArr));
- */   //data: JSON.stringify(productArr),
    $.ajax({
       url: '/cart/cartAdd',
       type: 'post',
@@ -210,10 +209,12 @@ $("#addCart").click(function(){
       dataType: 'text',
       contentType: 'application/json',
       success: function(data){
+
          /* alert("SUCCESS!");
          console.log('success' + data); */
 
          location.href = data;
+
       }
    });
    return false;
